@@ -9,6 +9,7 @@ describe('interactive gallery', () => {
     const apiLabels = [
       'Button',
       'ButtonGroup',
+      'Card',
       'Ripple',
       'Switch',
       'Slider',

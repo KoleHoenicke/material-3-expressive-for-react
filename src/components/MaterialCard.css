@@ -1,0 +1,274 @@
+.material-card {
+  --md-card-container-shape: var(--md-sys-shape-corner-medium, 12px);
+  --md-card-container-color: var(--md-sys-color-surface-container-highest);
+  --md-card-content-color: var(--md-sys-color-on-surface);
+  --md-card-disabled-container-color: color-mix(
+    in srgb,
+    var(--md-sys-color-surface-variant) 38%,
+    var(--md-card-container-color)
+  );
+  --md-card-disabled-content-color: color-mix(
+    in srgb,
+    var(--md-sys-color-on-surface) 38%,
+    transparent
+  );
+  --md-card-outline-color: transparent;
+  --md-card-disabled-outline-color: transparent;
+  --md-card-focused-outline-color: var(--md-card-outline-color);
+  --md-card-checked-outline-color: var(--md-card-outline-color);
+  --md-card-outline-width: 0px;
+  --md-card-elevation: var(--md-sys-elevation-level0, none);
+  --md-card-hover-elevation: var(--md-sys-elevation-level1, none);
+  --md-card-focus-elevation: var(--md-sys-elevation-level0, none);
+  --md-card-pressed-elevation: var(--md-sys-elevation-level0, none);
+  --md-card-dragged-elevation: var(--md-sys-elevation-level3, none);
+  --md-card-disabled-elevation: var(--md-sys-elevation-level0, none);
+  --md-card-state-layer-color: var(--md-sys-color-on-surface);
+  --md-card-checked-state-layer-color: var(--md-sys-color-secondary);
+  --md-card-checked-state-layer-opacity: 0.16;
+  --md-card-hover-state-layer-opacity: var(
+    --md-sys-state-hover-state-layer-opacity,
+    0.08
+  );
+  --md-card-focus-state-layer-opacity: var(
+    --md-sys-state-focus-state-layer-opacity,
+    0.1
+  );
+  --md-card-pressed-state-layer-opacity: var(
+    --md-sys-state-pressed-state-layer-opacity,
+    0.1
+  );
+  --md-card-dragged-state-layer-opacity: var(
+    --md-sys-state-dragged-state-layer-opacity,
+    0.16
+  );
+  --md-card-focus-indicator-color: var(--md-sys-color-secondary);
+  --md-card-focus-indicator-thickness: 3px;
+  --md-card-focus-indicator-offset: 2px;
+  --md-card-icon-size: 24px;
+  --md-card-checked-icon-color: var(--md-sys-color-secondary);
+  --md-card-disabled-checked-icon-color: color-mix(
+    in srgb,
+    var(--md-sys-color-outline) 12%,
+    transparent
+  );
+  --md-card-checked-icon-margin: 8px;
+  --md-card-content-padding: 0px;
+  --md-ripple-hover-color: var(--md-card-state-layer-color);
+  --md-ripple-pressed-color: var(--md-card-state-layer-color);
+  --md-ripple-hover-opacity: var(--md-card-hover-state-layer-opacity);
+  --md-ripple-pressed-opacity: var(--md-card-pressed-state-layer-opacity);
+  position: relative;
+  isolation: isolate;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-inline-size: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: var(--md-card-outline-width) solid var(--md-card-outline-color);
+  border-radius: var(--md-card-container-shape);
+  appearance: none;
+  background: var(--md-card-container-color);
+  box-shadow: var(--md-card-elevation);
+  color: var(--md-card-content-color);
+  font: inherit;
+  letter-spacing: inherit;
+  text-align: start;
+  text-decoration: none;
+  transition:
+    background-color var(--m3-motion-transition-fast-effects),
+    border-color var(--m3-motion-transition-fast-effects),
+    box-shadow var(--m3-motion-card-elevation-outgoing),
+    color var(--m3-motion-transition-fast-effects);
+}
+
+.material-card::before {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  background: var(--md-card-checked-state-layer-color);
+  content: '';
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--m3-motion-card-selection-exit);
+}
+
+.material-card__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-inline-size: 0;
+  padding: var(--md-card-content-padding);
+}
+
+.material-card[data-interactive='true'] {
+  min-block-size: 48px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.material-card[data-interactive='true']:hover {
+  box-shadow: var(--md-card-hover-elevation);
+  transition: box-shadow var(--m3-motion-card-elevation-incoming);
+}
+
+.material-card[data-interactive='true']:focus-visible {
+  border-color: var(--md-card-focused-outline-color);
+  box-shadow: var(--md-card-focus-elevation);
+  outline: var(--md-card-focus-indicator-thickness) solid
+    var(--md-card-focus-indicator-color);
+  outline-offset: var(--md-card-focus-indicator-offset);
+}
+
+.material-card[data-interactive='true']:focus-visible
+  > .material-ripple
+  .material-ripple__surface::before {
+  opacity: var(--md-card-focus-state-layer-opacity);
+}
+
+.material-card[data-interactive='true']:active:not([data-disabled='true']) {
+  box-shadow: var(--md-card-pressed-elevation);
+}
+
+.material-card[data-dragged='true'] {
+  --md-ripple-hover-opacity: var(--md-card-dragged-state-layer-opacity);
+  z-index: 1;
+  box-shadow: var(--md-card-dragged-elevation);
+  cursor: grabbing;
+  transition: box-shadow var(--m3-motion-card-elevation-incoming);
+}
+
+.material-card[data-checked='true'] {
+  --md-card-outline-color: var(--md-card-checked-outline-color);
+  --md-ripple-hover-color: var(--md-card-checked-state-layer-color);
+}
+
+.material-card[data-checkable='true'][data-checked='false'] {
+  --md-ripple-hover-color: var(--md-sys-color-on-surface-variant);
+  --md-ripple-pressed-color: var(--md-sys-color-secondary);
+}
+
+.material-card[data-checkable='true'][data-checked='true'] {
+  --md-ripple-pressed-color: var(--md-sys-color-on-surface-variant);
+}
+
+.material-card[data-checked='true']::before {
+  opacity: var(--md-card-checked-state-layer-opacity);
+  transition: opacity var(--m3-motion-card-selection-enter);
+}
+
+.material-card[data-disabled='true'] {
+  --md-card-outline-color: var(--md-card-disabled-outline-color);
+  background: var(--md-card-disabled-container-color);
+  box-shadow: var(--md-card-disabled-elevation);
+  color: var(--md-card-disabled-content-color);
+  cursor: default;
+  transition-duration: 0ms;
+}
+
+.material-card[data-variant='elevated'] {
+  --md-card-container-color: var(--md-sys-color-surface-container-low);
+  --md-card-disabled-container-color: var(--md-sys-color-surface);
+  --md-card-elevation: var(--md-sys-elevation-level1, none);
+  --md-card-hover-elevation: var(--md-sys-elevation-level2, none);
+  --md-card-focus-elevation: var(--md-sys-elevation-level1, none);
+  --md-card-pressed-elevation: var(--md-sys-elevation-level1, none);
+  --md-card-dragged-elevation: var(--md-sys-elevation-level4, none);
+  --md-card-disabled-elevation: var(--md-sys-elevation-level1, none);
+}
+
+.material-card[data-variant='outlined'] {
+  --md-card-container-color: var(--md-sys-color-surface);
+  --md-card-disabled-container-color: var(--md-sys-color-surface);
+  --md-card-outline-color: var(--md-sys-color-outline-variant);
+  --md-card-disabled-outline-color: color-mix(
+    in srgb,
+    var(--md-sys-color-outline) 12%,
+    transparent
+  );
+  --md-card-focused-outline-color: var(--md-sys-color-on-surface);
+  --md-card-checked-outline-color: var(--md-sys-color-secondary);
+  --md-card-outline-width: 1px;
+}
+
+.material-card[data-variant='outlined'][data-checked='true'] {
+  --md-card-outline-color: var(--md-card-checked-outline-color);
+}
+
+.material-card[data-variant='outlined'][data-disabled='true'] {
+  --md-card-outline-color: var(--md-card-disabled-outline-color);
+}
+
+.material-card__checked-icon {
+  position: absolute;
+  z-index: 4;
+  display: grid;
+  inline-size: var(--md-card-icon-size);
+  block-size: var(--md-card-icon-size);
+  place-items: center;
+  color: var(--md-card-checked-icon-color);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--m3-motion-card-selection-exit);
+}
+
+.material-card[data-checked='true'] .material-card__checked-icon {
+  opacity: 1;
+  transition: opacity var(--m3-motion-card-selection-enter);
+}
+
+.material-card[data-disabled='true'] .material-card__checked-icon {
+  color: var(--md-card-disabled-checked-icon-color);
+}
+
+.material-card__checked-icon[data-position^='top'] {
+  inset-block-start: var(--md-card-checked-icon-margin);
+}
+
+.material-card__checked-icon[data-position^='bottom'] {
+  inset-block-end: var(--md-card-checked-icon-margin);
+}
+
+.material-card__checked-icon[data-position$='start'] {
+  inset-inline-start: var(--md-card-checked-icon-margin);
+}
+
+.material-card__checked-icon[data-position$='end'] {
+  inset-inline-end: var(--md-card-checked-icon-margin);
+}
+
+.material-card__checked-icon > svg,
+.material-card__checked-icon > img {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  fill: currentColor;
+}
+
+@media (forced-colors: active) {
+  .material-card {
+    border: 1px solid CanvasText;
+  }
+
+  .material-card[data-interactive='true']:focus-visible {
+    outline-color: Highlight;
+  }
+
+  .material-card__checked-icon {
+    color: Highlight;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .material-card,
+  .material-card::before,
+  .material-card__checked-icon {
+    transition-duration: var(--m3-motion-reduced-effects-duration);
+    transition-delay: 0ms;
+  }
+}

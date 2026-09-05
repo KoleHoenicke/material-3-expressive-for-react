@@ -36,7 +36,7 @@
   --md-ripple-hover-color: currentColor;
   --md-ripple-pressed-color: currentColor;
   --md-ripple-hover-opacity: var(--md-sys-state-hover-state-layer-opacity, 0.08);
-  --md-ripple-pressed-opacity: var(--md-sys-state-pressed-state-layer-opacity, 0.12);
+  --md-ripple-pressed-opacity: var(--md-sys-state-pressed-state-layer-opacity, 0.1);
   position: relative;
   isolation: isolate;
   box-sizing: border-box;
@@ -97,7 +97,7 @@
 }
 
 .material-button:focus-visible > .material-ripple .material-ripple__surface::before {
-  opacity: var(--md-sys-state-focus-state-layer-opacity, 0.12);
+  opacity: var(--md-sys-state-focus-state-layer-opacity, 0.1);
 }
 
 .material-button:active:not(:disabled),

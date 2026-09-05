@@ -1,7 +1,7 @@
 :root {
   --md-sys-state-hover-state-layer-opacity: 0.08;
-  --md-sys-state-focus-state-layer-opacity: 0.12;
-  --md-sys-state-pressed-state-layer-opacity: 0.12;
+  --md-sys-state-focus-state-layer-opacity: 0.1;
+  --md-sys-state-pressed-state-layer-opacity: 0.1;
   --md-sys-state-dragged-state-layer-opacity: 0.16;
   --md-ripple-hover-opacity-duration: 15ms;
   --md-ripple-press-fade-in-duration: 105ms;
@@ -64,6 +64,12 @@
   --m3-motion-feedback-loop-slow: var(--md-sys-motion-duration-extra-long2);
   --m3-motion-feedback-loop-extra-slow: var(--md-sys-motion-duration-extra-long3);
   --m3-motion-stagger-fast-step: 33ms;
+
+  /* AndroidX Material 3 card elevation and MaterialCardView selection transitions. */
+  --m3-motion-card-elevation-incoming: 120ms cubic-bezier(0.4, 0, 0.2, 1);
+  --m3-motion-card-elevation-outgoing: 120ms cubic-bezier(0.4, 0, 0.6, 1);
+  --m3-motion-card-selection-enter: var(--md-sys-motion-duration-short2) linear;
+  --m3-motion-card-selection-exit: var(--md-sys-motion-duration-short1) linear;
 
   --md-sys-motion-expressive-fast-spatial-duration: 350ms;
   --md-sys-motion-expressive-fast-spatial-easing: cubic-bezier(0.42, 1.67, 0.21, 0.90);

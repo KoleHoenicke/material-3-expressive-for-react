@@ -3,6 +3,7 @@ import {
   Badge,
   Button,
   ButtonGroup,
+  Card,
   ListCount,
   ListSelectionIcon,
   ListTrailingAction,
@@ -101,6 +102,8 @@ export function Gallery() {
   const [mode, setMode] = useState<'light' | 'dark'>('light')
   const [seed, setSeed] = useState('#6750a4')
   const [buttonSize, setButtonSize] = useState<MaterialButtonSize>('small')
+  const [cardDragged, setCardDragged] = useState(false)
+  const [cardSelected, setCardSelected] = useState(false)
   const [favorite, setFavorite] = useState(false)
   const [interval, setInterval] = useState('week')
   const [notifications, setNotifications] = useState(true)
@@ -182,6 +185,7 @@ export function Gallery() {
             <span>Material React Components</span>
           </a>
           <nav aria-label="Gallery navigation">
+            <a href="#cards">Cards</a>
             <a href="#actions">Actions</a>
             <a href="#selection">Selection</a>
             <a href="#lists">Lists</a>
@@ -200,8 +204,8 @@ export function Gallery() {
               <h1 id="gallery-title">Material controls that move like they should.</h1>
               <p>Every example is rendered by the package. Change the theme, press the controls, and inspect the current Material 3 Expressive behavior.</p>
               <div className="hero__meta">
-                <span>13 modules</span>
-                <span>50 tests</span>
+                <span>14 modules</span>
+                <span>60 tests</span>
                 <span>React 18 and 19</span>
               </div>
             </div>
@@ -244,6 +248,68 @@ export function Gallery() {
                 <span className="mode-control__label"><Icon name="moon" /> Dark theme</span>
                 <Switch aria-label="Use dark theme" checked={mode === 'dark'} onChange={(event) => setMode(event.currentTarget.checked ? 'dark' : 'light')} />
               </label>
+            </div>
+          </section>
+
+          <section className="component-section" id="cards" aria-labelledby="cards-title">
+            <div className="section-heading">
+              <span className="eyebrow">Content</span>
+              <h2 id="cards-title">Cards</h2>
+            </div>
+            <div className="specimen-grid">
+              <Specimen
+                title="Card"
+                description="Filled, elevated, and outlined containers with direct actions, selection, drag elevation, and flexible content."
+                wide
+              >
+                <div className="card-showcase">
+                  <Card
+                    variant="elevated"
+                    contentPadding={16}
+                    draggable
+                    dragged={cardDragged}
+                    onDraggedChange={setCardDragged}
+                    onClick={() => setMessage('Elevated card opened')}
+                  >
+                    <span className="demo-card__label">Elevated</span>
+                    <span className="demo-card__title">Drag or open this card</span>
+                    <span className="demo-card__supporting">
+                      Hover raises it to level 2. Dragging uses the level 4 token.
+                    </span>
+                  </Card>
+
+                  <Card variant="filled" contentPadding={16}>
+                    <span className="demo-card__label">Filled</span>
+                    <h4 className="demo-card__title">Flexible content container</h4>
+                    <p className="demo-card__supporting">
+                      Passive cards can contain their own focused actions without making the whole
+                      surface clickable.
+                    </p>
+                    <div className="demo-card__actions">
+                      <Button variant="text" onClick={() => setMessage('Filled card action pressed')}>
+                        Learn more
+                      </Button>
+                    </div>
+                  </Card>
+
+                  <Card
+                    variant="outlined"
+                    contentPadding={16}
+                    checkable
+                    checked={cardSelected}
+                    onCheckedChange={setCardSelected}
+                  >
+                    <span className="demo-card__label">Outlined</span>
+                    <span className="demo-card__title">
+                      {cardSelected ? 'Selected report' : 'Select this report'}
+                    </span>
+                    <span className="demo-card__supporting">
+                      Controlled checked state includes the Android selection layer, icon, and
+                      outline.
+                    </span>
+                  </Card>
+                </div>
+              </Specimen>
             </div>
           </section>
 

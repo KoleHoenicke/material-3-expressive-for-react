@@ -1,7 +1,9 @@
 # Changelog
 
-## Unreleased
+## 0.3.0
 
+- Added the Material 3 Card with filled, elevated, and outlined variants; native button and link semantics; controlled checked and dragged states; current AndroidX state layers; and configurable content padding.
+- Updated shared focus and pressed state-layer opacity tokens to the current AndroidX Material 3 value of 0.10.
 - Added a responsive interactive gallery for every available component.
 - Added automatic GitHub Pages deployment for the gallery.
 

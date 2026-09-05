@@ -1,3 +1,5 @@
+import { readFileSync } from 'node:fs'
+import { resolve } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import {
   DEFAULT_MATERIAL_MOTION_PRESETS,
@@ -11,11 +13,15 @@ import {
 
 describe('Material motion tokens', () => {
   it('uses expressive motion as the app default scheme', () => {
+    const css = readFileSync(resolve(process.cwd(), 'src/theme/motion.css'), 'utf8')
+
     expect(MATERIAL_MOTION_DEFAULT_SCHEME).toBe('expressive')
     expect(DEFAULT_MATERIAL_MOTION_PRESETS).toBe(MATERIAL_MOTION_PRESETS.expressive)
     expect(getMaterialMotionPreset('spatial', 'default')).toBe(
       MATERIAL_MOTION_PRESETS.expressive.spatial.default,
     )
+    expect(css).toContain('--md-sys-state-focus-state-layer-opacity: 0.1')
+    expect(css).toContain('--md-sys-state-pressed-state-layer-opacity: 0.1')
   })
 
   it('matches the Material web curve conversions for expressive springs', () => {

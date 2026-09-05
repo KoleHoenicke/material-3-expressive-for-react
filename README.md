@@ -17,6 +17,7 @@ Included now:
 
 - Badge
 - Button and button group
+- Card, including filled, elevated, outlined, checked, and dragged states
 - List count and trailing actions
 - Loading indicator
 - Quantity stepper
@@ -34,7 +35,7 @@ Included now:
 Until the first npm release, install the package directly from GitHub:
 
 ```sh
-npm install github:KoleHoenicke/material-react-components#v0.2.0
+npm install github:KoleHoenicke/material-react-components#v0.3.0
 ```
 
 React and React DOM are peer dependencies. React 18 and 19 are supported.
@@ -45,6 +46,7 @@ React and React DOM are peer dependencies. React 18 and 19 are supported.
 import { useState } from 'react'
 import {
   Button,
+  Card,
   MaterialThemeProvider,
   Slider,
   Switch,
@@ -58,6 +60,10 @@ export function Settings() {
   return (
     <MaterialThemeProvider seed={{ primary: '#6750a4' }}>
       <Button variant="filled">Save</Button>
+
+      <Card variant="elevated" contentPadding={16} href="/details">
+        Open details
+      </Card>
 
       <Switch
         aria-label="Enable feature"
@@ -98,6 +104,8 @@ Components use public CSS custom properties. Override Material tokens at any anc
 ```css
 .my-theme {
   --md-sys-shape-corner-large: 20px;
+  --md-card-container-shape: 20px;
+  --md-card-dragged-elevation: var(--md-sys-elevation-level5);
   --md-slider-active-track-color: #006a6a;
   --material-loading-indicator-size: 40px;
 }
