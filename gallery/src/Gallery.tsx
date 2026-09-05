@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from 'react'
+import { useEffect, useState, type ReactNode } from 'react'
 import {
   Badge,
   Button,
@@ -111,7 +111,14 @@ export function Gallery() {
   const [sliderValue, setSliderValue] = useState(64)
   const [centeredValue, setCenteredValue] = useState(20)
   const [badgeCount, setBadgeCount] = useState(7)
-  const [message, setMessage] = useState('Try the controls. Everything on this page is live.')
+  const [message, setMessage] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (!message) return
+
+    const timeout = window.setTimeout(() => setMessage(null), 3_500)
+    return () => window.clearTimeout(timeout)
+  }, [message])
 
   const intervalOptions = [
     { ariaLabel: 'Day', content: 'Day', value: 'day' },
@@ -234,7 +241,7 @@ export function Gallery() {
                 </label>
               </fieldset>
               <label className="mode-control">
-                <span><Icon name="moon" /> Dark theme</span>
+                <span className="mode-control__label"><Icon name="moon" /> Dark theme</span>
                 <Switch aria-label="Use dark theme" checked={mode === 'dark'} onChange={(event) => setMode(event.currentTarget.checked ? 'dark' : 'light')} />
               </label>
             </div>
@@ -380,7 +387,7 @@ export function Gallery() {
           <span>Independent community implementation. Not affiliated with Google.</span>
           <a href="https://github.com/KoleHoenicke/material-react-components">Source and installation</a>
         </footer>
-        <div className="gallery-toast" role="status" aria-live="polite">{message}</div>
+        {message ? <div className="gallery-toast" role="status" aria-live="polite">{message}</div> : null}
       </div>
     </MaterialThemeProvider>
   )

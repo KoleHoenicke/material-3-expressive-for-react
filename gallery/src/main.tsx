@@ -1,6 +1,8 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { Gallery } from './Gallery'
+import '../../src/theme/tokens.css'
+import '../../src/theme/motion.css'
 import './gallery.css'
 
 createRoot(document.getElementById('root')!).render(

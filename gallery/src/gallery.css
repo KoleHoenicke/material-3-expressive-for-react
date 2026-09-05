@@ -317,7 +317,7 @@ svg {
 .theme-panel__title,
 .theme-panel__controls,
 .mode-control,
-.mode-control > span {
+.mode-control__label {
   display: flex;
   align-items: center;
 }
@@ -424,7 +424,7 @@ svg {
   white-space: nowrap;
 }
 
-.mode-control > span {
+.mode-control__label {
   gap: 7px;
 }
 
@@ -932,7 +932,7 @@ footer a {
     height: 32px;
   }
 
-  .mode-control > span {
+  .mode-control__label {
     display: none;
   }
 
