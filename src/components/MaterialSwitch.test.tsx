@@ -4,7 +4,7 @@ import { MaterialSwitch } from './MaterialSwitch'
 
 describe('MaterialSwitch', () => {
   it('keeps legacy settings switch internals out of the Material primitive', () => {
-    const { container } = render(<MaterialSwitch aria-label="Sound effects" defaultChecked />)
+    const { container } = render(<MaterialSwitch aria-label="Automatic updates" defaultChecked />)
 
     expect(container.querySelector('.material-switch')).toBeInTheDocument()
     expect(container.querySelector('.material-switch__track')).toBeInTheDocument()

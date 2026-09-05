@@ -13,4 +13,4 @@
 
 ## 0.1.0
 
-- Added the initial sound-free React component library, theme generation, motion tokens, tests, and package build.
+- Added the initial React component library, theme generation, motion tokens, tests, and package build.

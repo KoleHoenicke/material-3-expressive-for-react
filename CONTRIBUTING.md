@@ -9,4 +9,4 @@ pnpm install
 pnpm verify
 ```
 
-Add a regression test for behavior changes. Do not add application-specific assets or sound effects to the package.
+Add a regression test for behavior changes. Do not add application-specific assets or behavior to the package.

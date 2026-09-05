@@ -4,14 +4,14 @@ An independent, open-source implementation of Material Design components for Rea
 
 [Open the interactive component gallery](https://kolehoenicke.github.io/material-react-components/)
 
-This project grew out of the component system built for My Singing Monsters Grid Planner. It packages the reusable controls, dynamic color, typography hooks, shape tokens, state layers, and expressive motion so they can be shared across websites and Telegram Mini Apps.
+The package includes reusable controls, dynamic color, typography hooks, shape tokens, state layers, and expressive motion.
 
 > [!IMPORTANT]
 > This is an independent community project. It is not affiliated with, sponsored by, or endorsed by Google. Material Design is a trademark of Google LLC.
 
 ## Status
 
-The library is an early alpha. The API is usable, tested, and packaged, but it may change while more Grid Planner components are separated from application-specific code.
+The library is an early alpha. The API is usable, tested, and packaged, but it may change as the component set expands.
 
 Included now:
 
@@ -105,18 +105,6 @@ Components use public CSS custom properties. Override Material tokens at any anc
 
 The package does not bundle Google Sans. It uses Google Sans when the host application provides it, then falls back to Roboto and system sans-serif fonts.
 
-## Material generations
-
-The repository name is not tied to one Material generation. Components currently follow Material 3 Expressive. Future Material generations can be added under the same package name, with semantic versioning used for breaking API or visual changes.
-
-## No sound effects
-
-The library does not contain or play sound effects. Audio feedback from Grid Planner is intentionally outside the package boundary. Applications can add their own sound or haptic feedback in their event handlers if desired.
-
-## Telegram Mini Apps
-
-Telegram Mini Apps are web applications rendered inside Telegram's webview, so these React components can be used there like they can in a normal React website. Telegram-specific initialization and theme bridging should stay in the Mini App rather than in this component package.
-
 ## Development
 
 ```sh
@@ -126,7 +114,7 @@ pnpm verify
 
 Run the gallery locally with `pnpm gallery:dev`.
 
-`pnpm verify` runs TypeScript checking, component tests, the production build, and an npm package dry run.
+`pnpm verify` runs TypeScript checks, tests, package and gallery builds, and an npm package dry run.
 
 ## License
 
