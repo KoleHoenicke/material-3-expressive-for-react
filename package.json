@@ -45,9 +45,11 @@
   ],
   "scripts": {
     "build": "tsup",
+    "gallery:build": "vite build --config vite.gallery.config.ts",
+    "gallery:dev": "vite --config vite.gallery.config.ts",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "verify": "pnpm typecheck && pnpm test && pnpm build && pnpm pack:check",
+    "verify": "pnpm typecheck && pnpm test && pnpm build && pnpm gallery:build && pnpm pack:check",
     "pack:check": "npm pack --dry-run",
     "prepare": "npm run build"
   },
@@ -64,11 +66,13 @@
     "@types/node": "^24.12.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^4.7.0",
     "jsdom": "^26.1.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "tsup": "^8.5.0",
     "typescript": "^5.8.3",
+    "vite": "^5.4.21",
     "vitest": "^2.1.9"
   },
   "publishConfig": {

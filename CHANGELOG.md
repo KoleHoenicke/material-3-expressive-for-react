@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Added a responsive interactive gallery for every available component.
+- Added automatic GitHub Pages deployment for the gallery.
+
 ## 0.2.0
 
 - Renamed the project to Material React Components.

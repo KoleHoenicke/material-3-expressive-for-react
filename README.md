@@ -2,6 +2,8 @@
 
 An independent, open-source implementation of Material Design components for React on the web. The current release targets Material 3 Expressive.
 
+[Open the interactive component gallery](https://kolehoenicke.github.io/material-react-components/)
+
 This project grew out of the component system built for My Singing Monsters Grid Planner. It packages the reusable controls, dynamic color, typography hooks, shape tokens, state layers, and expressive motion so they can be shared across websites and Telegram Mini Apps.
 
 > [!IMPORTANT]
@@ -121,6 +123,8 @@ Telegram Mini Apps are web applications rendered inside Telegram's webview, so t
 pnpm install
 pnpm verify
 ```
+
+Run the gallery locally with `pnpm gallery:dev`.
 
 `pnpm verify` runs TypeScript checking, component tests, the production build, and an npm package dry run.
 

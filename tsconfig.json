@@ -17,5 +17,5 @@
     "noEmit": true,
     "types": ["vitest/globals", "@testing-library/jest-dom"]
   },
-  "include": ["src", "examples", "tsup.config.ts", "vitest.config.ts"]
+  "include": ["src", "examples", "gallery", "tsup.config.ts", "vite.gallery.config.ts", "vitest.config.ts"]
 }
