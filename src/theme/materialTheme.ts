@@ -335,7 +335,7 @@ function colorsToCssVariables(colors: Record<string, string>) {
   for (const [role, color] of Object.entries(colors)) {
     const variableRole = role.replace(/[A-Z]/g, (match) => `-${match.toLowerCase()}`)
     const variableName = role.toLowerCase().includes('accentsoft')
-      ? `--m3e-color-${variableRole}`
+      ? `--mrc-color-${variableRole}`
       : materialRoleToCssVariable(role)
 
     cssVariables[variableName] = color
@@ -377,8 +377,8 @@ export function createMaterialColorScheme(
     colors,
     referencePalettes,
     cssVariables: {
-      '--m3e-theme-source-color': normalizedSeed.primary,
-      '--m3e-theme-accent-soft-source-color': normalizedSeed.secondary,
+      '--mrc-theme-source-color': normalizedSeed.primary,
+      '--mrc-theme-accent-soft-source-color': normalizedSeed.secondary,
       ...referencePalettesToCssVariables(referencePalettes),
       ...colorsToCssVariables(colors),
     },
@@ -406,8 +406,8 @@ export function createMaterialFidelityColorScheme(
     colors,
     referencePalettes,
     cssVariables: {
-      '--m3e-theme-source-color': normalizedSeed.primary,
-      '--m3e-theme-accent-soft-source-color': normalizedSeed.secondary,
+      '--mrc-theme-source-color': normalizedSeed.primary,
+      '--mrc-theme-accent-soft-source-color': normalizedSeed.secondary,
       ...referencePalettesToCssVariables(referencePalettes),
       ...colorsToCssVariables(colors),
     },

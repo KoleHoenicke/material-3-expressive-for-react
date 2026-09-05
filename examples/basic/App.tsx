@@ -5,8 +5,8 @@ import {
   Slider,
   Switch,
   WavyProgress,
-} from 'material-3-expressive-for-react'
-import 'material-3-expressive-for-react/styles.css'
+} from '@kolehoenicke/material-react-components'
+import '@kolehoenicke/material-react-components/styles.css'
 
 export function App() {
   const [enabled, setEnabled] = useState(true)

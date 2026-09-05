@@ -11,7 +11,7 @@ describe('MaterialThemeProvider', () => {
     )
 
     const theme = screen.getByTestId('theme')
-    expect(theme).toHaveClass('m3e-root')
+    expect(theme).toHaveClass('material-react-root')
     expect(theme).toHaveAttribute('data-color-scheme', 'dark')
     expect(theme).toHaveAttribute('data-motion-scheme', 'expressive')
     expect(theme.style.getPropertyValue('--md-sys-color-primary')).toMatch(/^#[0-9a-f]{6}$/)

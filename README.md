@@ -1,6 +1,6 @@
-# Material 3 Expressive for React
+# Material React Components
 
-An independent, open-source implementation of Material 3 Expressive components for React on the web.
+An independent, open-source implementation of Material Design components for React on the web. The current release targets Material 3 Expressive.
 
 This project grew out of the component system built for My Singing Monsters Grid Planner. It packages the reusable controls, dynamic color, typography hooks, shape tokens, state layers, and expressive motion so they can be shared across websites and Telegram Mini Apps.
 
@@ -32,7 +32,7 @@ Included now:
 Until the first npm release, install the package directly from GitHub:
 
 ```sh
-npm install github:KoleHoenicke/material-3-expressive-for-react
+npm install github:KoleHoenicke/material-react-components#v0.2.0
 ```
 
 React and React DOM are peer dependencies. React 18 and 19 are supported.
@@ -46,8 +46,8 @@ import {
   MaterialThemeProvider,
   Slider,
   Switch,
-} from 'material-3-expressive-for-react'
-import 'material-3-expressive-for-react/styles.css'
+} from '@kolehoenicke/material-react-components'
+import '@kolehoenicke/material-react-components/styles.css'
 
 export function Settings() {
   const [enabled, setEnabled] = useState(true)
@@ -102,6 +102,10 @@ Components use public CSS custom properties. Override Material tokens at any anc
 ```
 
 The package does not bundle Google Sans. It uses Google Sans when the host application provides it, then falls back to Roboto and system sans-serif fonts.
+
+## Material generations
+
+The repository name is not tied to one Material generation. Components currently follow Material 3 Expressive. Future Material generations can be added under the same package name, with semantic versioning used for breaking API or visual changes.
 
 ## No sound effects
 

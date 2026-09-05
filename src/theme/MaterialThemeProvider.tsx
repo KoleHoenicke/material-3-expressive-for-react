@@ -29,7 +29,7 @@ export function MaterialThemeProvider({
   return (
     <div
       {...props}
-      className={['m3e-root', className].filter(Boolean).join(' ')}
+      className={['material-react-root', className].filter(Boolean).join(' ')}
       data-color-scheme={mode}
       data-motion-scheme="expressive"
       style={{ ...variables, colorScheme: mode, ...style } as CSSProperties}

@@ -43,9 +43,9 @@ describe('Material theme generation', () => {
 
   it('emits public Material and library CSS variables', () => {
     expect(createMaterialThemeCssVariables(seed)).toMatchObject({
-      '--m3e-theme-source-color': '#5b8f34',
-      '--m3e-theme-accent-soft-source-color': '#b8e48d',
-      '--m3e-color-accent-soft': '#3f6919',
+      '--mrc-theme-source-color': '#5b8f34',
+      '--mrc-theme-accent-soft-source-color': '#b8e48d',
+      '--mrc-color-accent-soft': '#3f6919',
       '--md-sys-color-primary': '#396a11',
       '--md-sys-color-surface-container': '#eeeee7',
       '--md-ref-palette-primary-primary40': '#396a11',

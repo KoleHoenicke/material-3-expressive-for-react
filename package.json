@@ -1,7 +1,7 @@
 {
-  "name": "material-3-expressive-for-react",
-  "version": "0.1.0",
-  "description": "Independent Material 3 Expressive components for React on the web.",
+  "name": "@kolehoenicke/material-react-components",
+  "version": "0.2.0",
+  "description": "Independent Material Design components for React on the web, currently implementing Material 3 Expressive.",
   "license": "Apache-2.0",
   "packageManager": "pnpm@11.24.0",
   "type": "module",
@@ -19,6 +19,7 @@
   "files": [
     "dist",
     "README.md",
+    "CHANGELOG.md",
     "LICENSE",
     "NOTICE",
     "THIRD_PARTY_NOTICES.md"
@@ -28,12 +29,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KoleHoenicke/material-3-expressive-for-react.git"
+    "url": "git+https://github.com/KoleHoenicke/material-react-components.git"
   },
   "bugs": {
-    "url": "https://github.com/KoleHoenicke/material-3-expressive-for-react/issues"
+    "url": "https://github.com/KoleHoenicke/material-react-components/issues"
   },
-  "homepage": "https://github.com/KoleHoenicke/material-3-expressive-for-react#readme",
+  "homepage": "https://github.com/KoleHoenicke/material-react-components#readme",
   "keywords": [
     "material-design",
     "material-3",
