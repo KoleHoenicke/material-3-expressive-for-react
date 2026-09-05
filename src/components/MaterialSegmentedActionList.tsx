@@ -1,4 +1,10 @@
-import { useId, type HTMLAttributes, type ReactNode } from 'react'
+import {
+  useId,
+  useRef,
+  type HTMLAttributes,
+  type KeyboardEvent,
+  type ReactNode,
+} from 'react'
 import { MaterialRipple } from './MaterialRipple'
 import { MaterialSwitch } from './MaterialSwitch'
 import './MaterialSegmentedActionList.css'
@@ -47,6 +53,42 @@ export function MaterialSegmentedActionList({
 }: MaterialSegmentedActionListProps) {
   const generatedIdPrefix = useId().replace(/:/g, '')
   const resolvedIdPrefix = optionIdPrefix ?? generatedIdPrefix
+  const actionRefs = useRef(new Map<string, HTMLButtonElement>())
+  const enabledActions = actions.filter((action) => !action.disabled)
+  const activeAction = enabledActions.find((action) => action.id === activeId)
+  const tabStopId = activeAction?.id ?? enabledActions[0]?.id
+
+  function moveFocus(event: KeyboardEvent<HTMLButtonElement>, actionId: string) {
+    const currentIndex = enabledActions.findIndex((action) => action.id === actionId)
+
+    if (currentIndex < 0 || enabledActions.length === 0) {
+      return
+    }
+
+    let nextIndex: number | undefined
+
+    switch (event.key) {
+      case 'ArrowDown':
+      case 'ArrowRight':
+        nextIndex = (currentIndex + 1) % enabledActions.length
+        break
+      case 'ArrowUp':
+      case 'ArrowLeft':
+        nextIndex = (currentIndex - 1 + enabledActions.length) % enabledActions.length
+        break
+      case 'Home':
+        nextIndex = 0
+        break
+      case 'End':
+        nextIndex = enabledActions.length - 1
+        break
+      default:
+        return
+    }
+
+    event.preventDefault()
+    actionRefs.current.get(enabledActions[nextIndex].id)?.focus()
+  }
 
   return (
     <div
@@ -83,7 +125,14 @@ export function MaterialSegmentedActionList({
               ignoreSelector=".material-segmented-action__switch"
             />
             <button
-              ref={(element) => registerAction?.(action.id, element)}
+              ref={(element) => {
+                if (element) {
+                  actionRefs.current.set(action.id, element)
+                } else {
+                  actionRefs.current.delete(action.id)
+                }
+                registerAction?.(action.id, element)
+              }}
               type="button"
               className={[
                 'material-segmented-action',
@@ -100,8 +149,9 @@ export function MaterialSegmentedActionList({
               disabled={action.disabled}
               id={`${resolvedIdPrefix}-${action.id}`}
               role="option"
-              tabIndex={-1}
+              tabIndex={action.id === tabStopId ? 0 : -1}
               onClick={() => onAction(action)}
+              onKeyDown={(event) => moveFocus(event, action.id)}
             >
               {action.leading ? (
                 <span className="material-segmented-action__leading" aria-hidden="true">

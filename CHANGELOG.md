@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.1
+
+- Made standalone segmented action lists keyboard reachable and added wrapping arrow-key, Home, and End navigation that skips disabled actions.
+
 ## 0.3.0
 
 - Added the Material 3 Card with filled, elevated, and outlined variants; native button and link semantics; controlled checked and dragged states; current AndroidX state layers; and configurable content padding.

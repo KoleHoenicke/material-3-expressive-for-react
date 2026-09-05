@@ -41,6 +41,32 @@ describe('MaterialSegmentedActionList', () => {
     expect(onAction).toHaveBeenCalledWith(actions[1])
   })
 
+  it('provides a roving keyboard tab stop for standalone action lists', () => {
+    render(
+      <MaterialSegmentedActionList
+        actions={[
+          actions[0],
+          { ...actions[1], disabled: true },
+          { id: 'settings', label: 'Settings' },
+        ]}
+        ariaLabel="Commands"
+        onAction={() => {}}
+      />,
+    )
+
+    const first = screen.getByRole('option', { name: 'Cold Island' })
+    const disabled = screen.getByRole('option', { name: 'Turn on Auto arrange' })
+    const last = screen.getByRole('option', { name: 'Settings' })
+
+    expect(first).toHaveAttribute('tabindex', '0')
+    expect(disabled).toHaveAttribute('tabindex', '-1')
+    first.focus()
+    fireEvent.keyDown(first, { key: 'ArrowDown' })
+    expect(last).toHaveFocus()
+    fireEvent.keyDown(last, { key: 'ArrowDown' })
+    expect(first).toHaveFocus()
+  })
+
   it('renders a real Material switch as a separate trailing action', () => {
     const onChange = vi.fn()
     render(
