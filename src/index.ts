@@ -2,6 +2,7 @@ import './theme/tokens.css'
 import './theme/motion.css'
 
 export * from './components/MaterialBadge'
+export * from './components/MaterialAppBar'
 export * from './components/MaterialButton'
 export * from './components/MaterialButtonGroup'
 export * from './components/MaterialCard'
@@ -20,6 +21,17 @@ export * from './theme/materialMotion'
 export * from './theme/materialTheme'
 
 export { MaterialBadge as Badge } from './components/MaterialBadge'
+export {
+  MaterialAppBarFab as AppBarFab,
+  MaterialAppBarIconButton as AppBarIconButton,
+  MaterialBottomAppBar as BottomAppBar,
+  MaterialCenterAlignedTopAppBar as CenterAlignedTopAppBar,
+  MaterialLargeFlexibleTopAppBar as LargeFlexibleTopAppBar,
+  MaterialLargeTopAppBar as LargeTopAppBar,
+  MaterialMediumFlexibleTopAppBar as MediumFlexibleTopAppBar,
+  MaterialMediumTopAppBar as MediumTopAppBar,
+  MaterialTopAppBar as TopAppBar,
+} from './components/MaterialAppBar'
 export { MaterialButton as Button } from './components/MaterialButton'
 export { MaterialButtonGroup as ButtonGroup } from './components/MaterialButtonGroup'
 export { MaterialCard as Card } from './components/MaterialCard'

@@ -15,6 +15,7 @@ The library is an early alpha. The API is usable, tested, and packaged, but it m
 
 Included now:
 
+- App bars, including small, center-aligned, medium, large, flexible, bottom, FAB, and scroll-aware variants
 - Badge
 - Button and button group
 - Card, including filled, elevated, outlined, checked, and dragged states
@@ -35,7 +36,7 @@ Included now:
 Until the first npm release, install the package directly from GitHub:
 
 ```sh
-npm install github:KoleHoenicke/material-react-components#v0.3.0
+npm install github:KoleHoenicke/material-react-components#v0.4.0
 ```
 
 React and React DOM are peer dependencies. React 18 and 19 are supported.
@@ -45,11 +46,13 @@ React and React DOM are peer dependencies. React 18 and 19 are supported.
 ```tsx
 import { useState } from 'react'
 import {
+  AppBarIconButton,
   Button,
   Card,
   MaterialThemeProvider,
   Slider,
   Switch,
+  TopAppBar,
 } from '@kolehoenicke/material-react-components'
 import '@kolehoenicke/material-react-components/styles.css'
 
@@ -59,6 +62,18 @@ export function Settings() {
 
   return (
     <MaterialThemeProvider seed={{ primary: '#6750a4' }}>
+      <TopAppBar
+        title="Settings"
+        navigationIcon={
+          <AppBarIconButton aria-label="Go back">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m15 18-6-6 6-6" />
+            </svg>
+          </AppBarIconButton>
+        }
+        scrollBehavior="pinned"
+      />
+
       <Button variant="filled">Save</Button>
 
       <Card variant="elevated" contentPadding={16} href="/details">
@@ -85,6 +100,38 @@ export function Settings() {
 ```
 
 Every component is exported with a short name such as `Button` and its explicit name such as `MaterialButton`.
+
+### App bars
+
+The app-bar family follows the current AndroidX Material 3 API and tokens. It includes `TopAppBar`, `CenterAlignedTopAppBar`, `MediumTopAppBar`, `LargeTopAppBar`, `MediumFlexibleTopAppBar`, `LargeFlexibleTopAppBar`, and `BottomAppBar`. Pass `collapseProgress` for controlled rendering, or connect `scrollTarget` with `pinned`, `enter-always`, `exit-until-collapsed`, or `exit-always` behavior.
+
+```tsx
+import { useRef, type ReactNode } from 'react'
+import {
+  AppBarIconButton,
+  LargeFlexibleTopAppBar,
+} from '@kolehoenicke/material-react-components'
+
+export function Feed({ content }: { content: ReactNode }) {
+  const scrollContainer = useRef<HTMLDivElement>(null)
+
+  return (
+    <>
+      <LargeFlexibleTopAppBar
+        title="Weekend in Kyoto"
+        subtitle="April 18–21"
+        navigationIcon={<AppBarIconButton aria-label="Back">←</AppBarIconButton>}
+        actions={<AppBarIconButton aria-label="Search">⌕</AppBarIconButton>}
+        scrollBehavior="exit-until-collapsed"
+        scrollTarget={scrollContainer}
+      />
+      <div ref={scrollContainer}>{content}</div>
+    </>
+  )
+}
+```
+
+All app-bar colors, dimensions, safe-area insets, and slot colors have public `--md-top-app-bar-*` and `--md-bottom-app-bar-*` CSS properties. Pass `safeAreaInsets={false}` when the surrounding layout already handles browser safe areas.
 
 ## Theming
 

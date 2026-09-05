@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import {
+  MATERIAL_APP_BAR_TIMING,
   DEFAULT_MATERIAL_MOTION_PRESETS,
   MATERIAL_MOTION_DEFAULT_SCHEME,
   MATERIAL_MOTION_PRESETS,
@@ -114,6 +115,13 @@ describe('Material motion tokens', () => {
         default: { dampingRatio: 1, stiffness: 1600 },
         slow: { dampingRatio: 1, stiffness: 800 },
       },
+    })
+  })
+
+  it('shares the app bar settling duration with the expressive fast spatial token', () => {
+    expect(MATERIAL_APP_BAR_TIMING).toEqual({
+      scrollEndMs: 140,
+      settleDurationMs: MATERIAL_MOTION_PRESETS.expressive.spatial.fast.durationMs,
     })
   })
 

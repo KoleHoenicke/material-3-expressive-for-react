@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.0
+
+- Added the complete Material 3 app-bar family: small, center-aligned, medium, large, flexible top bars, standard and flexible bottom bars, app-bar icon buttons, secondary FAB support, safe-area handling, controlled collapse state, and Android-style scroll behaviors.
+
 ## 0.3.1
 
 - Made standalone segmented action lists keyboard reachable and added wrapping arrow-key, Home, and End navigation that skips disabled actions.

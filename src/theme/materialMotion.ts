@@ -131,6 +131,11 @@ export const MATERIAL_RIPPLE_TIMING = {
   softEdgeContainerRatio: 0.35,
 } as const
 
+export const MATERIAL_APP_BAR_TIMING = {
+  scrollEndMs: 140,
+  settleDurationMs: MATERIAL_MOTION_PRESETS.expressive.spatial.fast.durationMs,
+} as const
+
 export function getMaterialMotionPreset(
   kind: MaterialMotionKind,
   speed: MaterialMotionSpeed,

@@ -1,6 +1,9 @@
 import { useEffect, useState, type ReactNode } from 'react'
 import {
+  AppBarFab,
+  AppBarIconButton,
   Badge,
+  BottomAppBar,
   Button,
   ButtonGroup,
   Card,
@@ -8,13 +11,19 @@ import {
   ListSelectionIcon,
   ListTrailingAction,
   LoadingIndicator,
+  LargeFlexibleTopAppBar,
+  LargeTopAppBar,
   MaterialRipple,
   MaterialThemeProvider,
+  MediumFlexibleTopAppBar,
+  MediumTopAppBar,
   QuantityStepper,
   RichOptionList,
   SegmentedActionList,
   Slider,
   Switch,
+  TopAppBar,
+  CenterAlignedTopAppBar,
   WavyProgress,
   type MaterialButtonSize,
   type MaterialButtonVariant,
@@ -22,6 +31,7 @@ import {
 
 type IconName =
   | 'add'
+  | 'back'
   | 'check'
   | 'code'
   | 'delete'
@@ -29,8 +39,10 @@ type IconName =
   | 'github'
   | 'grid'
   | 'minus'
+  | 'more'
   | 'moon'
   | 'palette'
+  | 'search'
   | 'star'
 
 const buttonVariants: MaterialButtonVariant[] = ['filled', 'tonal', 'outlined', 'elevated', 'text']
@@ -46,6 +58,7 @@ const themePresets = [
 function Icon({ name }: { name: IconName }) {
   const paths: Record<IconName, ReactNode> = {
     add: <path d="M12 5v14M5 12h14" />,
+    back: <path d="m15 18-6-6 6-6" />,
     check: <path d="m5 12 4.2 4.2L19 6.5" />,
     code: <path d="m8 9-3 3 3 3m8-6 3 3-3 3m-2-9-4 12" />,
     delete: <path d="M5 7h14M9 7V4h6v3m2 0-1 13H8L7 7m3 4v5m4-5v5" />,
@@ -53,8 +66,10 @@ function Icon({ name }: { name: IconName }) {
     github: <path d="M9 19c-4.5 1.4-4.5-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.7-1.4 5.7-6.2 0-1.4-.5-2.5-1.3-3.4.1-.3.6-1.6-.1-3.3 0 0-1.1-.3-3.5 1.3a12.2 12.2 0 0 0-6.3 0C6.6 2.3 5.5 2.6 5.5 2.6c-.7 1.7-.2 3-.1 3.3A4.8 4.8 0 0 0 4 9.3c0 4.8 3 5.9 5.8 6.2-.5.5-.6 1-.6 2V21" />,
     grid: <><rect x="4" y="4" width="6" height="6" rx="2" /><rect x="14" y="4" width="6" height="6" rx="2" /><rect x="4" y="14" width="6" height="6" rx="2" /><rect x="14" y="14" width="6" height="6" rx="2" /></>,
     minus: <path d="M5 12h14" />,
+    more: <path d="M5 12h.01M12 12h.01M19 12h.01" />,
     moon: <path d="M20 15.3A8.5 8.5 0 0 1 8.7 4a8.5 8.5 0 1 0 11.3 11.3Z" />,
     palette: <path d="M12 3a9 9 0 0 0 0 18h1.5a2 2 0 0 0 0-4H12a1.5 1.5 0 0 1 0-3h2.3A6.7 6.7 0 0 0 21 7.3C21 4.9 17 3 12 3Z" />,
+    search: <><circle cx="11" cy="11" r="6" /><path d="m16 16 4 4" /></>,
     star: <path d="m12 3 2.7 5.5 6 .9-4.4 4.3 1 6-5.3-2.8-5.3 2.8 1-6-4.4-4.3 6-.9L12 3Z" />,
   }
 
@@ -115,6 +130,7 @@ export function Gallery() {
   const [centeredValue, setCenteredValue] = useState(20)
   const [badgeCount, setBadgeCount] = useState(7)
   const [message, setMessage] = useState<string | null>(null)
+  const [appBarProgress, setAppBarProgress] = useState(0)
 
   useEffect(() => {
     if (!message) return
@@ -185,6 +201,7 @@ export function Gallery() {
             <span>Material React Components</span>
           </a>
           <nav aria-label="Gallery navigation">
+            <a href="#app-bars">App bars</a>
             <a href="#cards">Cards</a>
             <a href="#actions">Actions</a>
             <a href="#selection">Selection</a>
@@ -204,8 +221,8 @@ export function Gallery() {
               <h1 id="gallery-title">Material controls that move like they should.</h1>
               <p>Every example is rendered by the package. Change the theme, press the controls, and inspect the current Material 3 Expressive behavior.</p>
               <div className="hero__meta">
-                <span>14 modules</span>
-                <span>60 tests</span>
+                <span>15 modules</span>
+                <span>77 tests</span>
                 <span>React 18 and 19</span>
               </div>
             </div>
@@ -248,6 +265,70 @@ export function Gallery() {
                 <span className="mode-control__label"><Icon name="moon" /> Dark theme</span>
                 <Switch aria-label="Use dark theme" checked={mode === 'dark'} onChange={(event) => setMode(event.currentTarget.checked ? 'dark' : 'light')} />
               </label>
+            </div>
+          </section>
+
+          <section className="component-section" id="app-bars" aria-labelledby="app-bars-title">
+            <div className="section-heading">
+              <span className="eyebrow">Navigation and actions</span>
+              <h2 id="app-bars-title">App bars</h2>
+            </div>
+            <div className="specimen-grid">
+              <Specimen
+                title="Top app bars"
+                api="TopAppBar · MediumTopAppBar · LargeTopAppBar"
+                description="Every Android variant, with exact expanded and collapsed title geometry."
+                wide
+              >
+                <label className="app-bar-progress-control">
+                  <span>Collapse progress <output>{Math.round(appBarProgress * 100)}%</output></span>
+                  <input
+                    aria-label="Top app bar collapse progress"
+                    type="range"
+                    min="0"
+                    max="1"
+                    step="0.01"
+                    value={appBarProgress}
+                    onChange={(event) => setAppBarProgress(event.currentTarget.valueAsNumber)}
+                  />
+                </label>
+                <div className="app-bar-grid">
+                  <div className="app-bar-demo"><StageLabel>Small</StageLabel><TopAppBar title="Inbox" navigationIcon={<AppBarIconButton aria-label="Back"><Icon name="back" /></AppBarIconButton>} actions={<><AppBarIconButton aria-label="Search"><Icon name="search" /></AppBarIconButton><AppBarIconButton aria-label="More options"><Icon name="more" /></AppBarIconButton></>} /></div>
+                  <div className="app-bar-demo"><StageLabel>Center aligned</StageLabel><CenterAlignedTopAppBar title="Photos" navigationIcon={<AppBarIconButton aria-label="Back"><Icon name="back" /></AppBarIconButton>} actions={<AppBarIconButton aria-label="Favorite"><Icon name="star" /></AppBarIconButton>} /></div>
+                  <div className="app-bar-demo"><StageLabel>Medium</StageLabel><MediumTopAppBar title="Your library" collapseProgress={appBarProgress} navigationIcon={<AppBarIconButton aria-label="Back"><Icon name="back" /></AppBarIconButton>} actions={<AppBarIconButton aria-label="Search"><Icon name="search" /></AppBarIconButton>} /></div>
+                  <div className="app-bar-demo"><StageLabel>Medium flexible</StageLabel><MediumFlexibleTopAppBar title="Your library" subtitle="12 saved collections" collapseProgress={appBarProgress} navigationIcon={<AppBarIconButton aria-label="Back"><Icon name="back" /></AppBarIconButton>} actions={<AppBarIconButton aria-label="More options"><Icon name="more" /></AppBarIconButton>} /></div>
+                  <div className="app-bar-demo"><StageLabel>Large</StageLabel><LargeTopAppBar title="Your photos" collapseProgress={appBarProgress} navigationIcon={<AppBarIconButton aria-label="Back"><Icon name="back" /></AppBarIconButton>} actions={<AppBarIconButton aria-label="Search"><Icon name="search" /></AppBarIconButton>} /></div>
+                  <div className="app-bar-demo"><StageLabel>Large flexible</StageLabel><LargeFlexibleTopAppBar title="Weekend in Kyoto" subtitle="April 18–21" collapseProgress={appBarProgress} navigationIcon={<AppBarIconButton aria-label="Back"><Icon name="back" /></AppBarIconButton>} actions={<AppBarIconButton aria-label="More options"><Icon name="more" /></AppBarIconButton>} /></div>
+                </div>
+              </Specimen>
+
+              <Specimen
+                title="Bottom app bars"
+                api="BottomAppBar · AppBarFab"
+                description="Standard 80px and flexible 64px bars with Android spacing and an optional secondary FAB."
+                wide
+              >
+                <div className="bottom-app-bar-grid">
+                  <div className="app-bar-demo">
+                    <StageLabel>Standard with FAB</StageLabel>
+                    <BottomAppBar
+                      aria-label="Document actions"
+                      safeAreaInsets={false}
+                      actions={<><AppBarIconButton aria-label="Search"><Icon name="search" /></AppBarIconButton><AppBarIconButton aria-label="Edit"><Icon name="edit" /></AppBarIconButton><AppBarIconButton aria-label="Favorite"><Icon name="star" /></AppBarIconButton></>}
+                      floatingActionButton={<AppBarFab aria-label="Create" onClick={() => setMessage('Create pressed')}><Icon name="add" /></AppBarFab>}
+                    />
+                  </div>
+                  <div className="app-bar-demo">
+                    <StageLabel>Flexible, space between</StageLabel>
+                    <BottomAppBar aria-label="Flexible actions" safeAreaInsets={false} variant="flexible">
+                      <AppBarIconButton aria-label="Grid"><Icon name="grid" /></AppBarIconButton>
+                      <AppBarIconButton aria-label="Search"><Icon name="search" /></AppBarIconButton>
+                      <AppBarIconButton aria-label="Favorite"><Icon name="star" /></AppBarIconButton>
+                      <AppBarIconButton aria-label="More options"><Icon name="more" /></AppBarIconButton>
+                    </BottomAppBar>
+                  </div>
+                </div>
+              </Specimen>
             </div>
           </section>
 

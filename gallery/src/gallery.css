@@ -314,6 +314,53 @@ svg {
   background: var(--md-sys-color-surface-container-high);
 }
 
+.app-bar-progress-control {
+  display: grid;
+  gap: 8px;
+  width: min(100%, 440px);
+  margin-bottom: 24px;
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 0.82rem;
+  font-weight: 650;
+}
+
+.app-bar-progress-control > span {
+  display: flex;
+  justify-content: space-between;
+}
+
+.app-bar-progress-control input {
+  width: 100%;
+  accent-color: var(--md-sys-color-primary);
+}
+
+.app-bar-grid,
+.bottom-app-bar-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.app-bar-demo {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: 18px;
+  background: var(--md-sys-color-surface);
+}
+
+.app-bar-demo > .stage-label {
+  display: block;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  background: var(--md-sys-color-surface-container-low);
+}
+
+.app-bar-demo .material-top-app-bar,
+.app-bar-demo .material-bottom-app-bar {
+  max-width: none;
+}
+
 .theme-panel__title,
 .theme-panel__controls,
 .mode-control,
@@ -832,7 +879,7 @@ svg {
   border-radius: 22px;
 }
 
-footer {
+.gallery-shell > footer {
   display: flex;
   justify-content: space-between;
   gap: 24px;
@@ -844,7 +891,7 @@ footer {
   font-size: 0.8rem;
 }
 
-footer a {
+.gallery-shell > footer a {
   color: var(--md-sys-color-primary);
   font-weight: 700;
 }
@@ -993,6 +1040,8 @@ footer a {
   }
 
   .specimen-grid,
+  .app-bar-grid,
+  .bottom-app-bar-grid,
   .slider-grid,
   .card-showcase {
     grid-template-columns: 1fr;
@@ -1026,7 +1075,7 @@ footer a {
     max-width: 100%;
   }
 
-  footer {
+  .gallery-shell > footer {
     flex-direction: column;
   }
 }
