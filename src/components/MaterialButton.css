@@ -1,0 +1,365 @@
+.material-button {
+  --md-button-container-height: 40px;
+  --md-button-touch-target-height: 48px;
+  --md-button-min-width: 58px;
+  --md-button-leading-space: 16px;
+  --md-button-trailing-space: 16px;
+  --md-button-icon-size: 20px;
+  --md-button-icon-label-space: 8px;
+  --md-button-square-shape: var(--md-sys-shape-corner-medium, 12px);
+  --md-button-round-shape: 20px;
+  --md-button-pressed-shape: var(--md-sys-shape-corner-small, 8px);
+  --md-button-resting-shape: var(--md-button-round-shape);
+  --md-button-selected-shape: var(--md-button-square-shape);
+  --md-button-container-color: var(--md-sys-color-primary);
+  --md-button-content-color: var(--md-sys-color-on-primary);
+  --md-button-outline-color: transparent;
+  --md-button-outline-width: 0px;
+  --md-button-elevation: var(--md-sys-elevation-level0, none);
+  --md-button-hover-elevation: var(--md-sys-elevation-level1, none);
+  --md-button-pressed-elevation: var(--md-sys-elevation-level0, none);
+  --md-button-disabled-container-color: color-mix(
+    in srgb,
+    var(--md-sys-color-on-surface) 10%,
+    transparent
+  );
+  --md-button-disabled-content-color: color-mix(
+    in srgb,
+    var(--md-sys-color-on-surface-variant) 38%,
+    transparent
+  );
+  --md-button-disabled-outline-color: transparent;
+  --md-button-visual-inset: max(
+    0px,
+    calc((var(--md-button-touch-target-height) - var(--md-button-container-height)) / 2)
+  );
+  --md-ripple-hover-color: currentColor;
+  --md-ripple-pressed-color: currentColor;
+  --md-ripple-hover-opacity: var(--md-sys-state-hover-state-layer-opacity, 0.08);
+  --md-ripple-pressed-opacity: var(--md-sys-state-pressed-state-layer-opacity, 0.12);
+  position: relative;
+  isolation: isolate;
+  box-sizing: border-box;
+  display: inline-grid;
+  place-items: center;
+  min-width: var(--md-button-min-width);
+  min-height: var(--md-button-touch-target-height);
+  padding: 0;
+  border: 0;
+  border-radius: var(--md-button-resting-shape);
+  appearance: none;
+  background: transparent;
+  color: var(--md-button-content-color);
+  cursor: pointer;
+  font-family: var(--md-sys-typescale-label-large-font, var(--material-ui-font, inherit));
+  font-size: var(--md-sys-typescale-label-large-size, 0.875rem);
+  font-weight: var(--md-sys-typescale-label-large-weight, 500);
+  letter-spacing: var(--md-sys-typescale-label-large-tracking, 0.00625rem);
+  line-height: var(--md-sys-typescale-label-large-line-height, 1.25rem);
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    border-top-left-radius var(--m3-motion-transition-default-effects),
+    border-top-right-radius var(--m3-motion-transition-default-effects),
+    border-bottom-right-radius var(--m3-motion-transition-default-effects),
+    border-bottom-left-radius var(--m3-motion-transition-default-effects),
+    color var(--m3-motion-transition-fast-effects);
+}
+
+.material-button::before {
+  position: absolute;
+  inset-block: var(--md-button-visual-inset);
+  inset-inline: 0;
+  z-index: 0;
+  box-sizing: border-box;
+  border: var(--md-button-outline-width) solid var(--md-button-outline-color);
+  border-radius: inherit;
+  background: var(--md-button-container-color);
+  box-shadow: var(--md-button-elevation);
+  content: '';
+  transition:
+    border-color var(--m3-motion-transition-default-effects),
+    background-color var(--m3-motion-transition-default-effects),
+    box-shadow var(--m3-motion-transition-default-effects);
+}
+
+.material-button > .material-ripple {
+  inset-block: var(--md-button-visual-inset);
+}
+
+.material-button:hover:not(:disabled)::before {
+  box-shadow: var(--md-button-hover-elevation);
+}
+
+.material-button:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--md-sys-color-primary) 72%, transparent);
+  outline-offset: 2px;
+}
+
+.material-button:focus-visible > .material-ripple .material-ripple__surface::before {
+  opacity: var(--md-sys-state-focus-state-layer-opacity, 0.12);
+}
+
+.material-button:active:not(:disabled),
+.material-button[data-pressed='true']:not(:disabled) {
+  border-radius: var(--md-button-pressed-shape);
+}
+
+.material-button:active:not(:disabled)::before,
+.material-button[data-pressed='true']:not(:disabled)::before {
+  box-shadow: var(--md-button-pressed-elevation);
+}
+
+.material-button:disabled {
+  --md-button-container-color: var(--md-button-disabled-container-color);
+  --md-button-content-color: var(--md-button-disabled-content-color);
+  --md-button-outline-color: var(--md-button-disabled-outline-color);
+  --md-button-elevation: var(--md-sys-elevation-level0, none);
+  --md-button-hover-elevation: var(--md-sys-elevation-level0, none);
+  cursor: default;
+}
+
+.material-button--toggle {
+  transition:
+    border-top-left-radius var(--m3-motion-transition-fast-spatial),
+    border-top-right-radius var(--m3-motion-transition-fast-spatial),
+    border-bottom-right-radius var(--m3-motion-transition-fast-spatial),
+    border-bottom-left-radius var(--m3-motion-transition-fast-spatial),
+    color var(--m3-motion-transition-fast-effects);
+}
+
+.material-button--selected {
+  border-radius: var(--md-button-selected-shape);
+}
+
+.material-button--filled.material-button--toggle:not(.material-button--selected) {
+  --md-button-container-color: var(--md-sys-color-surface-container);
+  --md-button-content-color: var(--md-sys-color-on-surface-variant);
+}
+
+.material-button--tonal {
+  --md-button-container-color: var(--md-sys-color-secondary-container);
+  --md-button-content-color: var(--md-sys-color-on-secondary-container);
+}
+
+.material-button--tonal.material-button--selected {
+  --md-button-container-color: var(--md-sys-color-secondary);
+  --md-button-content-color: var(--md-sys-color-on-secondary);
+}
+
+.material-button--tonal:disabled {
+  --md-button-disabled-container-color: color-mix(
+    in srgb,
+    var(--md-sys-color-on-surface) 12%,
+    transparent
+  );
+  --md-button-disabled-content-color: color-mix(
+    in srgb,
+    var(--md-sys-color-on-surface) 38%,
+    transparent
+  );
+}
+
+.material-button--tonal.material-button--toggle:disabled {
+  --md-button-disabled-container-color: color-mix(
+    in srgb,
+    var(--md-sys-color-on-surface) 10%,
+    transparent
+  );
+  --md-button-disabled-content-color: color-mix(
+    in srgb,
+    var(--md-sys-color-on-surface-variant) 38%,
+    transparent
+  );
+}
+
+.material-button--elevated {
+  --md-button-container-color: var(--md-sys-color-surface-container-low);
+  --md-button-content-color: var(--md-sys-color-primary);
+  --md-button-elevation: var(--md-sys-elevation-level1, none);
+  --md-button-hover-elevation: var(--md-sys-elevation-level2, none);
+  --md-button-pressed-elevation: var(--md-sys-elevation-level1, none);
+}
+
+.material-button--elevated.material-button--selected {
+  --md-button-container-color: var(--md-sys-color-primary);
+  --md-button-content-color: var(--md-sys-color-on-primary);
+}
+
+.material-button--outlined {
+  --md-button-container-color: transparent;
+  --md-button-content-color: var(--md-sys-color-on-surface-variant);
+  --md-button-outline-color: var(--md-sys-color-outline-variant);
+  --md-button-outline-width: 1px;
+  --md-button-hover-elevation: var(--md-sys-elevation-level0, none);
+}
+
+.material-button--outlined.material-button--selected {
+  --md-button-container-color: var(--md-sys-color-inverse-surface);
+  --md-button-content-color: var(--md-sys-color-inverse-on-surface);
+  --md-button-outline-color: transparent;
+}
+
+.material-button--outlined:disabled {
+  --md-button-disabled-container-color: transparent;
+  --md-button-disabled-outline-color: color-mix(
+    in srgb,
+    var(--md-sys-color-outline-variant) 10%,
+    transparent
+  );
+}
+
+.material-button--outlined.material-button--selected:disabled {
+  --md-button-disabled-container-color: color-mix(
+    in srgb,
+    var(--md-sys-color-on-surface) 10%,
+    transparent
+  );
+  --md-button-disabled-outline-color: transparent;
+}
+
+.material-button--text {
+  --md-button-container-color: transparent;
+  --md-button-content-color: var(--md-sys-color-on-surface-variant);
+  --md-button-hover-elevation: var(--md-sys-elevation-level0, none);
+}
+
+.material-button--text:disabled {
+  --md-button-disabled-container-color: transparent;
+}
+
+.material-button[data-shape='square'] {
+  --md-button-resting-shape: var(--md-button-square-shape);
+  --md-button-selected-shape: var(--md-button-round-shape);
+}
+
+.material-button[data-size='extra-small'] {
+  --md-button-round-shape: 16px;
+  --md-button-container-height: 32px;
+  --md-button-leading-space: 12px;
+  --md-button-trailing-space: 12px;
+  --md-button-icon-size: 20px;
+  --md-button-icon-label-space: 4px;
+  --md-button-square-shape: var(--md-sys-shape-corner-medium, 12px);
+  --md-button-pressed-shape: var(--md-sys-shape-corner-small, 8px);
+}
+
+.material-button[data-size='medium'] {
+  --md-button-round-shape: 28px;
+  --md-button-container-height: 56px;
+  --md-button-touch-target-height: 56px;
+  --md-button-leading-space: 24px;
+  --md-button-trailing-space: 24px;
+  --md-button-icon-size: 24px;
+  --md-button-icon-label-space: 8px;
+  --md-button-square-shape: var(--md-sys-shape-corner-large, 16px);
+  --md-button-pressed-shape: var(--md-sys-shape-corner-medium, 12px);
+  font-family: var(--md-sys-typescale-title-medium-font, var(--material-ui-font, inherit));
+  font-size: var(--md-sys-typescale-title-medium-size, 1rem);
+  font-weight: var(--md-sys-typescale-title-medium-weight, 500);
+  letter-spacing: var(--md-sys-typescale-title-medium-tracking, 0.009375rem);
+  line-height: var(--md-sys-typescale-title-medium-line-height, 1.5rem);
+}
+
+.material-button[data-size='large'] {
+  --md-button-round-shape: 48px;
+  --md-button-container-height: 96px;
+  --md-button-touch-target-height: 96px;
+  --md-button-leading-space: 48px;
+  --md-button-trailing-space: 48px;
+  --md-button-icon-size: 32px;
+  --md-button-icon-label-space: 12px;
+  --md-button-square-shape: var(--md-sys-shape-corner-extra-large, 28px);
+  --md-button-pressed-shape: var(--md-sys-shape-corner-large, 16px);
+  --md-button-outline-width: 2px;
+  font-family: var(--md-sys-typescale-headline-small-font, var(--material-ui-font, inherit));
+  font-size: var(--md-sys-typescale-headline-small-size, 1.5rem);
+  font-weight: var(--md-sys-typescale-headline-small-weight, 400);
+  letter-spacing: var(--md-sys-typescale-headline-small-tracking, 0);
+  line-height: var(--md-sys-typescale-headline-small-line-height, 2rem);
+}
+
+.material-button[data-size='extra-large'] {
+  --md-button-round-shape: 68px;
+  --md-button-container-height: 136px;
+  --md-button-touch-target-height: 136px;
+  --md-button-leading-space: 64px;
+  --md-button-trailing-space: 64px;
+  --md-button-icon-size: 40px;
+  --md-button-icon-label-space: 16px;
+  --md-button-square-shape: var(--md-sys-shape-corner-extra-large, 28px);
+  --md-button-pressed-shape: var(--md-sys-shape-corner-large, 16px);
+  --md-button-outline-width: 3px;
+  font-family: var(--md-sys-typescale-headline-large-font, var(--material-ui-font, inherit));
+  font-size: var(--md-sys-typescale-headline-large-size, 2rem);
+  font-weight: var(--md-sys-typescale-headline-large-weight, 400);
+  letter-spacing: var(--md-sys-typescale-headline-large-tracking, 0);
+  line-height: var(--md-sys-typescale-headline-large-line-height, 2.5rem);
+}
+
+.material-button__content {
+  position: relative;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: var(--md-button-container-height);
+  padding-inline: var(--md-button-leading-space) var(--md-button-trailing-space);
+  pointer-events: none;
+}
+
+.material-button[data-icon-only='true'] {
+  --md-button-min-width: var(--md-button-touch-target-height);
+}
+
+.material-button[data-icon-only='true'] .material-button__content {
+  width: var(--md-button-touch-target-height);
+  padding-inline: 0;
+}
+
+.material-button__label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+.material-button__icon {
+  display: inline-grid;
+  flex: 0 0 var(--md-button-icon-size);
+  place-items: center;
+  width: var(--md-button-icon-size);
+  height: var(--md-button-icon-size);
+}
+
+.material-button__icon--leading {
+  margin-inline-end: var(--md-button-icon-label-space);
+}
+
+.material-button__icon--trailing {
+  margin-inline-start: var(--md-button-icon-label-space);
+}
+
+.material-button__icon svg,
+.material-button__icon img,
+.material-button[data-icon-only='true'] .material-button__label > svg,
+.material-button[data-icon-only='true'] .material-button__label > img {
+  width: var(--md-button-icon-size);
+  height: var(--md-button-icon-size);
+  font-size: var(--md-button-icon-size);
+}
+
+@media (forced-colors: active) {
+  .material-button::before {
+    border: 1px solid ButtonText;
+  }
+
+  .material-button--selected::before {
+    border-width: 3px;
+  }
+
+  .material-button:disabled::before {
+    border-color: GrayText;
+  }
+}

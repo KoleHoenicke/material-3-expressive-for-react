@@ -1,0 +1,119 @@
+.material-list-trailing-action {
+  --md-list-trailing-action-touch-target-size: 48px;
+  --md-list-trailing-action-container-size: 40px;
+  --md-list-trailing-action-icon-size: var(--md-icon-button-icon-size, 24px);
+  --md-list-trailing-action-container-color: transparent;
+  --md-list-trailing-action-icon-color: var(
+    --md-icon-button-icon-color,
+    var(--md-sys-color-on-surface-variant)
+  );
+  --md-list-trailing-action-state-layer-shape: var(
+    --md-icon-button-state-layer-shape,
+    var(--md-sys-shape-corner-full)
+  );
+  --md-ripple-hover-color: currentColor;
+  --md-ripple-pressed-color: currentColor;
+  --md-ripple-hover-opacity: var(--md-sys-state-hover-state-layer-opacity);
+  --md-ripple-pressed-opacity: var(--md-sys-state-pressed-state-layer-opacity);
+  --material-ripple-state-layer-size: var(--md-list-trailing-action-container-size);
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  box-sizing: border-box;
+  inline-size: var(--md-list-trailing-action-touch-target-size);
+  block-size: var(--md-list-trailing-action-touch-target-size);
+  min-inline-size: var(--md-list-trailing-action-touch-target-size);
+  min-block-size: var(--md-list-trailing-action-touch-target-size);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--md-list-trailing-action-state-layer-shape);
+  appearance: none;
+  background: transparent;
+  color: var(--md-list-trailing-action-icon-color);
+  cursor: pointer;
+  isolation: isolate;
+  overflow: visible;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    color var(--m3-motion-transition-fast-effects),
+    opacity var(--m3-motion-transition-fast-effects),
+    transform var(--m3-motion-transition-fast-spatial);
+}
+
+.material-list-trailing-action::before {
+  position: absolute;
+  inset: calc(
+    (var(--md-list-trailing-action-touch-target-size) - var(--md-list-trailing-action-container-size)) /
+      2
+  );
+  z-index: 1;
+  border-radius: var(--md-list-trailing-action-state-layer-shape);
+  background: var(--md-list-trailing-action-container-color);
+  content: '';
+  pointer-events: none;
+  transition: background-color var(--m3-motion-transition-fast-effects);
+}
+
+.material-list-trailing-action--filled-tonal {
+  --md-list-trailing-action-container-color: var(--md-sys-color-secondary-container);
+  --md-list-trailing-action-icon-color: var(--md-sys-color-on-secondary-container);
+}
+
+.material-list-trailing-action:disabled {
+  cursor: default;
+  opacity: 0.38;
+}
+
+.material-list-trailing-action:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--md-sys-color-primary) 24%, transparent);
+  outline-offset: -3px;
+}
+
+.material-list-trailing-action__icon {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  inline-size: var(--md-list-trailing-action-icon-size);
+  block-size: var(--md-list-trailing-action-icon-size);
+  place-items: center;
+  color: inherit;
+  pointer-events: none;
+}
+
+.material-list-trailing-action__icon > svg,
+.material-list-trailing-action__icon > img {
+  inline-size: var(--md-list-trailing-action-icon-size);
+  block-size: var(--md-list-trailing-action-icon-size);
+  font-size: var(--md-list-trailing-action-icon-size);
+}
+
+.material-list-selection-icon {
+  --md-list-selection-icon-size: var(--m3-list-trailing-icon-size, 24px);
+  --md-list-selection-icon-color: var(--md-sys-color-on-surface-variant);
+  display: inline-grid;
+  inline-size: var(--md-list-selection-icon-size);
+  block-size: var(--md-list-selection-icon-size);
+  min-inline-size: var(--md-list-selection-icon-size);
+  min-block-size: var(--md-list-selection-icon-size);
+  place-items: center;
+  color: var(--md-list-selection-icon-color);
+  pointer-events: none;
+}
+
+.material-list-selection-icon > svg,
+.material-list-selection-icon > img {
+  inline-size: var(--md-list-selection-icon-size);
+  block-size: var(--md-list-selection-icon-size);
+  font-size: var(--md-list-selection-icon-size);
+}
+
+@media (forced-colors: active) {
+  .material-list-trailing-action {
+    color: ButtonText;
+  }
+
+  .material-list-trailing-action:disabled {
+    color: GrayText;
+  }
+}

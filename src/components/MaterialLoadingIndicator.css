@@ -1,0 +1,34 @@
+.material-loading-indicator {
+  display: inline-grid;
+  place-items: center;
+  width: var(--material-loading-indicator-size, 48px);
+  height: var(--material-loading-indicator-size, 48px);
+  color: var(--material-loading-indicator-active-color, var(--md-sys-color-primary));
+}
+
+.material-loading-indicator--contained {
+  overflow: hidden;
+  border-radius: var(--md-sys-shape-corner-full);
+  background: var(
+    --material-loading-indicator-container-color,
+    var(--md-sys-color-primary-container)
+  );
+  color: var(
+    --material-loading-indicator-active-color,
+    var(--md-sys-color-on-primary-container)
+  );
+}
+
+.material-loading-indicator--standard {
+  background: transparent;
+}
+
+.material-loading-indicator__svg {
+  width: var(--material-loading-indicator-size, 48px);
+  height: var(--material-loading-indicator-size, 48px);
+  overflow: visible;
+}
+
+.material-loading-indicator__shape {
+  fill: currentColor;
+}

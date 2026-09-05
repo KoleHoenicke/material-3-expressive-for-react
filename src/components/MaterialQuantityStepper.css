@@ -1,0 +1,222 @@
+.material-quantity-stepper {
+  --md-quantity-stepper-touch-target-size: 48px;
+  --md-quantity-stepper-icon-size: 24px;
+  --md-quantity-stepper-segment-gap: var(--m3-list-row-gap, 2px);
+  --md-quantity-stepper-value-min-width: 40px;
+  --md-quantity-stepper-decrement-width: var(--md-quantity-stepper-touch-target-size);
+  --md-quantity-stepper-increment-width: var(--md-quantity-stepper-touch-target-size);
+  --md-quantity-stepper-value-leading-gap: var(--md-quantity-stepper-segment-gap);
+  --md-quantity-stepper-increment-leading-gap: var(--md-quantity-stepper-segment-gap);
+  --md-quantity-stepper-outer-corner: calc(
+    var(--md-quantity-stepper-touch-target-size) / 2
+  );
+  --md-quantity-stepper-inner-corner: var(
+    --m3-list-corner-connected,
+    var(--md-sys-shape-corner-extra-small, 4px)
+  );
+  --md-quantity-stepper-container-color: var(--md-sys-color-surface-container-highest);
+  --md-quantity-stepper-button-color: var(--md-sys-color-on-surface-variant);
+  --md-quantity-stepper-value-color: var(--md-sys-color-on-surface);
+  --md-ripple-hover-color: currentColor;
+  --md-ripple-pressed-color: currentColor;
+  --md-ripple-hover-opacity: var(--md-sys-state-hover-state-layer-opacity);
+  --md-ripple-pressed-opacity: var(--md-sys-state-pressed-state-layer-opacity);
+  display: inline-flex;
+  align-items: center;
+  justify-content: end;
+  min-block-size: var(--md-quantity-stepper-touch-target-size);
+  color: var(--md-quantity-stepper-button-color);
+  font-family: var(--md-sys-typescale-label-large-font, var(--material-ui-font, inherit));
+  font-size: var(--md-sys-typescale-label-large-size, 0.875rem);
+  font-weight: var(--md-sys-typescale-label-large-weight, 500);
+  line-height: var(--md-sys-typescale-label-large-line-height, 1.25rem);
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.material-quantity-stepper[data-has-decrement='false'] {
+  --md-quantity-stepper-decrement-width: 0px;
+  --md-quantity-stepper-value-leading-gap: 0px;
+}
+
+.material-quantity-stepper[data-has-increment='false'] {
+  --md-quantity-stepper-increment-width: 0px;
+  --md-quantity-stepper-increment-leading-gap: 0px;
+}
+
+.material-quantity-stepper__button {
+  --md-quantity-stepper-button-scale: 1;
+  position: relative;
+  display: inline-grid;
+  box-sizing: border-box;
+  inline-size: var(--md-quantity-stepper-touch-target-size);
+  block-size: var(--md-quantity-stepper-touch-target-size);
+  min-inline-size: 0;
+  min-block-size: var(--md-quantity-stepper-touch-target-size);
+  place-items: center;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--md-quantity-stepper-inner-corner);
+  appearance: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  isolation: isolate;
+  transform: scale(var(--md-quantity-stepper-button-scale));
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    inline-size var(--m3-motion-transition-fast-spatial),
+    margin-inline-start var(--m3-motion-transition-fast-spatial),
+    transform var(--m3-motion-transition-fast-spatial),
+    border-top-left-radius var(--m3-motion-transition-fast-spatial),
+    border-top-right-radius var(--m3-motion-transition-fast-spatial),
+    border-bottom-right-radius var(--m3-motion-transition-fast-spatial),
+    border-bottom-left-radius var(--m3-motion-transition-fast-spatial),
+    color var(--m3-motion-transition-fast-effects),
+    opacity var(--m3-motion-transition-fast-effects);
+}
+
+.material-quantity-stepper__button::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background: var(--md-quantity-stepper-container-color);
+  content: '';
+  transition:
+    border-radius var(--m3-motion-transition-fast-spatial),
+    background-color var(--m3-motion-transition-fast-effects);
+}
+
+.material-quantity-stepper__button:first-of-type {
+  inline-size: var(--md-quantity-stepper-decrement-width);
+  border-top-left-radius: var(--md-quantity-stepper-outer-corner);
+  border-bottom-left-radius: var(--md-quantity-stepper-outer-corner);
+  transform-origin: right center;
+}
+
+.material-quantity-stepper__button:last-of-type {
+  inline-size: var(--md-quantity-stepper-increment-width);
+  margin-inline-start: var(--md-quantity-stepper-increment-leading-gap);
+  border-top-right-radius: var(--md-quantity-stepper-outer-corner);
+  border-bottom-right-radius: var(--md-quantity-stepper-outer-corner);
+  transform-origin: left center;
+}
+
+.material-quantity-stepper[data-has-decrement='false']
+  .material-quantity-stepper__button:first-of-type,
+.material-quantity-stepper[data-has-increment='false']
+  .material-quantity-stepper__button:last-of-type {
+  opacity: 0;
+  pointer-events: none;
+  --md-quantity-stepper-button-scale: 0.72;
+}
+
+.material-quantity-stepper__button:hover:not(:disabled),
+.material-quantity-stepper__button:focus-visible,
+.material-quantity-stepper__button:active:not(:disabled) {
+  border-radius: var(--md-quantity-stepper-outer-corner);
+}
+
+.material-quantity-stepper__button:disabled {
+  color: color-mix(in srgb, var(--md-quantity-stepper-button-color) 38%, transparent);
+  cursor: default;
+}
+
+.material-quantity-stepper__button:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--md-sys-color-primary) 24%, transparent);
+  outline-offset: -3px;
+}
+
+.material-quantity-stepper__icon {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  inline-size: var(--md-quantity-stepper-icon-size);
+  block-size: var(--md-quantity-stepper-icon-size);
+  place-items: center;
+  pointer-events: none;
+}
+
+.material-quantity-stepper__icon > svg,
+.material-quantity-stepper__icon > img {
+  inline-size: var(--md-quantity-stepper-icon-size);
+  block-size: var(--md-quantity-stepper-icon-size);
+  font-size: var(--md-quantity-stepper-icon-size);
+}
+
+.material-quantity-stepper__value {
+  display: inline-grid;
+  box-sizing: border-box;
+  inline-size: var(--md-quantity-stepper-value-min-width);
+  min-inline-size: var(--md-quantity-stepper-value-min-width);
+  min-block-size: var(--md-quantity-stepper-touch-target-size);
+  place-items: center;
+  margin: 0;
+  margin-inline-start: var(--md-quantity-stepper-value-leading-gap);
+  padding: 0 6px;
+  border: 0;
+  border-radius: var(--md-quantity-stepper-inner-corner);
+  appearance: none;
+  background: var(--md-quantity-stepper-container-color);
+  caret-color: var(--md-sys-color-primary);
+  color: var(--md-quantity-stepper-value-color);
+  font: inherit;
+  font-variant-numeric: inherit;
+  letter-spacing: 0;
+  line-height: inherit;
+  text-align: center;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    margin-inline-start var(--m3-motion-transition-fast-spatial),
+    border-top-left-radius var(--m3-motion-transition-fast-spatial),
+    border-top-right-radius var(--m3-motion-transition-fast-spatial),
+    border-bottom-right-radius var(--m3-motion-transition-fast-spatial),
+    border-bottom-left-radius var(--m3-motion-transition-fast-spatial),
+    background-color var(--m3-motion-transition-fast-effects),
+    color var(--m3-motion-transition-fast-effects);
+}
+
+.material-quantity-stepper[data-has-decrement='false'] .material-quantity-stepper__value {
+  border-top-left-radius: var(--md-quantity-stepper-outer-corner);
+  border-bottom-left-radius: var(--md-quantity-stepper-outer-corner);
+}
+
+.material-quantity-stepper[data-has-increment='false'] .material-quantity-stepper__value {
+  border-top-right-radius: var(--md-quantity-stepper-outer-corner);
+  border-bottom-right-radius: var(--md-quantity-stepper-outer-corner);
+}
+
+.material-quantity-stepper__value:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--md-sys-color-primary) 24%, transparent);
+  outline-offset: -3px;
+}
+
+.material-quantity-stepper__value:disabled {
+  color: color-mix(in srgb, var(--md-quantity-stepper-value-color) 38%, transparent);
+  cursor: default;
+  opacity: 1;
+  -webkit-text-fill-color: color-mix(
+    in srgb,
+    var(--md-quantity-stepper-value-color) 38%,
+    transparent
+  );
+}
+
+@media (forced-colors: active) {
+  .material-quantity-stepper {
+    color: ButtonText;
+  }
+
+  .material-quantity-stepper__value {
+    color: ButtonText;
+  }
+
+  .material-quantity-stepper__value:disabled,
+  .material-quantity-stepper__button:disabled {
+    color: GrayText;
+  }
+}

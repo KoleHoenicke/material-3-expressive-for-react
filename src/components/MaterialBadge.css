@@ -1,0 +1,59 @@
+.material-badge {
+  --md-badge-small-size: 6px;
+  --md-badge-small-shape: 3px;
+  --md-badge-large-height: 16px;
+  --md-badge-large-min-width: 16px;
+  --md-badge-large-max-width: 34px;
+  --md-badge-large-shape: 8px;
+  --md-badge-large-horizontal-padding: 4px;
+  --md-badge-label-text-size: 0.6875rem;
+  --md-badge-container-color: var(--md-sys-color-error);
+  --md-badge-label-text-color: var(--md-sys-color-on-error);
+  box-sizing: border-box;
+  display: inline-grid;
+  flex: 0 0 auto;
+  place-items: center;
+  overflow: hidden;
+  background: var(--md-badge-container-color);
+  color: var(--md-badge-label-text-color);
+  font-family: var(--material-ui-font, inherit);
+  font-size: var(--md-badge-label-text-size);
+  font-weight: 500;
+  letter-spacing: 0;
+  text-align: center;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.material-badge--large {
+  min-inline-size: var(--md-badge-large-min-width);
+  max-inline-size: var(--md-badge-large-max-width);
+  block-size: var(--md-badge-large-height);
+  padding-inline: var(--md-badge-large-horizontal-padding);
+  border-radius: var(--md-badge-large-shape);
+  line-height: var(--md-badge-large-height);
+}
+
+.material-badge--small {
+  inline-size: var(--md-badge-small-size);
+  min-inline-size: var(--md-badge-small-size);
+  block-size: var(--md-badge-small-size);
+  padding: 0;
+  border-radius: var(--md-badge-small-shape);
+  line-height: 0;
+}
+
+.material-badge--tone-primary {
+  --md-badge-container-color: var(--md-sys-color-primary);
+  --md-badge-label-text-color: var(--md-sys-color-on-primary);
+}
+
+.material-badge--tone-secondary {
+  --md-badge-container-color: var(--md-sys-color-secondary);
+  --md-badge-label-text-color: var(--md-sys-color-on-secondary);
+}
+
+.material-badge--tone-error {
+  --md-badge-container-color: var(--md-sys-color-error);
+  --md-badge-label-text-color: var(--md-sys-color-on-error);
+}

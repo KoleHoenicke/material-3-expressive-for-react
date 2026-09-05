@@ -1,0 +1,36 @@
+.material-wavy-progress {
+  display: block;
+  width: 100%;
+  height: 10px;
+  color: var(--material-wavy-progress-active-color, var(--md-sys-color-primary));
+  line-height: 0;
+  overflow: hidden;
+}
+
+.material-wavy-progress__svg {
+  display: block;
+  width: 100%;
+  height: 10px;
+  overflow: hidden;
+}
+
+.material-wavy-progress__active,
+.material-wavy-progress__track {
+  fill: none;
+  stroke-linecap: round;
+}
+
+.material-wavy-progress__active {
+  stroke: var(--material-wavy-progress-active-color, var(--md-sys-color-primary));
+}
+
+.material-wavy-progress__track {
+  stroke: var(--material-wavy-progress-track-color, var(--md-sys-color-secondary-container));
+}
+
+.material-wavy-progress__stop {
+  fill: var(
+    --material-wavy-progress-stop-color,
+    var(--material-wavy-progress-active-color, var(--md-sys-color-primary))
+  );
+}

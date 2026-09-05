@@ -1,0 +1,165 @@
+.material-button-group {
+  --m3-button-group-space: 12px;
+  --m3-button-group-connected-space: 2px;
+  --m3-button-group-inner-corner: var(--md-sys-shape-corner-small, 8px);
+  --m3-button-group-pressed-inner-corner: var(--md-sys-shape-corner-extra-small, 4px);
+  /* A finite half-height keeps mixed corners circular without shrinking the inner token. */
+  --m3-button-group-outer-corner: 20px;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--m3-button-group-space);
+  width: max-content;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.material-button-group__button {
+  flex: 0 1 auto;
+  min-width: 0;
+  transition:
+    flex-basis var(--m3-motion-transition-fast-spatial),
+    width var(--m3-motion-transition-fast-spatial),
+    border-top-left-radius var(--m3-motion-transition-fast-spatial),
+    border-top-right-radius var(--m3-motion-transition-fast-spatial),
+    border-bottom-right-radius var(--m3-motion-transition-fast-spatial),
+    border-bottom-left-radius var(--m3-motion-transition-fast-spatial),
+    color var(--m3-motion-transition-fast-effects);
+}
+
+.material-button-group--standard[data-size='extra-small'] {
+  --m3-button-group-space: 18px;
+}
+
+.material-button-group--standard[data-size='small'] {
+  --m3-button-group-space: 12px;
+}
+
+.material-button-group--standard[data-size='medium'],
+.material-button-group--standard[data-size='large'],
+.material-button-group--standard[data-size='extra-large'] {
+  --m3-button-group-space: 8px;
+}
+
+.material-button-group--standard
+  .material-button-group__button[data-rapid-press='true']:not(:disabled) {
+  border-radius: var(--md-button-resting-shape);
+}
+
+.material-button-group--standard
+  .material-button-group__button--selected[data-rapid-press='true']:not(:disabled) {
+  border-radius: var(--md-button-selected-shape);
+}
+
+.material-button-group--connected {
+  --m3-button-group-space: var(--m3-button-group-connected-space);
+}
+
+.material-button-group--connected[data-size='extra-small'] {
+  --m3-button-group-outer-corner: 16px;
+}
+
+.material-button-group--connected[data-size='small'],
+.material-button-group--connected[data-size='medium'] {
+  --m3-button-group-inner-corner: var(--md-sys-shape-corner-small, 8px);
+  --m3-button-group-pressed-inner-corner: var(--md-sys-shape-corner-extra-small, 4px);
+}
+
+.material-button-group--connected[data-size='medium'] {
+  --m3-button-group-outer-corner: 28px;
+}
+
+.material-button-group--connected[data-size='large'] {
+  --m3-button-group-outer-corner: 48px;
+  --m3-button-group-inner-corner: var(--md-sys-shape-corner-large, 16px);
+  --m3-button-group-pressed-inner-corner: var(--md-sys-shape-corner-medium, 12px);
+}
+
+.material-button-group--connected[data-size='extra-large'] {
+  --m3-button-group-outer-corner: 68px;
+  --m3-button-group-inner-corner: 20px;
+  --m3-button-group-pressed-inner-corner: var(--md-sys-shape-corner-large, 16px);
+}
+
+.material-button-group--connected[data-shape='square'] {
+  --m3-button-group-outer-corner: var(--m3-button-group-inner-corner);
+}
+
+.material-button-group--connected .material-button-group__button {
+  --md-button-resting-shape: var(--m3-button-group-inner-corner);
+  --md-button-selected-shape: var(--m3-button-group-outer-corner);
+}
+
+.material-button-group--connected .material-button-group__button--single,
+.material-button-group--connected .material-button-group__button--leading {
+  border-start-start-radius: var(--m3-button-group-outer-corner);
+  border-end-start-radius: var(--m3-button-group-outer-corner);
+}
+
+.material-button-group--connected .material-button-group__button--trailing {
+  border-start-end-radius: var(--m3-button-group-outer-corner);
+  border-end-end-radius: var(--m3-button-group-outer-corner);
+}
+
+.material-button-group--connected .material-button-group__button--single {
+  border-start-end-radius: var(--m3-button-group-outer-corner);
+  border-end-end-radius: var(--m3-button-group-outer-corner);
+}
+
+.material-button-group--connected .material-button-group__button--selected {
+  border-radius: var(--m3-button-group-outer-corner);
+}
+
+.material-button-group--connected
+  .material-button-group__button--leading:active:not(:disabled),
+.material-button-group--connected
+  .material-button-group__button--leading[data-pressed='true']:not(:disabled) {
+  border-radius:
+    var(--m3-button-group-outer-corner)
+    var(--m3-button-group-pressed-inner-corner)
+    var(--m3-button-group-pressed-inner-corner)
+    var(--m3-button-group-outer-corner);
+}
+
+.material-button-group--connected
+  .material-button-group__button--middle:active:not(:disabled),
+.material-button-group--connected
+  .material-button-group__button--middle[data-pressed='true']:not(:disabled) {
+  border-radius: var(--m3-button-group-pressed-inner-corner);
+}
+
+.material-button-group--connected
+  .material-button-group__button--trailing:active:not(:disabled),
+.material-button-group--connected
+  .material-button-group__button--trailing[data-pressed='true']:not(:disabled) {
+  border-radius:
+    var(--m3-button-group-pressed-inner-corner)
+    var(--m3-button-group-outer-corner)
+    var(--m3-button-group-outer-corner)
+    var(--m3-button-group-pressed-inner-corner);
+}
+
+.material-button-group--connected[data-size='extra-small'] .material-button-group__button,
+.material-button-group--connected[data-size='small'] .material-button-group__button {
+  min-width: 48px;
+}
+
+.material-button-group__content {
+  display: inline-grid;
+  place-items: center;
+  min-width: 0;
+}
+
+.material-button-group__content svg,
+.material-button-group__content img {
+  width: var(--md-button-icon-size);
+  height: var(--md-button-icon-size);
+  font-size: var(--md-button-icon-size);
+}
+
+.material-button-group__content img {
+  object-fit: contain;
+}

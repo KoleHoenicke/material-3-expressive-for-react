@@ -1,0 +1,380 @@
+.material-switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: var(--md-switch-track-width);
+  height: var(--md-switch-track-height);
+  flex: 0 0 auto;
+  border-radius: var(--md-switch-track-shape);
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.material-switch::before,
+.material-switch::after {
+  display: none;
+  content: none;
+}
+
+.material-switch input {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  width: max(var(--md-switch-track-width), var(--md-switch-touch-target-size));
+  height: max(var(--md-switch-track-height), var(--md-switch-touch-target-size));
+  margin: 0;
+  cursor: inherit;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  appearance: none;
+}
+
+.material-switch input:disabled {
+  cursor: default;
+}
+
+.material-switch .material-switch__track {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+  transition: none;
+}
+
+.material-switch .material-switch__track::before {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: var(--md-switch-track-outline-width) solid var(--md-switch-track-outline-color);
+  border-radius: inherit;
+  background: var(--md-switch-track-color);
+  box-sizing: border-box;
+  content: '';
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity var(--m3-motion-switch-effects-duration) var(--md-sys-motion-easing-linear),
+    background-color var(--m3-motion-switch-effects-duration) var(--md-sys-motion-easing-linear),
+    border-color var(--m3-motion-switch-effects-duration) var(--md-sys-motion-easing-linear),
+    border-width var(--m3-motion-switch-effects-duration) var(--md-sys-motion-easing-linear);
+}
+
+.material-switch .material-switch__handle-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-inline-start: 0;
+  margin-inline-end: calc(var(--md-switch-track-width) - var(--md-switch-track-height));
+  transition: margin var(--m3-motion-switch-handle-slide-duration)
+    var(--m3-motion-switch-handle-slide-easing);
+}
+
+.material-switch input:checked + .material-switch__track .material-switch__handle-container {
+  margin-inline-start: calc(var(--md-switch-track-width) - var(--md-switch-track-height));
+  margin-inline-end: 0;
+}
+
+.material-switch .material-switch__state-layer {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: var(--md-switch-state-layer-size);
+  height: var(--md-switch-state-layer-size);
+  border-radius: var(--md-switch-state-layer-shape);
+  background: var(--md-switch-hover-state-layer-color);
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition:
+    background-color var(--m3-motion-switch-effects-duration) var(--md-sys-motion-easing-linear),
+    opacity var(--m3-motion-switch-effects-duration) var(--md-sys-motion-easing-linear);
+}
+
+.material-switch .material-switch__handle {
+  position: relative;
+  top: auto;
+  left: auto;
+  z-index: 1;
+  display: block;
+  width: var(--md-switch-handle-width);
+  height: var(--md-switch-handle-height);
+  border-radius: var(--md-switch-handle-shape);
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+  transform-origin: center;
+  transition:
+    width var(--m3-motion-switch-handle-size-duration) var(--md-sys-motion-easing-standard),
+    height var(--m3-motion-switch-handle-size-duration) var(--md-sys-motion-easing-standard);
+}
+
+.material-switch .material-switch__handle::before {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: auto;
+  height: auto;
+  border: 0;
+  border-radius: inherit;
+  background: var(--md-switch-handle-color);
+  content: '';
+  opacity: 1;
+  transform: none;
+  transition:
+    background-color var(--m3-motion-switch-effects-duration) var(--md-sys-motion-easing-linear),
+    opacity var(--m3-motion-switch-effects-duration) var(--md-sys-motion-easing-linear);
+}
+
+.material-switch .material-switch__handle::after {
+  display: none;
+  content: none;
+}
+
+.material-switch--icons-both .material-switch__handle,
+.material-switch input:checked + .material-switch__track .material-switch__handle {
+  width: var(--md-switch-with-icon-handle-width);
+  height: var(--md-switch-with-icon-handle-height);
+  top: auto;
+  left: auto;
+  background: transparent;
+  transform: none;
+}
+
+.material-switch input:checked + .material-switch__track .material-switch__handle::before {
+  width: auto;
+  height: auto;
+  border: 0;
+  background: var(--md-switch-selected-handle-color);
+  opacity: 1;
+  transform: none;
+}
+
+.material-switch input:checked + .material-switch__track {
+  border: 0;
+  background: transparent;
+}
+
+.material-switch input:checked + .material-switch__track::before {
+  display: block;
+  border-width: 0;
+  border-color: transparent;
+  background: var(--md-switch-selected-track-color);
+  content: '';
+  opacity: 1;
+}
+
+.material-switch:hover input:not(:checked):not(:disabled) + .material-switch__track::before {
+  border-color: var(--md-switch-hover-track-outline-color);
+  background: var(--md-switch-hover-track-color);
+}
+
+.material-switch:hover input:not(:checked):not(:disabled) + .material-switch__track .material-switch__handle::before {
+  background: var(--md-switch-hover-handle-color);
+}
+
+.material-switch:hover input:not(:checked):not(:disabled) + .material-switch__track .material-switch__state-layer {
+  background: var(--md-switch-hover-state-layer-color);
+  opacity: var(--md-switch-hover-state-layer-opacity);
+}
+
+.material-switch:hover input:checked:not(:disabled) + .material-switch__track::before {
+  background: var(--md-switch-selected-hover-track-color);
+  opacity: 1;
+}
+
+.material-switch:hover input:checked:not(:disabled) + .material-switch__track .material-switch__handle::before {
+  width: auto;
+  height: auto;
+  border: 0;
+  background: var(--md-switch-selected-hover-handle-color);
+  opacity: 1;
+  transform: none;
+}
+
+.material-switch:hover input:checked:not(:disabled) + .material-switch__track .material-switch__state-layer {
+  background: var(--md-switch-selected-hover-state-layer-color);
+  opacity: var(--md-switch-selected-hover-state-layer-opacity);
+}
+
+.material-switch input:focus-visible + .material-switch__track {
+  outline: 2px solid color-mix(in srgb, var(--md-sys-color-primary) 74%, var(--md-sys-color-surface));
+  outline-offset: 2px;
+}
+
+.material-switch input:focus-visible:not(:checked) + .material-switch__track::before {
+  border-color: var(--md-switch-focus-track-outline-color);
+  background: var(--md-switch-focus-track-color);
+}
+
+.material-switch input:focus-visible:not(:checked) + .material-switch__track .material-switch__handle::before {
+  background: var(--md-switch-focus-handle-color);
+}
+
+.material-switch input:focus-visible:checked + .material-switch__track::before {
+  background: var(--md-switch-selected-focus-track-color);
+  opacity: 1;
+}
+
+.material-switch input:focus-visible:checked + .material-switch__track .material-switch__handle::before {
+  width: auto;
+  height: auto;
+  border: 0;
+  background: var(--md-switch-selected-focus-handle-color);
+  opacity: 1;
+  transform: none;
+}
+
+.material-switch input:active:not(:disabled) + .material-switch__track .material-switch__handle {
+  width: var(--md-switch-pressed-handle-width);
+  height: var(--md-switch-pressed-handle-height);
+  top: auto;
+  left: auto;
+  background: transparent;
+  transform: none;
+  transition-duration: var(--m3-motion-switch-pressed-duration);
+  transition-timing-function: var(--md-sys-motion-easing-linear);
+}
+
+.material-switch input:active:not(:checked):not(:disabled) + .material-switch__track::before {
+  border-color: var(--md-switch-pressed-track-outline-color);
+  background: var(--md-switch-pressed-track-color);
+}
+
+.material-switch input:active:not(:checked):not(:disabled) + .material-switch__track .material-switch__handle::before {
+  background: var(--md-switch-pressed-handle-color);
+}
+
+.material-switch input:active:not(:checked):not(:disabled) + .material-switch__track .material-switch__state-layer {
+  background: var(--md-switch-pressed-state-layer-color);
+  opacity: var(--md-switch-pressed-state-layer-opacity);
+}
+
+.material-switch input:active:checked:not(:disabled) + .material-switch__track::before {
+  background: var(--md-switch-selected-pressed-track-color);
+  opacity: 1;
+}
+
+.material-switch input:active:checked:not(:disabled) + .material-switch__track .material-switch__handle::before {
+  width: auto;
+  height: auto;
+  border: 0;
+  background: var(--md-switch-selected-pressed-handle-color);
+  opacity: 1;
+  transform: none;
+}
+
+.material-switch input:active:checked:not(:disabled) + .material-switch__track .material-switch__state-layer {
+  background: var(--md-switch-selected-pressed-state-layer-color);
+  opacity: var(--md-switch-selected-pressed-state-layer-opacity);
+}
+
+.material-switch input:disabled + .material-switch__track::before {
+  border-color: var(--md-switch-disabled-track-outline-color);
+  background: var(--md-switch-disabled-track-color);
+  opacity: var(--md-switch-disabled-track-opacity);
+}
+
+.material-switch input:disabled + .material-switch__track .material-switch__handle::before {
+  background: var(--md-switch-disabled-handle-color);
+  opacity: var(--md-switch-disabled-handle-opacity);
+}
+
+.material-switch input:checked:disabled + .material-switch__track::before {
+  border-width: 0;
+  background: var(--md-switch-disabled-selected-track-color);
+}
+
+.material-switch input:checked:disabled + .material-switch__track .material-switch__handle::before {
+  width: auto;
+  height: auto;
+  border: 0;
+  background: var(--md-switch-disabled-selected-handle-color);
+  opacity: var(--md-switch-disabled-selected-handle-opacity);
+  transform: none;
+}
+
+.material-switch__icons {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.material-switch__icon {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  width: var(--md-switch-icon-size);
+  height: var(--md-switch-icon-size);
+  margin: auto;
+  color: var(--md-switch-icon-color);
+  fill: currentColor;
+  opacity: 0;
+  transform: none;
+  transition:
+    color var(--m3-motion-switch-effects-duration) var(--md-sys-motion-easing-linear),
+    opacity var(--m3-motion-switch-icon-fade-duration) var(--md-sys-motion-easing-linear),
+    transform var(--m3-motion-switch-icon-transform-duration) var(--md-sys-motion-easing-standard);
+}
+
+.material-switch__icon-glyph {
+  width: 100%;
+  height: 100%;
+  color: currentColor;
+  fill: currentColor;
+}
+
+.material-switch__icon--on {
+  width: var(--md-switch-selected-icon-size);
+  height: var(--md-switch-selected-icon-size);
+  color: var(--md-switch-selected-icon-color);
+}
+
+.material-switch:not(.material-switch--icons-both) input:not(:checked) + .material-switch__track .material-switch__icon--on {
+  transform: rotate(-45deg);
+}
+
+.material-switch--icons-both input:not(:checked) + .material-switch__track .material-switch__icon--off,
+.material-switch input:checked + .material-switch__track .material-switch__icon--on {
+  opacity: 1;
+}
+
+.material-switch:hover input:not(:checked):not(:disabled) + .material-switch__track .material-switch__icon--off,
+.material-switch input:focus-visible:not(:checked) + .material-switch__track .material-switch__icon--off {
+  color: var(--md-switch-hover-icon-color);
+}
+
+.material-switch:hover input:checked:not(:disabled) + .material-switch__track .material-switch__icon--on,
+.material-switch input:focus-visible:checked + .material-switch__track .material-switch__icon--on {
+  color: var(--md-switch-selected-hover-icon-color);
+}
+
+.material-switch input:active:not(:checked):not(:disabled) + .material-switch__track .material-switch__icon--off {
+  color: var(--md-switch-pressed-icon-color);
+}
+
+.material-switch input:active:checked:not(:disabled) + .material-switch__track .material-switch__icon--on {
+  color: var(--md-switch-selected-pressed-icon-color);
+}
+
+.material-switch input:disabled + .material-switch__track .material-switch__icon--off {
+  color: var(--md-switch-disabled-icon-color);
+  opacity: var(--md-switch-disabled-icon-opacity);
+}
+
+.material-switch input:checked:disabled + .material-switch__track .material-switch__icon--on {
+  color: var(--md-switch-disabled-selected-icon-color);
+  opacity: var(--md-switch-disabled-selected-icon-opacity);
+}

@@ -1,0 +1,179 @@
+.material-rich-option-list {
+  display: grid;
+  gap: var(--m3-list-row-gap, 2px);
+}
+
+.material-rich-option {
+  --md-rich-option-leading-size: var(--m3-list-leading-image-size, 56px);
+  --md-rich-option-trailing-size: var(--m3-list-trailing-icon-size, 24px);
+  --md-rich-option-state-layer-color: var(--md-sys-color-on-surface);
+  --md-ripple-hover-color: var(--md-rich-option-state-layer-color);
+  --md-ripple-pressed-color: var(--md-rich-option-state-layer-color);
+  --md-ripple-hover-opacity: var(--m3-list-state-hover-opacity, var(--md-sys-state-hover-state-layer-opacity));
+  --md-ripple-pressed-opacity: var(--m3-list-state-pressed-opacity, var(--md-sys-state-pressed-state-layer-opacity));
+  position: relative;
+  display: grid;
+  grid-template-columns:
+    var(--md-rich-option-leading-size)
+    minmax(0, 1fr)
+    var(--md-rich-option-trailing-size);
+  align-items: center;
+  gap: var(--m3-list-between-space, 12px);
+  min-block-size: var(--m3-list-two-line-container-height, 72px);
+  padding:
+    var(--m3-list-vertical-space, 8px)
+    var(--m3-list-trailing-space, 16px)
+    var(--m3-list-vertical-space, 8px)
+    var(--m3-list-leading-space, 16px);
+  border-radius: var(--m3-list-corner-connected, var(--md-sys-shape-corner-extra-small));
+  background: var(--m3-list-container-color, var(--md-sys-color-surface));
+  color: var(--md-sys-color-on-surface);
+  cursor: pointer;
+  isolation: isolate;
+  overflow: hidden;
+  transition:
+    background var(--m3-motion-transition-fast-effects),
+    border-radius var(--m3-motion-transition-fast-spatial),
+    color var(--m3-motion-transition-fast-effects);
+}
+
+.material-rich-option:first-child {
+  border-radius:
+    var(--m3-list-corner-large, var(--md-sys-shape-corner-large))
+    var(--m3-list-corner-large, var(--md-sys-shape-corner-large))
+    var(--m3-list-corner-connected, var(--md-sys-shape-corner-extra-small))
+    var(--m3-list-corner-connected, var(--md-sys-shape-corner-extra-small));
+}
+
+.material-rich-option:last-child {
+  border-radius:
+    var(--m3-list-corner-connected, var(--md-sys-shape-corner-extra-small))
+    var(--m3-list-corner-connected, var(--md-sys-shape-corner-extra-small))
+    var(--m3-list-corner-large, var(--md-sys-shape-corner-large))
+    var(--m3-list-corner-large, var(--md-sys-shape-corner-large));
+}
+
+.material-rich-option:only-child,
+.material-rich-option:focus-within,
+.material-rich-option:active {
+  border-radius: var(--m3-list-corner-large, var(--md-sys-shape-corner-large));
+}
+
+.material-rich-option:hover {
+  border-radius: var(--m3-list-corner-medium, var(--md-sys-shape-corner-medium));
+}
+
+.material-rich-option--selected,
+.material-rich-option--selected:hover,
+.material-rich-option--selected:focus-within,
+.material-rich-option--selected:active {
+  --md-rich-option-state-layer-color: var(--md-sys-color-on-secondary-container);
+  border-radius: var(--m3-list-corner-large, var(--md-sys-shape-corner-large));
+  background: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+}
+
+.material-rich-option--disabled {
+  cursor: default;
+  opacity: 0.38;
+}
+
+.material-rich-option input {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  margin: 0;
+  opacity: 0;
+  cursor: inherit;
+}
+
+.material-rich-option input:focus-visible ~ .material-rich-option__state {
+  outline: 3px solid color-mix(in srgb, var(--md-sys-color-primary) 24%, transparent);
+  outline-offset: 3px;
+}
+
+.material-rich-option__leading,
+.material-rich-option__body,
+.material-rich-option__state {
+  position: relative;
+  z-index: 3;
+}
+
+.material-rich-option__leading {
+  display: grid;
+  inline-size: var(--md-rich-option-leading-size);
+  block-size: var(--md-rich-option-leading-size);
+  place-items: center;
+  border-radius: 0;
+  background: transparent;
+}
+
+.material-rich-option__leading img {
+  display: block;
+  max-inline-size: calc(var(--md-rich-option-leading-size) + 8px);
+  max-block-size: calc(var(--md-rich-option-leading-size) + 8px);
+  object-fit: contain;
+}
+
+.material-rich-option__body {
+  display: grid;
+  min-inline-size: 0;
+  gap: 2px;
+}
+
+.material-rich-option__label,
+.material-rich-option__supporting-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.material-rich-option__label {
+  color: inherit;
+  font-family: var(--md-sys-typescale-body-large-font, var(--material-ui-font, inherit));
+  font-size: var(--md-sys-typescale-body-large-size, 1rem);
+  font-weight: var(--md-sys-typescale-body-large-weight, 400);
+  line-height: var(--md-sys-typescale-body-large-line-height, 1.5rem);
+  letter-spacing: 0;
+}
+
+.material-rich-option__supporting-text {
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-sys-typescale-body-medium-font, var(--material-ui-font, inherit));
+  font-size: var(--md-sys-typescale-body-medium-size, 0.875rem);
+  font-weight: var(--md-sys-typescale-body-medium-weight, 400);
+  line-height: var(--md-sys-typescale-body-medium-line-height, 1.25rem);
+  letter-spacing: 0;
+}
+
+.material-rich-option--selected .material-rich-option__supporting-text {
+  color: color-mix(in srgb, var(--md-sys-color-on-secondary-container) 76%, transparent);
+}
+
+.material-rich-option__state {
+  display: grid;
+  inline-size: var(--md-rich-option-trailing-size);
+  block-size: var(--md-rich-option-trailing-size);
+  place-items: center;
+  color: var(--md-sys-color-on-surface-variant);
+  pointer-events: none;
+}
+
+.material-rich-option--selected .material-rich-option__state {
+  color: var(--md-sys-color-on-secondary-container);
+}
+
+.material-rich-option--selected .material-rich-option__state:empty::before {
+  inline-size: 12px;
+  block-size: 7px;
+  border-block-end: 2px solid currentColor;
+  border-inline-start: 2px solid currentColor;
+  content: '';
+  transform: translateY(-1px) rotate(-45deg);
+}
+
+.material-rich-option__state > svg,
+.material-rich-option__state > img {
+  inline-size: var(--md-rich-option-trailing-size);
+  block-size: var(--md-rich-option-trailing-size);
+  font-size: var(--md-rich-option-trailing-size);
+}

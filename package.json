@@ -1,0 +1,79 @@
+{
+  "name": "material-3-expressive-for-react",
+  "version": "0.1.0",
+  "description": "Independent Material 3 Expressive components for React on the web.",
+  "license": "Apache-2.0",
+  "packageManager": "pnpm@11.24.0",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./styles.css": "./dist/index.css"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "NOTICE",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KoleHoenicke/material-3-expressive-for-react.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KoleHoenicke/material-3-expressive-for-react/issues"
+  },
+  "homepage": "https://github.com/KoleHoenicke/material-3-expressive-for-react#readme",
+  "keywords": [
+    "material-design",
+    "material-3",
+    "material-expressive",
+    "react",
+    "components",
+    "design-system"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "verify": "pnpm typecheck && pnpm test && pnpm build && pnpm pack:check",
+    "pack:check": "npm pack --dry-run",
+    "prepare": "npm run build"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0 || ^19.0.0",
+    "react-dom": "^18.2.0 || ^19.0.0"
+  },
+  "dependencies": {
+    "@material/material-color-utilities": "^0.3.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/node": "^24.12.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "jsdom": "^26.1.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3",
+    "vitest": "^2.1.9"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
