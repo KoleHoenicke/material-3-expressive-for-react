@@ -1,7 +1,5 @@
 .material-list-count {
   --md-list-count-label-text-color: var(--md-sys-color-on-surface-variant);
-  --md-list-count-label-text-size: 0.875rem;
-  --md-list-count-label-line-height: 1.25rem;
   box-sizing: border-box;
   display: inline-flex;
   align-items: center;
@@ -9,11 +7,6 @@
   min-inline-size: var(--m3-list-trailing-icon-size, 24px);
   min-block-size: var(--m3-list-trailing-icon-size, 24px);
   color: var(--md-list-count-label-text-color);
-  font-family: var(--material-ui-font, inherit);
-  font-size: var(--md-list-count-label-text-size);
-  font-weight: 500;
-  line-height: var(--md-list-count-label-line-height);
-  letter-spacing: 0;
   text-align: end;
   white-space: nowrap;
   font-variant-numeric: tabular-nums;

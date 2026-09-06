@@ -95,9 +95,17 @@ export function MaterialRichOptionList<Value extends MaterialRichOptionValue = s
               </span>
             ) : null}
             <span className="material-rich-option__body">
-              <span className="material-rich-option__label">{option.label}</span>
+              <span
+                className="material-rich-option__label"
+                data-material-typography={selected ? 'bodyLargeEmphasized' : 'bodyLarge'}
+              >
+                {option.label}
+              </span>
               {option.supportingText ? (
-                <span className="material-rich-option__supporting-text">
+                <span
+                  className="material-rich-option__supporting-text"
+                  data-material-typography="bodyMedium"
+                >
                   {option.supportingText}
                 </span>
               ) : null}

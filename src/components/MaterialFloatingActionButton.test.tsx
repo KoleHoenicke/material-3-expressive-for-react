@@ -150,6 +150,10 @@ describe('MaterialExtendedFloatingActionButton', () => {
     expect(button).toHaveAttribute('data-size', 'small')
     expect(button).toHaveAttribute('data-expanded', 'true')
     expect(button.querySelector('.material-fab__label')).toHaveTextContent('Create')
+    expect(button.querySelector('.material-fab__label')).toHaveAttribute(
+      'data-material-typography',
+      'titleMediumEmphasized',
+    )
   })
 
   it('keeps the label as the accessible name when visually collapsed', () => {
@@ -189,5 +193,16 @@ describe('MaterialExtendedFloatingActionButton', () => {
     render(<Fab icon={icon} label={`${size} action`} />)
 
     expect(screen.getByRole('button')).toHaveAttribute('data-size', size)
+  })
+
+  it.each([
+    ['baseline', 'labelLargeEmphasized'],
+    ['small', 'titleMediumEmphasized'],
+    ['medium', 'titleLargeEmphasized'],
+    ['large', 'headlineSmallEmphasized'],
+  ] as const)('uses the %s extended FAB typography role', (size, role) => {
+    render(<MaterialExtendedFloatingActionButton label="Create" size={size} />)
+
+    expect(screen.getByText('Create')).toHaveAttribute('data-material-typography', role)
   })
 })

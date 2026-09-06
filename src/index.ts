@@ -1,5 +1,6 @@
 import './theme/tokens.css'
 import './theme/motion.css'
+import './components/MaterialText.css'
 
 export * from './components/MaterialBadge'
 export * from './components/MaterialAppBar'

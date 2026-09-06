@@ -42,7 +42,7 @@ Included now:
 Until the first npm release, install the package directly from GitHub:
 
 ```sh
-npm install github:KoleHoenicke/material-react-components#v0.13.0
+npm install github:KoleHoenicke/material-react-components#v0.14.0
 ```
 
 React and React DOM are peer dependencies. React 18 and 19 are supported.
@@ -295,7 +295,7 @@ export function ArticleLayout() {
 }
 ```
 
-Dividers are decorative by default, matching Material's accessibility guidance. Add `role="separator"` only when the line communicates a meaningful boundary; the component then supplies the correct horizontal or vertical `aria-orientation`. `MaterialDividerStyle` types the color, regular and heavy thickness, and inset CSS properties. Dividers have no typography, state, or motion tokens.
+Dividers are decorative by default, matching Material's accessibility guidance. Add `role="separator"` only when the line communicates a meaningful boundary; the component then supplies the correct horizontal or vertical `aria-orientation`. `ListDivider` composes this same primitive, uses separator semantics, and maps its `content` and `full` inset options onto the shared logical inset tokens. `MaterialDividerStyle` types the color, regular and heavy thickness, and inset CSS properties. Dividers have no typography, state, or motion tokens.
 
 ### Lists
 
@@ -524,6 +524,8 @@ The default scale matches AndroidX generated type tokens v0.103:
 | labelSmall | 11 / 16px | 500 / 0.5px | 700 / 0.5px |
 
 Use an emphasized role directly, such as `bodyLargeEmphasized`, or set `emphasized` on a baseline role. `as` accepts intrinsic elements and React components while keeping their native props. Direct color, family, size, style, stretch, weight, feature, variation, line-height, tracking, alignment, and decoration props override the selected role. The standard `style` prop remains the final override.
+
+Package components use the same complete role resolver as `Text`. Component tokens keep the current AndroidX baseline assignments. M3 Expressive emphasis is applied only where the Material guidance calls out hierarchy or importance: filled or selected buttons, badges, extended FAB labels, and selected list-item headlines. Secondary actions and unselected content keep their baseline counterpart.
 
 Every role exposes `--md-sys-typescale-<role>-font`, `-size`, `-weight`, `-line-height`, and `-tracking`. Brand and plain families use `--md-ref-typeface-brand` and `--md-ref-typeface-plain`; weight aliases use `--md-ref-typeface-weight-regular`, `-medium`, and `-bold`. CSS pixel values preserve the Android `sp` geometry while browser zoom still scales the complete page.
 

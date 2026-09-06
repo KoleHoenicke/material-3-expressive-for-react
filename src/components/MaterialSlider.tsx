@@ -283,7 +283,12 @@ export function MaterialSlider({
         ) : null}
         <span className="material-slider__handle-container">
           {valueIndicator !== 'none' ? (
-            <span className="material-slider__value-indicator">{resolvedValueLabel}</span>
+          <span
+            className="material-slider__value-indicator"
+            data-material-typography="labelLarge"
+          >
+            {resolvedValueLabel}
+          </span>
           ) : null}
           <span className="material-slider__handle" />
         </span>

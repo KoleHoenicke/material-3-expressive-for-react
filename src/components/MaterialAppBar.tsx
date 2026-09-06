@@ -292,12 +292,31 @@ function titleNode(
   subtitle: AppBarSlot | undefined,
   expanded: boolean,
   hidden: boolean,
+  variant: MaterialTopAppBarVariant,
 ) {
+  const titleTypography = !expanded
+    ? 'titleLarge'
+    : variant === 'medium'
+      ? 'headlineSmall'
+      : variant === 'large-flexible'
+        ? 'displaySmall'
+        : 'headlineMedium'
+  const subtitleTypography = !expanded
+    ? 'labelMedium'
+    : variant === 'large-flexible'
+      ? 'titleMedium'
+      : 'labelLarge'
+
   return (
     <div className="material-top-app-bar__title-block" aria-hidden={hidden || undefined}>
-      <div className="material-top-app-bar__title">{resolveSlot(title, expanded)}</div>
+      <div className="material-top-app-bar__title" data-material-typography={titleTypography}>
+        {resolveSlot(title, expanded)}
+      </div>
       {subtitle !== undefined ? (
-        <div className="material-top-app-bar__subtitle">
+        <div
+          className="material-top-app-bar__subtitle"
+          data-material-typography={subtitleTypography}
+        >
           {resolveSlot(subtitle, expanded)}
         </div>
       ) : null}
@@ -400,13 +419,25 @@ export const MaterialTopAppBar = forwardRef<HTMLElement, MaterialTopAppBarProps>
           <div className="material-top-app-bar__row material-top-app-bar__row--top">
             <div className="material-top-app-bar__navigation">{navigationIcon}</div>
             <div className="material-top-app-bar__collapsed-title">
-              {titleNode(title, flexible ? subtitle : undefined, false, collapsedTitleHidden)}
+              {titleNode(
+                title,
+                flexible ? subtitle : undefined,
+                false,
+                collapsedTitleHidden,
+                variant,
+              )}
             </div>
             <div className="material-top-app-bar__actions">{actions}</div>
           </div>
           {twoRows ? (
             <div className="material-top-app-bar__row material-top-app-bar__row--expanded">
-              {titleNode(title, flexible ? subtitle : undefined, true, expandedTitleHidden)}
+              {titleNode(
+                title,
+                flexible ? subtitle : undefined,
+                true,
+                expandedTitleHidden,
+                variant,
+              )}
             </div>
           ) : null}
         </div>

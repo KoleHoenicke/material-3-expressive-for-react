@@ -65,6 +65,9 @@ export function MaterialBadge({
         .filter(Boolean)
         .join(' ')}
       data-material-badge-variant={resolvedVariant}
+      data-material-typography={
+        resolvedVariant === 'large' ? 'labelSmallEmphasized' : undefined
+      }
     >
       {resolvedVariant === 'large' ? label : null}
     </span>

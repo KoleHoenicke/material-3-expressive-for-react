@@ -275,11 +275,6 @@
   background: var(--md-slider-value-indicator-container-color);
   color: var(--md-slider-value-indicator-label-text-color);
   box-shadow: var(--md-sys-elevation-level1);
-  font-family: var(--md-sys-typescale-label-large-font, var(--material-ui-font));
-  font-size: var(--md-sys-typescale-label-large-size, 0.875rem);
-  font-weight: 600;
-  line-height: var(--md-sys-typescale-label-large-line-height, 1.25rem);
-  letter-spacing: 0;
   opacity: 0;
   pointer-events: none;
   transform: translate(-50%, 4px) scale(0.92);

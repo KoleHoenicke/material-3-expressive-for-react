@@ -10,6 +10,7 @@ describe('MaterialBadge', () => {
     expect(badge).toBeInTheDocument()
     expect(badge).toHaveClass('material-badge--large')
     expect(badge).toHaveClass('material-badge--tone-error')
+    expect(badge).toHaveAttribute('data-material-typography', 'labelSmallEmphasized')
     expect(badge).toHaveTextContent('7')
   })
 
@@ -34,6 +35,7 @@ describe('MaterialBadge', () => {
 
     expect(badge).toBeInTheDocument()
     expect(badge).toHaveClass('material-badge--small')
+    expect(badge).not.toHaveAttribute('data-material-typography')
     expect(badge).toHaveTextContent('')
   })
 })

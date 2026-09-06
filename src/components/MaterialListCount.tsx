@@ -40,6 +40,7 @@ export function MaterialListCount({
     <span
       {...spanProps}
       className={['material-list-count', className].filter(Boolean).join(' ')}
+      data-material-typography="labelLarge"
     >
       {label}
     </span>

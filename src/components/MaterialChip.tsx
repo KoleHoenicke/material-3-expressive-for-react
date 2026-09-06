@@ -251,7 +251,9 @@ export const MaterialChip = forwardRef<MaterialChipElement, MaterialChipProps>(
               ) : null}
             </span>
           ) : null}
-          <span id={labelId} className="material-chip__label">{children}</span>
+          <span id={labelId} className="material-chip__label" data-material-typography="labelLarge">
+            {children}
+          </span>
           {hasTrailing ? (
             <span className="material-chip__trailing-icon" aria-hidden="true">
               {trailingIcon}

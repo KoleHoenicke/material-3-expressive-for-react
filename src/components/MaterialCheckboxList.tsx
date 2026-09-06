@@ -59,6 +59,7 @@ export function MaterialCheckboxListItem({
   ...labelProps
 }: MaterialCheckboxListItemProps) {
   const checkbox = <MaterialCheckbox {...checkboxProps} />
+  const selected = checkboxProps.checked === true || checkboxProps.indeterminate === true
 
   return (
     <label
@@ -78,7 +79,7 @@ export function MaterialCheckboxListItem({
       data-disabled={checkboxProps.disabled ? 'true' : undefined}
       data-lines={supportingText ? 2 : 1}
       data-material-list-item=""
-      data-selected={checkboxProps.checked || checkboxProps.indeterminate ? 'true' : undefined}
+      data-selected={selected ? 'true' : undefined}
       data-interactive="true"
       role="listitem"
     >
@@ -94,11 +95,17 @@ export function MaterialCheckboxListItem({
         </span>
       ) : null}
       <span className="material-checkbox-list-item__body material-list-item__content">
-        <span className="material-checkbox-list-item__label material-list-item__headline">
+        <span
+          className="material-checkbox-list-item__label material-list-item__headline"
+          data-material-typography={selected ? 'bodyLargeEmphasized' : 'bodyLarge'}
+        >
           {label}
         </span>
         {supportingText ? (
-          <span className="material-checkbox-list-item__supporting-text material-list-item__supporting">
+          <span
+            className="material-checkbox-list-item__supporting-text material-list-item__supporting"
+            data-material-typography="bodyMedium"
+          >
             {supportingText}
           </span>
         ) : null}

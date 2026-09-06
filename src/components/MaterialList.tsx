@@ -21,6 +21,10 @@ import {
 } from 'react'
 
 import { MaterialRipple } from './MaterialRipple'
+import {
+  MaterialHorizontalDivider,
+  type MaterialHorizontalDividerProps,
+} from './MaterialDivider'
 import './MaterialList.css'
 
 export type MaterialListVariant = 'standard' | 'segmented' | 'baseline'
@@ -511,11 +515,20 @@ export const MaterialListItem = forwardRef<HTMLDivElement, MaterialListItemProps
         ) : null}
         <span className="material-list-item__content">
           {overline != null ? (
-            <span className="material-list-item__overline">{overline}</span>
+            <span className="material-list-item__overline" data-material-typography="labelSmall">
+              {overline}
+            </span>
           ) : null}
-          <span className="material-list-item__headline">{headline}</span>
+          <span
+            className="material-list-item__headline"
+            data-material-typography={selected ? 'bodyLargeEmphasized' : 'bodyLarge'}
+          >
+            {headline}
+          </span>
           {supportingText != null ? (
-            <span className="material-list-item__supporting">{supportingText}</span>
+            <span className="material-list-item__supporting" data-material-typography="bodyMedium">
+              {supportingText}
+            </span>
           ) : null}
         </span>
         {trailing != null ? (
@@ -523,6 +536,7 @@ export const MaterialListItem = forwardRef<HTMLDivElement, MaterialListItemProps
             aria-hidden={trailingType === 'control' ? undefined : true}
             className="material-list-item__trailing"
             data-type={trailingType}
+            data-material-typography={trailingType === 'text' ? 'labelSmall' : undefined}
           >
             {trailing}
           </span>
@@ -533,8 +547,8 @@ export const MaterialListItem = forwardRef<HTMLDivElement, MaterialListItemProps
 )
 
 export type MaterialListDividerProps = Omit<
-  HTMLAttributes<HTMLHRElement>,
-  'children'
+  MaterialHorizontalDividerProps,
+  'children' | 'inset' | 'insetEnd' | 'insetStart'
 > & {
   inset?: 'content' | 'full'
 }
@@ -545,11 +559,12 @@ export function MaterialListDivider({
   ...dividerProps
 }: MaterialListDividerProps) {
   return (
-    <hr
+    <MaterialHorizontalDivider
       {...dividerProps}
       className={['material-list-divider', className].filter(Boolean).join(' ')}
       data-inset={inset}
       data-material-list-divider=""
+      role={dividerProps.role ?? 'separator'}
     />
   )
 }
@@ -570,6 +585,7 @@ export function MaterialListAvatar({
     <span
       {...spanProps}
       className={['material-list-avatar', className].filter(Boolean).join(' ')}
+      data-material-typography="titleMedium"
       data-material-list-avatar=""
     >
       {children}

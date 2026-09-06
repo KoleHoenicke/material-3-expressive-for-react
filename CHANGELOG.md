@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.14.0
+
+- Replaced the list family's legacy `<hr>` implementation and gallery section rules with the shared Divider primitive wherever a line groups content. List dividers retain full-width and content-inset layouts, now share forced-color behavior, and expose explicit separator semantics.
+- Migrated component and gallery text to the complete typography roles. Every assigned role now consumes family, size, weight, line height, tracking, style, stretch, feature, and variation tokens. Filled and selected buttons, badges, extended FABs, and selected list items use the matching emphasized role in the M3 Expressive contexts recommended by Material.
+
 ## 0.13.0
 
 - Added the complete current Material 3 type scale with all 15 baseline styles and all 15 Expressive emphasized styles from AndroidX v0.103. Every role includes its exact font role, size, weight, line height, and tracking as a public CSS token and typed JavaScript value.

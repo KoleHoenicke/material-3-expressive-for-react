@@ -51,11 +51,6 @@
   background: transparent;
   color: var(--md-button-content-color);
   cursor: pointer;
-  font-family: var(--md-sys-typescale-label-large-font, var(--material-ui-font, inherit));
-  font-size: var(--md-sys-typescale-label-large-size, 0.875rem);
-  font-weight: var(--md-sys-typescale-label-large-weight, 500);
-  letter-spacing: var(--md-sys-typescale-label-large-tracking, 0.00625rem);
-  line-height: var(--md-sys-typescale-label-large-line-height, 1.25rem);
   text-align: center;
   -webkit-tap-highlight-color: transparent;
   transition:
@@ -254,11 +249,6 @@
   --md-button-icon-label-space: 8px;
   --md-button-square-shape: var(--md-sys-shape-corner-large, 16px);
   --md-button-pressed-shape: var(--md-sys-shape-corner-medium, 12px);
-  font-family: var(--md-sys-typescale-title-medium-font, var(--material-ui-font, inherit));
-  font-size: var(--md-sys-typescale-title-medium-size, 1rem);
-  font-weight: var(--md-sys-typescale-title-medium-weight, 500);
-  letter-spacing: var(--md-sys-typescale-title-medium-tracking, 0.009375rem);
-  line-height: var(--md-sys-typescale-title-medium-line-height, 1.5rem);
 }
 
 .material-button[data-size='large'] {
@@ -272,11 +262,6 @@
   --md-button-square-shape: var(--md-sys-shape-corner-extra-large, 28px);
   --md-button-pressed-shape: var(--md-sys-shape-corner-large, 16px);
   --md-button-outline-width: 2px;
-  font-family: var(--md-sys-typescale-headline-small-font, var(--material-ui-font, inherit));
-  font-size: var(--md-sys-typescale-headline-small-size, 1.5rem);
-  font-weight: var(--md-sys-typescale-headline-small-weight, 400);
-  letter-spacing: var(--md-sys-typescale-headline-small-tracking, 0);
-  line-height: var(--md-sys-typescale-headline-small-line-height, 2rem);
 }
 
 .material-button[data-size='extra-large'] {
@@ -290,11 +275,6 @@
   --md-button-square-shape: var(--md-sys-shape-corner-extra-large, 28px);
   --md-button-pressed-shape: var(--md-sys-shape-corner-large, 16px);
   --md-button-outline-width: 3px;
-  font-family: var(--md-sys-typescale-headline-large-font, var(--material-ui-font, inherit));
-  font-size: var(--md-sys-typescale-headline-large-size, 2rem);
-  font-weight: var(--md-sys-typescale-headline-large-weight, 400);
-  letter-spacing: var(--md-sys-typescale-headline-large-tracking, 0);
-  line-height: var(--md-sys-typescale-headline-large-line-height, 2.5rem);
 }
 
 .material-button__content {

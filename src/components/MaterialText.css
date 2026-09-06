@@ -1,7 +1,4 @@
-.material-text {
-  box-sizing: border-box;
-  margin: 0;
-  color: inherit;
+[data-material-typography] {
   font-family: var(--md-text-font);
   font-feature-settings: var(--md-text-features);
   font-size: var(--md-text-size);
@@ -12,7 +9,373 @@
   font-synthesis: none;
   line-height: var(--md-text-line-height);
   letter-spacing: var(--md-text-tracking);
+}
+
+.material-text {
+  box-sizing: border-box;
+  margin: 0;
+  color: inherit;
   overflow-wrap: break-word;
+}
+
+[data-material-typography='displayLarge'] {
+  --md-text-font: var(--md-sys-typescale-display-large-font, var(--material-ui-font, inherit));
+  --md-text-size: var(--md-sys-typescale-display-large-size, 57px);
+  --md-text-weight: var(--md-sys-typescale-display-large-weight, 400);
+  --md-text-line-height: var(--md-sys-typescale-display-large-line-height, 64px);
+  --md-text-tracking: var(--md-sys-typescale-display-large-tracking, -0.2px);
+  --md-text-features: var(--md-sys-typescale-display-large-font-feature-settings, normal);
+  --md-text-stretch: var(--md-sys-typescale-display-large-font-stretch, normal);
+  --md-text-style: var(--md-sys-typescale-display-large-font-style, normal);
+  --md-text-variations: var(--md-sys-typescale-display-large-font-variation-settings, normal);
+}
+
+[data-material-typography='displayLargeEmphasized'] {
+  --md-text-font: var(--md-sys-typescale-display-large-emphasized-font, var(--material-ui-font, inherit));
+  --md-text-size: var(--md-sys-typescale-display-large-emphasized-size, 57px);
+  --md-text-weight: var(--md-sys-typescale-display-large-emphasized-weight, 500);
+  --md-text-line-height: var(--md-sys-typescale-display-large-emphasized-line-height, 64px);
+  --md-text-tracking: var(--md-sys-typescale-display-large-emphasized-tracking, 0px);
+  --md-text-features: var(--md-sys-typescale-display-large-emphasized-font-feature-settings, normal);
+  --md-text-stretch: var(--md-sys-typescale-display-large-emphasized-font-stretch, normal);
+  --md-text-style: var(--md-sys-typescale-display-large-emphasized-font-style, normal);
+  --md-text-variations: var(--md-sys-typescale-display-large-emphasized-font-variation-settings, normal);
+}
+
+[data-material-typography='displayMedium'] {
+  --md-text-font: var(--md-sys-typescale-display-medium-font, var(--material-ui-font, inherit));
+  --md-text-size: var(--md-sys-typescale-display-medium-size, 45px);
+  --md-text-weight: var(--md-sys-typescale-display-medium-weight, 400);
+  --md-text-line-height: var(--md-sys-typescale-display-medium-line-height, 52px);
+  --md-text-tracking: var(--md-sys-typescale-display-medium-tracking, 0px);
+  --md-text-features: var(--md-sys-typescale-display-medium-font-feature-settings, normal);
+  --md-text-stretch: var(--md-sys-typescale-display-medium-font-stretch, normal);
+  --md-text-style: var(--md-sys-typescale-display-medium-font-style, normal);
+  --md-text-variations: var(--md-sys-typescale-display-medium-font-variation-settings, normal);
+}
+
+[data-material-typography='displayMediumEmphasized'] {
+  --md-text-font: var(--md-sys-typescale-display-medium-emphasized-font, var(--material-ui-font, inherit));
+  --md-text-size: var(--md-sys-typescale-display-medium-emphasized-size, 45px);
+  --md-text-weight: var(--md-sys-typescale-display-medium-emphasized-weight, 500);
+  --md-text-line-height: var(--md-sys-typescale-display-medium-emphasized-line-height, 52px);
+  --md-text-tracking: var(--md-sys-typescale-display-medium-emphasized-tracking, 0px);
+  --md-text-features: var(--md-sys-typescale-display-medium-emphasized-font-feature-settings, normal);
+  --md-text-stretch: var(--md-sys-typescale-display-medium-emphasized-font-stretch, normal);
+  --md-text-style: var(--md-sys-typescale-display-medium-emphasized-font-style, normal);
+  --md-text-variations: var(--md-sys-typescale-display-medium-emphasized-font-variation-settings, normal);
+}
+
+[data-material-typography='displaySmall'] {
+  --md-text-font: var(--md-sys-typescale-display-small-font, var(--material-ui-font, inherit));
+  --md-text-size: var(--md-sys-typescale-display-small-size, 36px);
+  --md-text-weight: var(--md-sys-typescale-display-small-weight, 400);
+  --md-text-line-height: var(--md-sys-typescale-display-small-line-height, 44px);
+  --md-text-tracking: var(--md-sys-typescale-display-small-tracking, 0px);
+  --md-text-features: var(--md-sys-typescale-display-small-font-feature-settings, normal);
+  --md-text-stretch: var(--md-sys-typescale-display-small-font-stretch, normal);
+  --md-text-style: var(--md-sys-typescale-display-small-font-style, normal);
+  --md-text-variations: var(--md-sys-typescale-display-small-font-variation-settings, normal);
+}
+
+[data-material-typography='displaySmallEmphasized'] {
+  --md-text-font: var(--md-sys-typescale-display-small-emphasized-font, var(--material-ui-font, inherit));
+  --md-text-size: var(--md-sys-typescale-display-small-emphasized-size, 36px);
+  --md-text-weight: var(--md-sys-typescale-display-small-emphasized-weight, 500);
+  --md-text-line-height: var(--md-sys-typescale-display-small-emphasized-line-height, 44px);
+  --md-text-tracking: var(--md-sys-typescale-display-small-emphasized-tracking, 0px);
+  --md-text-features: var(--md-sys-typescale-display-small-emphasized-font-feature-settings, normal);
+  --md-text-stretch: var(--md-sys-typescale-display-small-emphasized-font-stretch, normal);
+  --md-text-style: var(--md-sys-typescale-display-small-emphasized-font-style, normal);
+  --md-text-variations: var(--md-sys-typescale-display-small-emphasized-font-variation-settings, normal);
+}
+
+[data-material-typography='headlineLarge'] {
+  --md-text-font: var(--md-sys-typescale-headline-large-font, var(--material-ui-font, inherit));
+  --md-text-size: var(--md-sys-typescale-headline-large-size, 32px);
+  --md-text-weight: var(--md-sys-typescale-headline-large-weight, 400);
+  --md-text-line-height: var(--md-sys-typescale-headline-large-line-height, 40px);
+  --md-text-tracking: var(--md-sys-typescale-headline-large-tracking, 0px);
+  --md-text-features: var(--md-sys-typescale-headline-large-font-feature-settings, normal);
+  --md-text-stretch: var(--md-sys-typescale-headline-large-font-stretch, normal);
+  --md-text-style: var(--md-sys-typescale-headline-large-font-style, normal);
+  --md-text-variations: var(--md-sys-typescale-headline-large-font-variation-settings, normal);
+}
+
+[data-material-typography='headlineLargeEmphasized'] {
+  --md-text-font: var(--md-sys-typescale-headline-large-emphasized-font, var(--material-ui-font, inherit));
+  --md-text-size: var(--md-sys-typescale-headline-large-emphasized-size, 32px);
+  --md-text-weight: var(--md-sys-typescale-headline-large-emphasized-weight, 500);
+  --md-text-line-height: var(--md-sys-typescale-headline-large-emphasized-line-height, 40px);
+  --md-text-tracking: var(--md-sys-typescale-headline-large-emphasized-tracking, 0px);
+  --md-text-features: var(--md-sys-typescale-headline-large-emphasized-font-feature-settings, normal);
+  --md-text-stretch: var(--md-sys-typescale-headline-large-emphasized-font-stretch, normal);
+  --md-text-style: var(--md-sys-typescale-headline-large-emphasized-font-style, normal);
+  --md-text-variations: var(--md-sys-typescale-headline-large-emphasized-font-variation-settings, normal);
+}
+
+[data-material-typography='headlineMedium'] {
+  --md-text-font: var(--md-sys-typescale-headline-medium-font, var(--material-ui-font, inherit));
+  --md-text-size: var(--md-sys-typescale-headline-medium-size, 28px);
+  --md-text-weight: var(--md-sys-typescale-headline-medium-weight, 400);
+  --md-text-line-height: var(--md-sys-typescale-headline-medium-line-height, 36px);
+  --md-text-tracking: var(--md-sys-typescale-headline-medium-tracking, 0px);
+  --md-text-features: var(--md-sys-typescale-headline-medium-font-feature-settings, normal);
+  --md-text-stretch: var(--md-sys-typescale-headline-medium-font-stretch, normal);
+  --md-text-style: var(--md-sys-typescale-headline-medium-font-style, normal);
+  --md-text-variations: var(--md-sys-typescale-headline-medium-font-variation-settings, normal);
+}
+
+[data-material-typography='headlineMediumEmphasized'] {
+  --md-text-font: var(--md-sys-typescale-headline-medium-emphasized-font, var(--material-ui-font, inherit));
+  --md-text-size: var(--md-sys-typescale-headline-medium-emphasized-size, 28px);
+  --md-text-weight: var(--md-sys-typescale-headline-medium-emphasized-weight, 500);
+  --md-text-line-height: var(--md-sys-typescale-headline-medium-emphasized-line-height, 36px);
+  --md-text-tracking: var(--md-sys-typescale-headline-medium-emphasized-tracking, 0px);
+  --md-text-features: var(--md-sys-typescale-headline-medium-emphasized-font-feature-settings, normal);
+  --md-text-stretch: var(--md-sys-typescale-headline-medium-emphasized-font-stretch, normal);
+  --md-text-style: var(--md-sys-typescale-headline-medium-emphasized-font-style, normal);
+  --md-text-variations: var(--md-sys-typescale-headline-medium-emphasized-font-variation-settings, normal);
+}
+
+[data-material-typography='headlineSmall'] {
+  --md-text-font: var(--md-sys-typescale-headline-small-font, var(--material-ui-font, inherit));
+  --md-text-size: var(--md-sys-typescale-headline-small-size, 24px);
+  --md-text-weight: var(--md-sys-typescale-headline-small-weight, 400);
+  --md-text-line-height: var(--md-sys-typescale-headline-small-line-height, 32px);
+  --md-text-tracking: var(--md-sys-typescale-headline-small-tracking, 0px);
+  --md-text-features: var(--md-sys-typescale-headline-small-font-feature-settings, normal);
+  --md-text-stretch: var(--md-sys-typescale-headline-small-font-stretch, normal);
+  --md-text-style: var(--md-sys-typescale-headline-small-font-style, normal);
+  --md-text-variations: var(--md-sys-typescale-headline-small-font-variation-settings, normal);
+}
+
+[data-material-typography='headlineSmallEmphasized'] {
+  --md-text-font: var(--md-sys-typescale-headline-small-emphasized-font, var(--material-ui-font, inherit));
+  --md-text-size: var(--md-sys-typescale-headline-small-emphasized-size, 24px);
+  --md-text-weight: var(--md-sys-typescale-headline-small-emphasized-weight, 500);
+  --md-text-line-height: var(--md-sys-typescale-headline-small-emphasized-line-height, 32px);
+  --md-text-tracking: var(--md-sys-typescale-headline-small-emphasized-tracking, 0px);
+  --md-text-features: var(--md-sys-typescale-headline-small-emphasized-font-feature-settings, normal);
+  --md-text-stretch: var(--md-sys-typescale-headline-small-emphasized-font-stretch, normal);
+  --md-text-style: var(--md-sys-typescale-headline-small-emphasized-font-style, normal);
+  --md-text-variations: var(--md-sys-typescale-headline-small-emphasized-font-variation-settings, normal);
+}
+
+[data-material-typography='titleLarge'] {
+  --md-text-font: var(--md-sys-typescale-title-large-font, var(--material-ui-font, inherit));
+  --md-text-size: var(--md-sys-typescale-title-large-size, 22px);
+  --md-text-weight: var(--md-sys-typescale-title-large-weight, 400);
+  --md-text-line-height: var(--md-sys-typescale-title-large-line-height, 28px);
+  --md-text-tracking: var(--md-sys-typescale-title-large-tracking, 0px);
+  --md-text-features: var(--md-sys-typescale-title-large-font-feature-settings, normal);
+  --md-text-stretch: var(--md-sys-typescale-title-large-font-stretch, normal);
+  --md-text-style: var(--md-sys-typescale-title-large-font-style, normal);
+  --md-text-variations: var(--md-sys-typescale-title-large-font-variation-settings, normal);
+}
+
+[data-material-typography='titleLargeEmphasized'] {
+  --md-text-font: var(--md-sys-typescale-title-large-emphasized-font, var(--material-ui-font, inherit));
+  --md-text-size: var(--md-sys-typescale-title-large-emphasized-size, 22px);
+  --md-text-weight: var(--md-sys-typescale-title-large-emphasized-weight, 500);
+  --md-text-line-height: var(--md-sys-typescale-title-large-emphasized-line-height, 28px);
+  --md-text-tracking: var(--md-sys-typescale-title-large-emphasized-tracking, 0px);
+  --md-text-features: var(--md-sys-typescale-title-large-emphasized-font-feature-settings, normal);
+  --md-text-stretch: var(--md-sys-typescale-title-large-emphasized-font-stretch, normal);
+  --md-text-style: var(--md-sys-typescale-title-large-emphasized-font-style, normal);
+  --md-text-variations: var(--md-sys-typescale-title-large-emphasized-font-variation-settings, normal);
+}
+
+[data-material-typography='titleMedium'] {
+  --md-text-font: var(--md-sys-typescale-title-medium-font, var(--material-ui-font, inherit));
+  --md-text-size: var(--md-sys-typescale-title-medium-size, 16px);
+  --md-text-weight: var(--md-sys-typescale-title-medium-weight, 500);
+  --md-text-line-height: var(--md-sys-typescale-title-medium-line-height, 24px);
+  --md-text-tracking: var(--md-sys-typescale-title-medium-tracking, 0.2px);
+  --md-text-features: var(--md-sys-typescale-title-medium-font-feature-settings, normal);
+  --md-text-stretch: var(--md-sys-typescale-title-medium-font-stretch, normal);
+  --md-text-style: var(--md-sys-typescale-title-medium-font-style, normal);
+  --md-text-variations: var(--md-sys-typescale-title-medium-font-variation-settings, normal);
+}
+
+[data-material-typography='titleMediumEmphasized'] {
+  --md-text-font: var(--md-sys-typescale-title-medium-emphasized-font, var(--material-ui-font, inherit));
+  --md-text-size: var(--md-sys-typescale-title-medium-emphasized-size, 16px);
+  --md-text-weight: var(--md-sys-typescale-title-medium-emphasized-weight, 700);
+  --md-text-line-height: var(--md-sys-typescale-title-medium-emphasized-line-height, 24px);
+  --md-text-tracking: var(--md-sys-typescale-title-medium-emphasized-tracking, 0.15px);
+  --md-text-features: var(--md-sys-typescale-title-medium-emphasized-font-feature-settings, normal);
+  --md-text-stretch: var(--md-sys-typescale-title-medium-emphasized-font-stretch, normal);
+  --md-text-style: var(--md-sys-typescale-title-medium-emphasized-font-style, normal);
+  --md-text-variations: var(--md-sys-typescale-title-medium-emphasized-font-variation-settings, normal);
+}
+
+[data-material-typography='titleSmall'] {
+  --md-text-font: var(--md-sys-typescale-title-small-font, var(--material-ui-font, inherit));
+  --md-text-size: var(--md-sys-typescale-title-small-size, 14px);
+  --md-text-weight: var(--md-sys-typescale-title-small-weight, 500);
+  --md-text-line-height: var(--md-sys-typescale-title-small-line-height, 20px);
+  --md-text-tracking: var(--md-sys-typescale-title-small-tracking, 0.1px);
+  --md-text-features: var(--md-sys-typescale-title-small-font-feature-settings, normal);
+  --md-text-stretch: var(--md-sys-typescale-title-small-font-stretch, normal);
+  --md-text-style: var(--md-sys-typescale-title-small-font-style, normal);
+  --md-text-variations: var(--md-sys-typescale-title-small-font-variation-settings, normal);
+}
+
+[data-material-typography='titleSmallEmphasized'] {
+  --md-text-font: var(--md-sys-typescale-title-small-emphasized-font, var(--material-ui-font, inherit));
+  --md-text-size: var(--md-sys-typescale-title-small-emphasized-size, 14px);
+  --md-text-weight: var(--md-sys-typescale-title-small-emphasized-weight, 700);
+  --md-text-line-height: var(--md-sys-typescale-title-small-emphasized-line-height, 20px);
+  --md-text-tracking: var(--md-sys-typescale-title-small-emphasized-tracking, 0.1px);
+  --md-text-features: var(--md-sys-typescale-title-small-emphasized-font-feature-settings, normal);
+  --md-text-stretch: var(--md-sys-typescale-title-small-emphasized-font-stretch, normal);
+  --md-text-style: var(--md-sys-typescale-title-small-emphasized-font-style, normal);
+  --md-text-variations: var(--md-sys-typescale-title-small-emphasized-font-variation-settings, normal);
+}
+
+[data-material-typography='bodyLarge'] {
+  --md-text-font: var(--md-sys-typescale-body-large-font, var(--material-ui-font, inherit));
+  --md-text-size: var(--md-sys-typescale-body-large-size, 16px);
+  --md-text-weight: var(--md-sys-typescale-body-large-weight, 400);
+  --md-text-line-height: var(--md-sys-typescale-body-large-line-height, 24px);
+  --md-text-tracking: var(--md-sys-typescale-body-large-tracking, 0.5px);
+  --md-text-features: var(--md-sys-typescale-body-large-font-feature-settings, normal);
+  --md-text-stretch: var(--md-sys-typescale-body-large-font-stretch, normal);
+  --md-text-style: var(--md-sys-typescale-body-large-font-style, normal);
+  --md-text-variations: var(--md-sys-typescale-body-large-font-variation-settings, normal);
+}
+
+[data-material-typography='bodyLargeEmphasized'] {
+  --md-text-font: var(--md-sys-typescale-body-large-emphasized-font, var(--material-ui-font, inherit));
+  --md-text-size: var(--md-sys-typescale-body-large-emphasized-size, 16px);
+  --md-text-weight: var(--md-sys-typescale-body-large-emphasized-weight, 500);
+  --md-text-line-height: var(--md-sys-typescale-body-large-emphasized-line-height, 24px);
+  --md-text-tracking: var(--md-sys-typescale-body-large-emphasized-tracking, 0.15px);
+  --md-text-features: var(--md-sys-typescale-body-large-emphasized-font-feature-settings, normal);
+  --md-text-stretch: var(--md-sys-typescale-body-large-emphasized-font-stretch, normal);
+  --md-text-style: var(--md-sys-typescale-body-large-emphasized-font-style, normal);
+  --md-text-variations: var(--md-sys-typescale-body-large-emphasized-font-variation-settings, normal);
+}
+
+[data-material-typography='bodyMedium'] {
+  --md-text-font: var(--md-sys-typescale-body-medium-font, var(--material-ui-font, inherit));
+  --md-text-size: var(--md-sys-typescale-body-medium-size, 14px);
+  --md-text-weight: var(--md-sys-typescale-body-medium-weight, 400);
+  --md-text-line-height: var(--md-sys-typescale-body-medium-line-height, 20px);
+  --md-text-tracking: var(--md-sys-typescale-body-medium-tracking, 0.2px);
+  --md-text-features: var(--md-sys-typescale-body-medium-font-feature-settings, normal);
+  --md-text-stretch: var(--md-sys-typescale-body-medium-font-stretch, normal);
+  --md-text-style: var(--md-sys-typescale-body-medium-font-style, normal);
+  --md-text-variations: var(--md-sys-typescale-body-medium-font-variation-settings, normal);
+}
+
+[data-material-typography='bodyMediumEmphasized'] {
+  --md-text-font: var(--md-sys-typescale-body-medium-emphasized-font, var(--material-ui-font, inherit));
+  --md-text-size: var(--md-sys-typescale-body-medium-emphasized-size, 14px);
+  --md-text-weight: var(--md-sys-typescale-body-medium-emphasized-weight, 500);
+  --md-text-line-height: var(--md-sys-typescale-body-medium-emphasized-line-height, 20px);
+  --md-text-tracking: var(--md-sys-typescale-body-medium-emphasized-tracking, 0.25px);
+  --md-text-features: var(--md-sys-typescale-body-medium-emphasized-font-feature-settings, normal);
+  --md-text-stretch: var(--md-sys-typescale-body-medium-emphasized-font-stretch, normal);
+  --md-text-style: var(--md-sys-typescale-body-medium-emphasized-font-style, normal);
+  --md-text-variations: var(--md-sys-typescale-body-medium-emphasized-font-variation-settings, normal);
+}
+
+[data-material-typography='bodySmall'] {
+  --md-text-font: var(--md-sys-typescale-body-small-font, var(--material-ui-font, inherit));
+  --md-text-size: var(--md-sys-typescale-body-small-size, 12px);
+  --md-text-weight: var(--md-sys-typescale-body-small-weight, 400);
+  --md-text-line-height: var(--md-sys-typescale-body-small-line-height, 16px);
+  --md-text-tracking: var(--md-sys-typescale-body-small-tracking, 0.4px);
+  --md-text-features: var(--md-sys-typescale-body-small-font-feature-settings, normal);
+  --md-text-stretch: var(--md-sys-typescale-body-small-font-stretch, normal);
+  --md-text-style: var(--md-sys-typescale-body-small-font-style, normal);
+  --md-text-variations: var(--md-sys-typescale-body-small-font-variation-settings, normal);
+}
+
+[data-material-typography='bodySmallEmphasized'] {
+  --md-text-font: var(--md-sys-typescale-body-small-emphasized-font, var(--material-ui-font, inherit));
+  --md-text-size: var(--md-sys-typescale-body-small-emphasized-size, 12px);
+  --md-text-weight: var(--md-sys-typescale-body-small-emphasized-weight, 500);
+  --md-text-line-height: var(--md-sys-typescale-body-small-emphasized-line-height, 16px);
+  --md-text-tracking: var(--md-sys-typescale-body-small-emphasized-tracking, 0.4px);
+  --md-text-features: var(--md-sys-typescale-body-small-emphasized-font-feature-settings, normal);
+  --md-text-stretch: var(--md-sys-typescale-body-small-emphasized-font-stretch, normal);
+  --md-text-style: var(--md-sys-typescale-body-small-emphasized-font-style, normal);
+  --md-text-variations: var(--md-sys-typescale-body-small-emphasized-font-variation-settings, normal);
+}
+
+[data-material-typography='labelLarge'] {
+  --md-text-font: var(--md-sys-typescale-label-large-font, var(--material-ui-font, inherit));
+  --md-text-size: var(--md-sys-typescale-label-large-size, 14px);
+  --md-text-weight: var(--md-sys-typescale-label-large-weight, 500);
+  --md-text-line-height: var(--md-sys-typescale-label-large-line-height, 20px);
+  --md-text-tracking: var(--md-sys-typescale-label-large-tracking, 0.1px);
+  --md-text-features: var(--md-sys-typescale-label-large-font-feature-settings, normal);
+  --md-text-stretch: var(--md-sys-typescale-label-large-font-stretch, normal);
+  --md-text-style: var(--md-sys-typescale-label-large-font-style, normal);
+  --md-text-variations: var(--md-sys-typescale-label-large-font-variation-settings, normal);
+}
+
+[data-material-typography='labelLargeEmphasized'] {
+  --md-text-font: var(--md-sys-typescale-label-large-emphasized-font, var(--material-ui-font, inherit));
+  --md-text-size: var(--md-sys-typescale-label-large-emphasized-size, 14px);
+  --md-text-weight: var(--md-sys-typescale-label-large-emphasized-weight, 700);
+  --md-text-line-height: var(--md-sys-typescale-label-large-emphasized-line-height, 20px);
+  --md-text-tracking: var(--md-sys-typescale-label-large-emphasized-tracking, 0.1px);
+  --md-text-features: var(--md-sys-typescale-label-large-emphasized-font-feature-settings, normal);
+  --md-text-stretch: var(--md-sys-typescale-label-large-emphasized-font-stretch, normal);
+  --md-text-style: var(--md-sys-typescale-label-large-emphasized-font-style, normal);
+  --md-text-variations: var(--md-sys-typescale-label-large-emphasized-font-variation-settings, normal);
+}
+
+[data-material-typography='labelMedium'] {
+  --md-text-font: var(--md-sys-typescale-label-medium-font, var(--material-ui-font, inherit));
+  --md-text-size: var(--md-sys-typescale-label-medium-size, 12px);
+  --md-text-weight: var(--md-sys-typescale-label-medium-weight, 500);
+  --md-text-line-height: var(--md-sys-typescale-label-medium-line-height, 16px);
+  --md-text-tracking: var(--md-sys-typescale-label-medium-tracking, 0.5px);
+  --md-text-features: var(--md-sys-typescale-label-medium-font-feature-settings, normal);
+  --md-text-stretch: var(--md-sys-typescale-label-medium-font-stretch, normal);
+  --md-text-style: var(--md-sys-typescale-label-medium-font-style, normal);
+  --md-text-variations: var(--md-sys-typescale-label-medium-font-variation-settings, normal);
+}
+
+[data-material-typography='labelMediumEmphasized'] {
+  --md-text-font: var(--md-sys-typescale-label-medium-emphasized-font, var(--material-ui-font, inherit));
+  --md-text-size: var(--md-sys-typescale-label-medium-emphasized-size, 12px);
+  --md-text-weight: var(--md-sys-typescale-label-medium-emphasized-weight, 700);
+  --md-text-line-height: var(--md-sys-typescale-label-medium-emphasized-line-height, 16px);
+  --md-text-tracking: var(--md-sys-typescale-label-medium-emphasized-tracking, 0.5px);
+  --md-text-features: var(--md-sys-typescale-label-medium-emphasized-font-feature-settings, normal);
+  --md-text-stretch: var(--md-sys-typescale-label-medium-emphasized-font-stretch, normal);
+  --md-text-style: var(--md-sys-typescale-label-medium-emphasized-font-style, normal);
+  --md-text-variations: var(--md-sys-typescale-label-medium-emphasized-font-variation-settings, normal);
+}
+
+[data-material-typography='labelSmall'] {
+  --md-text-font: var(--md-sys-typescale-label-small-font, var(--material-ui-font, inherit));
+  --md-text-size: var(--md-sys-typescale-label-small-size, 11px);
+  --md-text-weight: var(--md-sys-typescale-label-small-weight, 500);
+  --md-text-line-height: var(--md-sys-typescale-label-small-line-height, 16px);
+  --md-text-tracking: var(--md-sys-typescale-label-small-tracking, 0.5px);
+  --md-text-features: var(--md-sys-typescale-label-small-font-feature-settings, normal);
+  --md-text-stretch: var(--md-sys-typescale-label-small-font-stretch, normal);
+  --md-text-style: var(--md-sys-typescale-label-small-font-style, normal);
+  --md-text-variations: var(--md-sys-typescale-label-small-font-variation-settings, normal);
+}
+
+[data-material-typography='labelSmallEmphasized'] {
+  --md-text-font: var(--md-sys-typescale-label-small-emphasized-font, var(--material-ui-font, inherit));
+  --md-text-size: var(--md-sys-typescale-label-small-emphasized-size, 11px);
+  --md-text-weight: var(--md-sys-typescale-label-small-emphasized-weight, 700);
+  --md-text-line-height: var(--md-sys-typescale-label-small-emphasized-line-height, 16px);
+  --md-text-tracking: var(--md-sys-typescale-label-small-emphasized-tracking, 0.5px);
+  --md-text-features: var(--md-sys-typescale-label-small-emphasized-font-feature-settings, normal);
+  --md-text-stretch: var(--md-sys-typescale-label-small-emphasized-font-stretch, normal);
+  --md-text-style: var(--md-sys-typescale-label-small-emphasized-font-style, normal);
+  --md-text-variations: var(--md-sys-typescale-label-small-emphasized-font-variation-settings, normal);
 }
 
 .material-text[data-soft-wrap='false'] {

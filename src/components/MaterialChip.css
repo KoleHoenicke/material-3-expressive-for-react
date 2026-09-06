@@ -200,15 +200,18 @@
   padding-inline-end: 8px;
 }
 
+.material-chip__label[data-material-typography] {
+  --md-text-font: var(--md-chip-label-font);
+  --md-text-size: var(--md-chip-label-size);
+  --md-text-weight: var(--md-chip-label-weight);
+  --md-text-line-height: var(--md-chip-label-line-height);
+  --md-text-tracking: var(--md-chip-label-tracking);
+}
+
 .material-chip__label {
   min-inline-size: 0;
   overflow: hidden;
   color: var(--md-chip-label-color);
-  font-family: var(--md-chip-label-font);
-  font-size: var(--md-chip-label-size);
-  font-weight: var(--md-chip-label-weight);
-  line-height: var(--md-chip-label-line-height);
-  letter-spacing: var(--md-chip-label-tracking);
   text-align: start;
   text-overflow: ellipsis;
   white-space: nowrap;

@@ -215,7 +215,20 @@ export const MaterialExtendedFloatingActionButton = forwardRef<
             {icon}
           </span>
         ) : null}
-        <span className="material-fab__label">{label}</span>
+        <span
+          className="material-fab__label"
+          data-material-typography={
+            size === 'baseline'
+              ? 'labelLargeEmphasized'
+              : size === 'medium'
+                ? 'titleLargeEmphasized'
+                : size === 'large'
+                  ? 'headlineSmallEmphasized'
+                  : 'titleMediumEmphasized'
+          }
+        >
+          {label}
+        </span>
       </span>
     </button>
   )

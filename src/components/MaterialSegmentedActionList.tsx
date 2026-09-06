@@ -159,7 +159,12 @@ export function MaterialSegmentedActionList({
                 </span>
               ) : null}
               <span className="material-segmented-action__body">
-                <span className="material-segmented-action__label">{action.label}</span>
+                <span
+                  className="material-segmented-action__label"
+                  data-material-typography={active ? 'bodyLargeEmphasized' : 'bodyLarge'}
+                >
+                  {action.label}
+                </span>
                 {action.supportingText ? (
                   <span className="material-segmented-action__supporting-line">
                     {action.supportingIcon ? (
@@ -167,14 +172,22 @@ export function MaterialSegmentedActionList({
                         {action.supportingIcon}
                       </span>
                     ) : null}
-                    <span className="material-segmented-action__supporting-text">
+                    <span
+                      className="material-segmented-action__supporting-text"
+                      data-material-typography="bodyMedium"
+                    >
                       {action.supportingText}
                     </span>
                   </span>
                 ) : null}
               </span>
               {action.trailing ? (
-                <span className="material-segmented-action__trailing">{action.trailing}</span>
+                <span
+                  className="material-segmented-action__trailing"
+                  data-material-typography="bodyMedium"
+                >
+                  {action.trailing}
+                </span>
               ) : null}
             </button>
             {action.trailingSwitch ? (

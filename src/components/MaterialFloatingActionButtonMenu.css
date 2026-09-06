@@ -407,13 +407,16 @@
   box-shadow: var(--md-fab-menu-item-container-elevation);
   color: var(--md-fab-menu-item-content-color);
   cursor: pointer;
-  font-family: var(--md-fab-menu-item-label-font);
-  font-size: var(--md-fab-menu-item-label-size);
-  font-weight: var(--md-fab-menu-item-label-weight);
-  letter-spacing: var(--md-fab-menu-item-label-tracking);
-  line-height: var(--md-fab-menu-item-label-line-height);
   text-align: start;
   -webkit-tap-highlight-color: transparent;
+}
+
+.material-fab-menu-item__label[data-material-typography] {
+  --md-text-font: var(--md-fab-menu-item-label-font);
+  --md-text-size: var(--md-fab-menu-item-label-size);
+  --md-text-weight: var(--md-fab-menu-item-label-weight);
+  --md-text-line-height: var(--md-fab-menu-item-label-line-height);
+  --md-text-tracking: var(--md-fab-menu-item-label-tracking);
 }
 
 .material-fab-menu-item:disabled {
@@ -472,4 +475,3 @@
     border-color: Highlight;
   }
 }
-

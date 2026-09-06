@@ -6,7 +6,6 @@
   --md-badge-large-max-width: 34px;
   --md-badge-large-shape: 8px;
   --md-badge-large-horizontal-padding: 4px;
-  --md-badge-label-text-size: 0.6875rem;
   --md-badge-container-color: var(--md-sys-color-error);
   --md-badge-label-text-color: var(--md-sys-color-on-error);
   box-sizing: border-box;
@@ -16,10 +15,6 @@
   overflow: hidden;
   background: var(--md-badge-container-color);
   color: var(--md-badge-label-text-color);
-  font-family: var(--material-ui-font, inherit);
-  font-size: var(--md-badge-label-text-size);
-  font-weight: 500;
-  letter-spacing: 0;
   text-align: center;
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
@@ -31,7 +26,6 @@
   block-size: var(--md-badge-large-height);
   padding-inline: var(--md-badge-large-horizontal-padding);
   border-radius: var(--md-badge-large-shape);
-  line-height: var(--md-badge-large-height);
 }
 
 .material-badge--small {

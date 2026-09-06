@@ -4,7 +4,7 @@ import { Gallery } from './Gallery'
 
 describe('interactive gallery', () => {
   it('renders the full public component surface', () => {
-    render(<Gallery />)
+    const { container } = render(<Gallery />)
 
     const apiLabels = [
       'Button',
@@ -31,6 +31,12 @@ describe('interactive gallery', () => {
     for (const label of apiLabels) {
       expect(screen.getByText(label, { selector: 'code' })).toBeInTheDocument()
     }
+
+    expect(container.querySelectorAll('.app-bar-demo > [data-material-divider]')).toHaveLength(8)
+    expect(container.querySelector('.footer-divider')).toHaveAttribute(
+      'data-material-divider',
+      '',
+    )
   })
 
   it('updates the theme and live component values', () => {

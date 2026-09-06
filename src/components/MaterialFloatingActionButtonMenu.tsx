@@ -436,8 +436,9 @@ export const MaterialFloatingActionButtonMenuItem = forwardRef<
       <span className="material-fab-menu-item__icon" aria-hidden="true">
         {icon}
       </span>
-      <span className="material-fab-menu-item__label">{children}</span>
+      <span className="material-fab-menu-item__label" data-material-typography="titleMedium">
+        {children}
+      </span>
     </button>
   )
 })
-

@@ -147,10 +147,10 @@ function Specimen({
     <article className={wide ? 'specimen specimen--wide' : 'specimen'} id={id}>
       <header className="specimen__header">
         <div>
-          <h3>{title}</h3>
-          <p>{description}</p>
+          <h3 data-material-typography="titleLargeEmphasized">{title}</h3>
+          <p data-material-typography="bodyMedium">{description}</p>
         </div>
-        <code>{api ?? title.replaceAll(' ', '')}</code>
+        <code data-material-typography="labelSmall">{api ?? title.replaceAll(' ', '')}</code>
       </header>
       <div className="specimen__stage">{children}</div>
     </article>
@@ -158,7 +158,11 @@ function Specimen({
 }
 
 function StageLabel({ children }: { children: ReactNode }) {
-  return <span className="stage-label">{children}</span>
+  return <span className="stage-label" data-material-typography="labelMediumEmphasized">{children}</span>
+}
+
+function Eyebrow({ children }: { children: ReactNode }) {
+  return <span className="eyebrow" data-material-typography="labelLargeEmphasized">{children}</span>
 }
 
 export function Gallery() {
@@ -278,9 +282,9 @@ export function Gallery() {
 
   return (
     <MaterialThemeProvider mode={mode} motionScheme={motionScheme} seed={{ primary: seed }}>
-      <div className="gallery-shell">
-        <header className="topbar">
-          <a className="wordmark" href="#top" aria-label="Material React Components home">
+      <div className="gallery-shell" data-material-typography="bodyLarge">
+        <header className="topbar" data-material-typography="labelMedium">
+          <a className="wordmark" href="#top" aria-label="Material React Components home" data-material-typography="titleSmallEmphasized">
             <span className="wordmark__mark"><Icon name="grid" /></span>
             <span>Material React Components</span>
           </a>
@@ -295,7 +299,7 @@ export function Gallery() {
             <a href="#lists">Lists</a>
             <a href="#status">Status</a>
           </nav>
-          <a className="github-link" href="https://github.com/KoleHoenicke/material-react-components" aria-label="View source on GitHub">
+          <a className="github-link" href="https://github.com/KoleHoenicke/material-react-components" aria-label="View source on GitHub" data-material-typography="labelMediumEmphasized">
             <Icon name="github" />
             <span>GitHub</span>
           </a>
@@ -304,12 +308,12 @@ export function Gallery() {
         <main className="gallery-content" id="top">
           <section className="hero" aria-labelledby="gallery-title">
             <div className="hero__copy">
-              <span className="eyebrow">Interactive component gallery</span>
-              <h1 id="gallery-title">Material controls that move like they should.</h1>
-              <p>Every example is rendered by the package. Change the theme, press the controls, and inspect the current Material 3 Expressive behavior.</p>
-              <div className="hero__meta">
+              <Eyebrow>Interactive component gallery</Eyebrow>
+              <h1 id="gallery-title" data-material-typography="displayLargeEmphasized">Material controls that move like they should.</h1>
+              <p data-material-typography="bodyLarge">Every example is rendered by the package. Change the theme, press the controls, and inspect the current Material 3 Expressive behavior.</p>
+              <div className="hero__meta" data-material-typography="labelMediumEmphasized">
                 <span>25 modules</span>
-                <span>186 tests</span>
+                <span>193 tests</span>
                 <span>React 18 and 19</span>
               </div>
             </div>
@@ -325,12 +329,12 @@ export function Gallery() {
             <div className="theme-panel__title">
               <span className="theme-panel__icon"><Icon name="palette" /></span>
               <div>
-                <h2 id="theme-title">Theme playground</h2>
-                <p>These controls change the color roles and motion scheme for every specimen below.</p>
+                <h2 id="theme-title" data-material-typography="titleLargeEmphasized">Theme playground</h2>
+                <p data-material-typography="bodyMedium">These controls change the color roles and motion scheme for every specimen below.</p>
               </div>
             </div>
             <div className="theme-panel__controls">
-              <fieldset className="color-presets">
+              <fieldset className="color-presets" data-material-typography="labelMedium">
                 <legend>Source color</legend>
                 {themePresets.map((preset) => (
                   <button
@@ -348,11 +352,11 @@ export function Gallery() {
                   <Icon name="add" />
                 </label>
               </fieldset>
-              <label className="mode-control">
+              <label className="mode-control" data-material-typography="labelMedium">
                 <span className="mode-control__label"><Icon name="moon" /> Dark theme</span>
                 <Switch aria-label="Use dark theme" checked={mode === 'dark'} onChange={(event) => setMode(event.currentTarget.checked ? 'dark' : 'light')} />
               </label>
-              <label className="mode-control">
+              <label className="mode-control" data-material-typography="labelMedium">
                 <span className="mode-control__label">Expressive motion</span>
                 <Switch
                   aria-label="Use expressive motion"
@@ -365,8 +369,8 @@ export function Gallery() {
 
           <section className="component-section" id="typography" aria-labelledby="typography-title">
             <div className="section-heading">
-              <span className="eyebrow">Type scale and text</span>
-              <h2 id="typography-title">Typography</h2>
+              <Eyebrow>Type scale and text</Eyebrow>
+              <h2 id="typography-title" data-material-typography="displayMediumEmphasized">Typography</h2>
             </div>
             <div className="specimen-grid">
               <Specimen
@@ -377,9 +381,9 @@ export function Gallery() {
               >
                 <div className="type-scale" role="table" aria-label="Material 3 type scale">
                   <div className="type-scale__header" role="row">
-                    <span role="columnheader">Role and metrics</span>
-                    <span role="columnheader">Baseline</span>
-                    <span role="columnheader">Emphasized</span>
+                    <span role="columnheader" data-material-typography="labelSmallEmphasized">Role and metrics</span>
+                    <span role="columnheader" data-material-typography="labelSmallEmphasized">Baseline</span>
+                    <span role="columnheader" data-material-typography="labelSmallEmphasized">Emphasized</span>
                   </div>
                   {MATERIAL_TYPOGRAPHY_BASE_ROLES.map((role) => {
                     const metrics = MATERIAL_DEFAULT_TYPOGRAPHY[role]
@@ -392,8 +396,8 @@ export function Gallery() {
                     return (
                       <div className="type-scale__row" role="row" key={role}>
                         <div className="type-scale__meta" role="rowheader">
-                          <code>{role}</code>
-                          <span>{metrics.fontSize} / {metrics.lineHeight} · {metrics.fontWeight} · {metrics.letterSpacing}</span>
+                          <code data-material-typography="labelSmallEmphasized">{role}</code>
+                          <span data-material-typography="labelSmall">{metrics.fontSize} / {metrics.lineHeight} · {metrics.fontWeight} · {metrics.letterSpacing}</span>
                         </div>
                         <div role="cell"><Text as="div" variant={role}>{sample}</Text></div>
                         <div role="cell"><Text as="div" variant={role} emphasized>{sample}</Text></div>
@@ -407,8 +411,8 @@ export function Gallery() {
 
           <section className="component-section" id="app-bars" aria-labelledby="app-bars-title">
             <div className="section-heading">
-              <span className="eyebrow">Navigation and actions</span>
-              <h2 id="app-bars-title">App bars</h2>
+              <Eyebrow>Navigation and actions</Eyebrow>
+              <h2 id="app-bars-title" data-material-typography="displayMediumEmphasized">App bars</h2>
             </div>
             <div className="specimen-grid">
               <Specimen
@@ -417,7 +421,7 @@ export function Gallery() {
                 description="Every Android variant, with exact expanded and collapsed title geometry."
                 wide
               >
-                <label className="app-bar-progress-control">
+                <label className="app-bar-progress-control" data-material-typography="labelMediumEmphasized">
                   <span>Collapse progress <output>{Math.round(appBarProgress * 100)}%</output></span>
                   <input
                     aria-label="Top app bar collapse progress"
@@ -430,12 +434,12 @@ export function Gallery() {
                   />
                 </label>
                 <div className="app-bar-grid">
-                  <div className="app-bar-demo"><StageLabel>Small</StageLabel><TopAppBar title="Inbox" navigationIcon={<AppBarIconButton aria-label="Back"><Icon name="back" /></AppBarIconButton>} actions={<><AppBarIconButton aria-label="Search"><Icon name="search" /></AppBarIconButton><AppBarIconButton aria-label="More options"><Icon name="more" /></AppBarIconButton></>} /></div>
-                  <div className="app-bar-demo"><StageLabel>Center aligned</StageLabel><CenterAlignedTopAppBar title="Photos" navigationIcon={<AppBarIconButton aria-label="Back"><Icon name="back" /></AppBarIconButton>} actions={<AppBarIconButton aria-label="Favorite"><Icon name="star" /></AppBarIconButton>} /></div>
-                  <div className="app-bar-demo"><StageLabel>Medium</StageLabel><MediumTopAppBar title="Your library" collapseProgress={appBarProgress} navigationIcon={<AppBarIconButton aria-label="Back"><Icon name="back" /></AppBarIconButton>} actions={<AppBarIconButton aria-label="Search"><Icon name="search" /></AppBarIconButton>} /></div>
-                  <div className="app-bar-demo"><StageLabel>Medium flexible</StageLabel><MediumFlexibleTopAppBar title="Your library" subtitle="12 saved collections" collapseProgress={appBarProgress} navigationIcon={<AppBarIconButton aria-label="Back"><Icon name="back" /></AppBarIconButton>} actions={<AppBarIconButton aria-label="More options"><Icon name="more" /></AppBarIconButton>} /></div>
-                  <div className="app-bar-demo"><StageLabel>Large</StageLabel><LargeTopAppBar title="Your photos" collapseProgress={appBarProgress} navigationIcon={<AppBarIconButton aria-label="Back"><Icon name="back" /></AppBarIconButton>} actions={<AppBarIconButton aria-label="Search"><Icon name="search" /></AppBarIconButton>} /></div>
-                  <div className="app-bar-demo"><StageLabel>Large flexible</StageLabel><LargeFlexibleTopAppBar title="Weekend in Kyoto" subtitle="April 18–21" collapseProgress={appBarProgress} navigationIcon={<AppBarIconButton aria-label="Back"><Icon name="back" /></AppBarIconButton>} actions={<AppBarIconButton aria-label="More options"><Icon name="more" /></AppBarIconButton>} /></div>
+                  <div className="app-bar-demo"><StageLabel>Small</StageLabel><HorizontalDivider /><TopAppBar title="Inbox" navigationIcon={<AppBarIconButton aria-label="Back"><Icon name="back" /></AppBarIconButton>} actions={<><AppBarIconButton aria-label="Search"><Icon name="search" /></AppBarIconButton><AppBarIconButton aria-label="More options"><Icon name="more" /></AppBarIconButton></>} /></div>
+                  <div className="app-bar-demo"><StageLabel>Center aligned</StageLabel><HorizontalDivider /><CenterAlignedTopAppBar title="Photos" navigationIcon={<AppBarIconButton aria-label="Back"><Icon name="back" /></AppBarIconButton>} actions={<AppBarIconButton aria-label="Favorite"><Icon name="star" /></AppBarIconButton>} /></div>
+                  <div className="app-bar-demo"><StageLabel>Medium</StageLabel><HorizontalDivider /><MediumTopAppBar title="Your library" collapseProgress={appBarProgress} navigationIcon={<AppBarIconButton aria-label="Back"><Icon name="back" /></AppBarIconButton>} actions={<AppBarIconButton aria-label="Search"><Icon name="search" /></AppBarIconButton>} /></div>
+                  <div className="app-bar-demo"><StageLabel>Medium flexible</StageLabel><HorizontalDivider /><MediumFlexibleTopAppBar title="Your library" subtitle="12 saved collections" collapseProgress={appBarProgress} navigationIcon={<AppBarIconButton aria-label="Back"><Icon name="back" /></AppBarIconButton>} actions={<AppBarIconButton aria-label="More options"><Icon name="more" /></AppBarIconButton>} /></div>
+                  <div className="app-bar-demo"><StageLabel>Large</StageLabel><HorizontalDivider /><LargeTopAppBar title="Your photos" collapseProgress={appBarProgress} navigationIcon={<AppBarIconButton aria-label="Back"><Icon name="back" /></AppBarIconButton>} actions={<AppBarIconButton aria-label="Search"><Icon name="search" /></AppBarIconButton>} /></div>
+                  <div className="app-bar-demo"><StageLabel>Large flexible</StageLabel><HorizontalDivider /><LargeFlexibleTopAppBar title="Weekend in Kyoto" subtitle="April 18–21" collapseProgress={appBarProgress} navigationIcon={<AppBarIconButton aria-label="Back"><Icon name="back" /></AppBarIconButton>} actions={<AppBarIconButton aria-label="More options"><Icon name="more" /></AppBarIconButton>} /></div>
                 </div>
               </Specimen>
 
@@ -447,7 +451,7 @@ export function Gallery() {
               >
                 <div className="bottom-app-bar-grid">
                   <div className="app-bar-demo">
-                    <StageLabel>Standard with FAB</StageLabel>
+                    <StageLabel>Standard with FAB</StageLabel><HorizontalDivider />
                     <BottomAppBar
                       aria-label="Document actions"
                       safeAreaInsets={false}
@@ -456,7 +460,7 @@ export function Gallery() {
                     />
                   </div>
                   <div className="app-bar-demo">
-                    <StageLabel>Flexible, space between</StageLabel>
+                    <StageLabel>Flexible, space between</StageLabel><HorizontalDivider />
                     <BottomAppBar aria-label="Flexible actions" safeAreaInsets={false} variant="flexible">
                       <AppBarIconButton aria-label="Grid"><Icon name="grid" /></AppBarIconButton>
                       <AppBarIconButton aria-label="Search"><Icon name="search" /></AppBarIconButton>
@@ -471,8 +475,8 @@ export function Gallery() {
 
           <section className="component-section" id="cards" aria-labelledby="cards-title">
             <div className="section-heading">
-              <span className="eyebrow">Content</span>
-              <h2 id="cards-title">Cards</h2>
+              <Eyebrow>Content</Eyebrow>
+              <h2 id="cards-title" data-material-typography="displayMediumEmphasized">Cards</h2>
             </div>
             <div className="specimen-grid">
               <Specimen
@@ -489,17 +493,17 @@ export function Gallery() {
                     onDraggedChange={setCardDragged}
                     onClick={() => setMessage('Elevated card opened')}
                   >
-                    <span className="demo-card__label">Elevated</span>
-                    <span className="demo-card__title">Drag or open this card</span>
-                    <span className="demo-card__supporting">
+                    <span className="demo-card__label" data-material-typography="labelLargeEmphasized">Elevated</span>
+                    <span className="demo-card__title" data-material-typography="titleLargeEmphasized">Drag or open this card</span>
+                    <span className="demo-card__supporting" data-material-typography="bodyMedium">
                       Hover raises it to level 2. Dragging uses the level 4 token.
                     </span>
                   </Card>
 
                   <Card variant="filled" contentPadding={16}>
-                    <span className="demo-card__label">Filled</span>
-                    <h4 className="demo-card__title">Flexible content container</h4>
-                    <p className="demo-card__supporting">
+                    <span className="demo-card__label" data-material-typography="labelLargeEmphasized">Filled</span>
+                    <h4 className="demo-card__title" data-material-typography="titleLargeEmphasized">Flexible content container</h4>
+                    <p className="demo-card__supporting" data-material-typography="bodyMedium">
                       Passive cards can contain their own focused actions without making the whole
                       surface clickable.
                     </p>
@@ -517,11 +521,11 @@ export function Gallery() {
                     checked={cardSelected}
                     onCheckedChange={setCardSelected}
                   >
-                    <span className="demo-card__label">Outlined</span>
-                    <span className="demo-card__title">
+                    <span className="demo-card__label" data-material-typography="labelLargeEmphasized">Outlined</span>
+                    <span className="demo-card__title" data-material-typography={cardSelected ? 'titleLargeEmphasized' : 'titleLarge'}>
                       {cardSelected ? 'Selected report' : 'Select this report'}
                     </span>
-                    <span className="demo-card__supporting">
+                    <span className="demo-card__supporting" data-material-typography="bodyMedium">
                       Controlled checked state includes the Android selection layer, icon, and
                       outline.
                     </span>
@@ -533,8 +537,8 @@ export function Gallery() {
 
           <section className="component-section" id="dividers" aria-labelledby="dividers-title">
             <div className="section-heading">
-              <span className="eyebrow">Content grouping</span>
-              <h2 id="dividers-title">Dividers</h2>
+              <Eyebrow>Content grouping</Eyebrow>
+              <h2 id="dividers-title" data-material-typography="displayMediumEmphasized">Dividers</h2>
             </div>
             <div className="specimen-grid">
               <Specimen
@@ -564,8 +568,8 @@ export function Gallery() {
 
           <section className="component-section" id="chips" aria-labelledby="chips-title">
             <div className="section-heading">
-              <span className="eyebrow">Compact actions and choices</span>
-              <h2 id="chips-title">Chips</h2>
+              <Eyebrow>Compact actions and choices</Eyebrow>
+              <h2 id="chips-title" data-material-typography="displayMediumEmphasized">Chips</h2>
             </div>
             <div className="specimen-grid">
               <Specimen
@@ -611,8 +615,8 @@ export function Gallery() {
 
           <section className="component-section" id="actions" aria-labelledby="actions-title">
             <div className="section-heading">
-              <span className="eyebrow">Actions</span>
-              <h2 id="actions-title">FABs, buttons, and groups</h2>
+              <Eyebrow>Actions</Eyebrow>
+              <h2 id="actions-title" data-material-typography="displayMediumEmphasized">FABs, buttons, and groups</h2>
             </div>
             <div className="specimen-grid">
               <Specimen
@@ -745,7 +749,7 @@ export function Gallery() {
                   </div>
                   <div className="fab-menu-notes">
                     <StageLabel>{fabMenuColor} set</StageLabel>
-                    <strong>56px menu items</strong>
+                    <strong data-material-typography="titleMediumEmphasized">56px menu items</strong>
                     <span>The close button stays anchored to the launcher's top trailing corner.</span>
                     <span>Medium and large launchers preserve 40px and 56px bottom margins after opening.</span>
                   </div>
@@ -784,7 +788,7 @@ export function Gallery() {
                 <button className="ripple-tile" type="button" onClick={() => setMessage('Custom ripple pressed')}>
                   <MaterialRipple />
                   <span className="ripple-tile__icon"><Icon name="code" /></span>
-                  <span><strong>Press anywhere</strong><small>Pointer and keyboard feedback</small></span>
+                  <span><strong data-material-typography="titleMediumEmphasized">Press anywhere</strong><small data-material-typography="bodyMedium">Pointer and keyboard feedback</small></span>
                 </button>
               </Specimen>
             </div>
@@ -792,8 +796,8 @@ export function Gallery() {
 
           <section className="component-section" id="selection" aria-labelledby="selection-title">
             <div className="section-heading">
-              <span className="eyebrow">Selection</span>
-              <h2 id="selection-title">Checkboxes, switches, and sliders</h2>
+              <Eyebrow>Selection</Eyebrow>
+              <h2 id="selection-title" data-material-typography="displayMediumEmphasized">Checkboxes, switches, and sliders</h2>
             </div>
             <div className="specimen-grid">
               <Specimen
@@ -802,7 +806,7 @@ export function Gallery() {
                 description="Native form semantics with checked, mixed, disabled, error, and full-row list behavior."
                 wide
               >
-                <div className="checkbox-state-showcase" aria-label="Checkbox states">
+                <div className="checkbox-state-showcase" aria-label="Checkbox states" data-material-typography="labelLarge">
                   <label><Checkbox /><span>Unchecked</span></label>
                   <label><Checkbox defaultChecked /><span>Checked</span></label>
                   <label><Checkbox indeterminate /><span>Indeterminate</span></label>
@@ -855,16 +859,16 @@ export function Gallery() {
 
               <Specimen title="Switch" description="Selected, unselected, icon, and disabled states.">
                 <div className="switch-list">
-                  <label><span><strong>Notifications</strong><small>Selected icon</small></span><Switch aria-label="Notifications" checked={notifications} onChange={(event) => setNotifications(event.currentTarget.checked)} /></label>
-                  <label><span><strong>Compact layout</strong><small>Icons in both states</small></span><Switch aria-label="Compact layout" iconMode="both" checked={compact} onChange={(event) => setCompact(event.currentTarget.checked)} /></label>
-                  <label><span><strong>Sync over cellular</strong><small>Unavailable</small></span><Switch aria-label="Sync over cellular" checked={false} disabled /></label>
+                  <label><span><strong data-material-typography="titleMediumEmphasized">Notifications</strong><small data-material-typography="bodyMedium">Selected icon</small></span><Switch aria-label="Notifications" checked={notifications} onChange={(event) => setNotifications(event.currentTarget.checked)} /></label>
+                  <label><span><strong data-material-typography="titleMediumEmphasized">Compact layout</strong><small data-material-typography="bodyMedium">Icons in both states</small></span><Switch aria-label="Compact layout" iconMode="both" checked={compact} onChange={(event) => setCompact(event.currentTarget.checked)} /></label>
+                  <label><span><strong data-material-typography="titleMediumEmphasized">Sync over cellular</strong><small data-material-typography="bodyMedium">Unavailable</small></span><Switch aria-label="Sync over cellular" checked={false} disabled /></label>
                 </div>
               </Specimen>
 
               <Specimen title="Slider" description="Continuous values, stops, centered ranges, and indicators." wide>
                 <div className="slider-grid">
-                  <label className="slider-demo"><span>Standard <output>{sliderValue}%</output></span><Slider aria-label="Standard slider" min={0} max={100} value={sliderValue} valueIndicator="active" valueLabel={(value) => `${value}%`} stops={[0, 25, 50, 75, 100]} onChange={(event) => setSliderValue(event.currentTarget.valueAsNumber)} /></label>
-                  <label className="slider-demo"><span>Centered <output>{centeredValue > 0 ? `+${centeredValue}` : centeredValue}</output></span><Slider aria-label="Centered slider" min={-50} max={50} origin={0} value={centeredValue} valueIndicator="always" stops={[-50, -25, 0, 25, 50]} onChange={(event) => setCenteredValue(event.currentTarget.valueAsNumber)} /></label>
+                  <label className="slider-demo" data-material-typography="labelLarge"><span>Standard <output>{sliderValue}%</output></span><Slider aria-label="Standard slider" min={0} max={100} value={sliderValue} valueIndicator="active" valueLabel={(value) => `${value}%`} stops={[0, 25, 50, 75, 100]} onChange={(event) => setSliderValue(event.currentTarget.valueAsNumber)} /></label>
+                  <label className="slider-demo" data-material-typography="labelLarge"><span>Centered <output>{centeredValue > 0 ? `+${centeredValue}` : centeredValue}</output></span><Slider aria-label="Centered slider" min={-50} max={50} origin={0} value={centeredValue} valueIndicator="always" stops={[-50, -25, 0, 25, 50]} onChange={(event) => setCenteredValue(event.currentTarget.valueAsNumber)} /></label>
                 </div>
               </Specimen>
             </div>
@@ -872,8 +876,8 @@ export function Gallery() {
 
           <section className="component-section" id="lists" aria-labelledby="lists-title">
             <div className="section-heading">
-              <span className="eyebrow">Lists</span>
-              <h2 id="lists-title">Material 3 Expressive lists</h2>
+              <Eyebrow>Lists</Eyebrow>
+              <h2 id="lists-title" data-material-typography="displayMediumEmphasized">Material 3 Expressive lists</h2>
             </div>
             <div className="specimen-grid specimen-grid--lists">
               <Specimen
@@ -980,8 +984,8 @@ export function Gallery() {
                   <ListSwipeActions
                     actions={
                       <>
-                        <button className="demo-swipe-action demo-swipe-action--archive" type="button" onClick={() => setMessage('Archived')}>Archive</button>
-                        <button className="demo-swipe-action demo-swipe-action--delete" type="button" onClick={() => setMessage('Deleted')}>Delete</button>
+                        <button data-material-typography="labelLargeEmphasized" className="demo-swipe-action demo-swipe-action--archive" type="button" onClick={() => setMessage('Archived')}>Archive</button>
+                        <button data-material-typography="labelLargeEmphasized" className="demo-swipe-action demo-swipe-action--delete" type="button" onClick={() => setMessage('Deleted')}>Delete</button>
                       </>
                     }
                     actionsLabel="Message actions"
@@ -1011,8 +1015,8 @@ export function Gallery() {
 
           <section className="component-section" id="status" aria-labelledby="status-title">
             <div className="section-heading">
-              <span className="eyebrow">Status and input</span>
-              <h2 id="status-title">Progress, counts, and quantity</h2>
+              <Eyebrow>Status and input</Eyebrow>
+              <h2 id="status-title" data-material-typography="displayMediumEmphasized">Progress, counts, and quantity</h2>
             </div>
             <div className="specimen-grid">
               <Specimen title="Badge and list count" api="Badge · ListCount" description="Small and large badges with semantic color roles.">
@@ -1031,14 +1035,14 @@ export function Gallery() {
 
               <Specimen title="Quantity stepper" api="QuantityStepper" description="Buttons collapse at the minimum and maximum values.">
                 <div className="quantity-demo">
-                  <span><strong>Guests</strong><small>Maximum 12</small></span>
+                  <span><strong data-material-typography="titleMediumEmphasized">Guests</strong><small data-material-typography="bodyMedium">Maximum 12</small></span>
                   <QuantityStepper label="Guests" min={0} max={12} value={quantity} onChange={setQuantity} decrementIcon={<Icon name="minus" />} incrementIcon={<Icon name="add" />} />
                 </div>
               </Specimen>
 
               <Specimen title="Progress indicators" api="LinearProgressIndicator · CircularProgressIndicator" description="Standard and Expressive shapes, each with determinate and indeterminate modes." wide>
                 <div className="progress-demo">
-                  <div className="progress-demo__label"><span>Gallery progress</span><output>{sliderValue}%</output></div>
+                  <div className="progress-demo__label" data-material-typography="labelLarge"><span>Gallery progress</span><output>{sliderValue}%</output></div>
                   <div className="progress-demo__linear-grid">
                     <div><StageLabel>Linear</StageLabel><LinearProgressIndicator label="Linear gallery progress" value={sliderValue / 100} /></div>
                     <div><StageLabel>Linear, indeterminate</StageLabel><LinearProgressIndicator label="Loading linear content" /></div>
@@ -1058,7 +1062,7 @@ export function Gallery() {
               </Specimen>
 
               <Specimen title="Loading indicator" api="LoadingIndicator" description="Contained and standard morphing indicators.">
-                <div className="loading-showcase">
+                <div className="loading-showcase" data-material-typography="labelMedium">
                   <div><LoadingIndicator label="Contained loading indicator" /><span>Contained</span></div>
                   <div><LoadingIndicator label="Standard loading indicator" variant="standard" /><span>Standard</span></div>
                 </div>
@@ -1066,7 +1070,7 @@ export function Gallery() {
 
               <Specimen title="Trailing action" api="ListTrailingAction" description="Compact icon actions sized for a 48 pixel touch target.">
                 <div className="demo-list-row">
-                  <span><strong>Draft component</strong><small>Edited two minutes ago</small></span>
+                  <span><strong data-material-typography="titleMediumEmphasized">Draft component</strong><small data-material-typography="bodyMedium">Edited two minutes ago</small></span>
                   <ListTrailingAction aria-label="Edit draft" variant="filled-tonal" onClick={() => setMessage('Edit action pressed')}><Icon name="edit" /></ListTrailingAction>
                   <ListTrailingAction aria-label="Delete draft" onClick={() => setMessage('Delete action pressed')}><Icon name="delete" /></ListTrailingAction>
                 </div>
@@ -1075,11 +1079,12 @@ export function Gallery() {
           </section>
         </main>
 
-        <footer>
+        <HorizontalDivider className="footer-divider" />
+        <footer data-material-typography="bodySmall">
           <span>Independent community implementation. Not affiliated with Google.</span>
-          <a href="https://github.com/KoleHoenicke/material-react-components">Source and installation</a>
+          <a href="https://github.com/KoleHoenicke/material-react-components" data-material-typography="bodySmallEmphasized">Source and installation</a>
         </footer>
-        {message ? <div className="gallery-toast" role="status" aria-live="polite">{message}</div> : null}
+        {message ? <div className="gallery-toast" role="status" aria-live="polite" data-material-typography="bodyMedium">{message}</div> : null}
       </div>
     </MaterialThemeProvider>
   )

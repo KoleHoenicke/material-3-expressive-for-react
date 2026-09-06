@@ -26,11 +26,6 @@
   justify-content: end;
   min-block-size: var(--md-quantity-stepper-touch-target-size);
   color: var(--md-quantity-stepper-button-color);
-  font-family: var(--md-sys-typescale-label-large-font, var(--material-ui-font, inherit));
-  font-size: var(--md-sys-typescale-label-large-size, 0.875rem);
-  font-weight: var(--md-sys-typescale-label-large-weight, 500);
-  line-height: var(--md-sys-typescale-label-large-line-height, 1.25rem);
-  letter-spacing: 0;
   font-variant-numeric: tabular-nums;
 }
 
@@ -163,10 +158,7 @@
   background: var(--md-quantity-stepper-container-color);
   caret-color: var(--md-sys-color-primary);
   color: var(--md-quantity-stepper-value-color);
-  font: inherit;
   font-variant-numeric: inherit;
-  letter-spacing: 0;
-  line-height: inherit;
   text-align: center;
   white-space: nowrap;
   -webkit-tap-highlight-color: transparent;

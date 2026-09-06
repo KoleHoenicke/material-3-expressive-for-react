@@ -257,6 +257,31 @@ describe('MaterialList', () => {
       'data-inset',
       'full',
     )
+    expect(container.querySelector('[data-material-list-divider]')).toHaveClass(
+      'material-divider',
+    )
+    expect(container.querySelector('[data-material-list-divider]')).toHaveAttribute(
+      'aria-orientation',
+      'horizontal',
+    )
+  })
+
+  it('uses emphasized type only for a selected item headline', () => {
+    render(
+      <MaterialList selectionMode="single">
+        <MaterialListItem headline="Selected" selected />
+        <MaterialListItem headline="Available" />
+      </MaterialList>,
+    )
+
+    expect(screen.getByText('Selected')).toHaveAttribute(
+      'data-material-typography',
+      'bodyLargeEmphasized',
+    )
+    expect(screen.getByText('Available')).toHaveAttribute(
+      'data-material-typography',
+      'bodyLarge',
+    )
   })
 })
 

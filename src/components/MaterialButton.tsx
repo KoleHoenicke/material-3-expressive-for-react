@@ -46,6 +46,15 @@ export const MaterialButton = forwardRef<HTMLButtonElement, MaterialButtonProps>
     ref,
   ) {
     const radioToggle = toggle && role === 'radio'
+    const typographyRole =
+      size === 'medium'
+        ? 'titleMedium'
+        : size === 'large'
+          ? 'headlineSmall'
+          : size === 'extra-large'
+            ? 'headlineLarge'
+            : 'labelLarge'
+    const emphasized = variant === 'filled' || selected
 
     return (
       <button
@@ -66,6 +75,9 @@ export const MaterialButton = forwardRef<HTMLButtonElement, MaterialButtonProps>
         aria-pressed={toggle && !radioToggle ? selected : buttonProps['aria-pressed']}
         data-icon-only={iconOnly ? 'true' : undefined}
         data-material-button
+        data-material-typography={
+          iconOnly ? undefined : `${typographyRole}${emphasized ? 'Emphasized' : ''}`
+        }
         data-selected={toggle ? (selected ? 'true' : 'false') : undefined}
         data-shape={shape}
         data-size={size}

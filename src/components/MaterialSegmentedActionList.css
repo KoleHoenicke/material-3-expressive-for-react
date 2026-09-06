@@ -178,16 +178,11 @@
 
 .material-segmented-action__label {
   color: inherit;
-  font-family: var(--md-sys-typescale-body-large-font, var(--material-ui-font, inherit));
-  font-size: var(--md-sys-typescale-body-large-size, 1rem);
-  font-weight: var(--md-sys-typescale-body-large-weight, 400);
-  line-height: var(--md-sys-typescale-body-large-line-height, 1.5rem);
-  letter-spacing: 0;
 }
 
 .material-segmented-action__match {
   color: var(--md-sys-color-tertiary);
-  font-weight: var(--md-sys-typescale-title-medium-weight, 500);
+  font-weight: var(--md-sys-typescale-body-large-emphasized-weight, 500);
 }
 
 .material-segmented-action__supporting-line {
@@ -216,11 +211,6 @@
 .material-segmented-action__supporting-text,
 .material-segmented-action__trailing {
   color: var(--md-sys-color-on-surface-variant);
-  font-family: var(--md-sys-typescale-body-medium-font, var(--material-ui-font, inherit));
-  font-size: var(--md-sys-typescale-body-medium-size, 0.875rem);
-  font-weight: var(--md-sys-typescale-body-medium-weight, 400);
-  line-height: var(--md-sys-typescale-body-medium-line-height, 1.25rem);
-  letter-spacing: 0;
 }
 
 .material-segmented-action-row--active .material-segmented-action__supporting-line,

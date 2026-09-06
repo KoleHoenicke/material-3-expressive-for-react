@@ -1,3 +1,5 @@
+import { readFileSync } from 'node:fs'
+import { resolve } from 'node:path'
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 import { MaterialText } from './MaterialText'
@@ -93,5 +95,14 @@ describe('MaterialText', () => {
 
     rerender(<MaterialText maxLines={Number.NaN}>Unlimited copy</MaterialText>)
     expect(screen.getByText('Unlimited copy')).not.toHaveAttribute('data-max-lines')
+  })
+
+  it('maps every baseline and emphasized data role to the complete text properties', () => {
+    const css = readFileSync(resolve(process.cwd(), 'src/components/MaterialText.css'), 'utf8')
+
+    expect(css.match(/\[data-material-typography='[^']+'\] \{/g)).toHaveLength(30)
+    expect(css).toContain("[data-material-typography='bodyLargeEmphasized']")
+    expect(css).toContain('--md-text-features: var(--md-sys-typescale-body-large-emphasized-font-feature-settings, normal)')
+    expect(css).toContain('--md-text-variations: var(--md-sys-typescale-body-large-emphasized-font-variation-settings, normal)')
   })
 })

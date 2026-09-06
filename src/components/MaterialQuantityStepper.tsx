@@ -179,6 +179,7 @@ export function MaterialQuantityStepper({
       <input
         type="text"
         className="material-quantity-stepper__value"
+        data-material-typography="labelLarge"
         aria-label={`${label} value`}
         disabled={disabled}
         inputMode="numeric"

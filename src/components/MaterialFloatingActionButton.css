@@ -324,19 +324,14 @@
   --md-fab-leading-space: 16px;
   --md-fab-trailing-space: 16px;
   --md-fab-icon-label-space: 8px;
-  --md-fab-label-font: var(--md-sys-typescale-title-medium-font, var(--material-ui-font));
-  --md-fab-label-size: var(--md-sys-typescale-title-medium-size, 16px);
-  --md-fab-label-weight: var(--md-sys-typescale-title-medium-weight, 500);
-  --md-fab-label-line-height: var(--md-sys-typescale-title-medium-line-height, 24px);
-  --md-fab-label-tracking: var(--md-sys-typescale-title-medium-tracking, 0.15px);
+  --md-fab-label-font: var(--md-sys-typescale-title-medium-emphasized-font, var(--material-ui-font));
+  --md-fab-label-size: var(--md-sys-typescale-title-medium-emphasized-size, 16px);
+  --md-fab-label-weight: var(--md-sys-typescale-title-medium-emphasized-weight, 700);
+  --md-fab-label-line-height: var(--md-sys-typescale-title-medium-emphasized-line-height, 24px);
+  --md-fab-label-tracking: var(--md-sys-typescale-title-medium-emphasized-tracking, 0.15px);
   inline-size: auto;
   min-inline-size: var(--md-fab-min-width);
   padding-inline: var(--md-fab-leading-space) var(--md-fab-trailing-space);
-  font-family: var(--md-fab-label-font);
-  font-size: var(--md-fab-label-size);
-  font-weight: var(--md-fab-label-weight);
-  letter-spacing: var(--md-fab-label-tracking);
-  line-height: var(--md-fab-label-line-height);
   white-space: nowrap;
   transition:
     opacity var(--m3-motion-transition-fast-effects),
@@ -360,11 +355,11 @@
   --md-fab-icon-label-space: 12px;
   --md-fab-container-shape: var(--md-sys-shape-corner-large, 16px);
   --md-fab-icon-size: 24px;
-  --md-fab-label-font: var(--md-sys-typescale-label-large-font, var(--material-ui-font));
-  --md-fab-label-size: var(--md-sys-typescale-label-large-size, 14px);
-  --md-fab-label-weight: var(--md-sys-typescale-label-large-weight, 500);
-  --md-fab-label-line-height: var(--md-sys-typescale-label-large-line-height, 20px);
-  --md-fab-label-tracking: var(--md-sys-typescale-label-large-tracking, 0.1px);
+  --md-fab-label-font: var(--md-sys-typescale-label-large-emphasized-font, var(--material-ui-font));
+  --md-fab-label-size: var(--md-sys-typescale-label-large-emphasized-size, 14px);
+  --md-fab-label-weight: var(--md-sys-typescale-label-large-emphasized-weight, 700);
+  --md-fab-label-line-height: var(--md-sys-typescale-label-large-emphasized-line-height, 20px);
+  --md-fab-label-tracking: var(--md-sys-typescale-label-large-emphasized-tracking, 0.1px);
 }
 
 .material-fab--extended[data-size='small'] {
@@ -385,11 +380,11 @@
   --md-fab-leading-space: 26px;
   --md-fab-trailing-space: 26px;
   --md-fab-icon-label-space: 12px;
-  --md-fab-label-font: var(--md-sys-typescale-title-large-font, var(--material-ui-font));
-  --md-fab-label-size: var(--md-sys-typescale-title-large-size, 22px);
-  --md-fab-label-weight: var(--md-sys-typescale-title-large-weight, 400);
-  --md-fab-label-line-height: var(--md-sys-typescale-title-large-line-height, 28px);
-  --md-fab-label-tracking: var(--md-sys-typescale-title-large-tracking, 0);
+  --md-fab-label-font: var(--md-sys-typescale-title-large-emphasized-font, var(--material-ui-font));
+  --md-fab-label-size: var(--md-sys-typescale-title-large-emphasized-size, 22px);
+  --md-fab-label-weight: var(--md-sys-typescale-title-large-emphasized-weight, 500);
+  --md-fab-label-line-height: var(--md-sys-typescale-title-large-emphasized-line-height, 28px);
+  --md-fab-label-tracking: var(--md-sys-typescale-title-large-emphasized-tracking, 0);
 }
 
 .material-fab--extended[data-size='large'] {
@@ -398,11 +393,19 @@
   --md-fab-leading-space: 28px;
   --md-fab-trailing-space: 28px;
   --md-fab-icon-label-space: 16px;
-  --md-fab-label-font: var(--md-sys-typescale-headline-small-font, var(--material-ui-font));
-  --md-fab-label-size: var(--md-sys-typescale-headline-small-size, 24px);
-  --md-fab-label-weight: var(--md-sys-typescale-headline-small-weight, 400);
-  --md-fab-label-line-height: var(--md-sys-typescale-headline-small-line-height, 32px);
-  --md-fab-label-tracking: var(--md-sys-typescale-headline-small-tracking, 0);
+  --md-fab-label-font: var(--md-sys-typescale-headline-small-emphasized-font, var(--material-ui-font));
+  --md-fab-label-size: var(--md-sys-typescale-headline-small-emphasized-size, 24px);
+  --md-fab-label-weight: var(--md-sys-typescale-headline-small-emphasized-weight, 500);
+  --md-fab-label-line-height: var(--md-sys-typescale-headline-small-emphasized-line-height, 32px);
+  --md-fab-label-tracking: var(--md-sys-typescale-headline-small-emphasized-tracking, 0);
+}
+
+.material-fab__label[data-material-typography] {
+  --md-text-font: var(--md-fab-label-font);
+  --md-text-size: var(--md-fab-label-size);
+  --md-text-weight: var(--md-fab-label-weight);
+  --md-text-line-height: var(--md-fab-label-line-height);
+  --md-text-tracking: var(--md-fab-label-tracking);
 }
 
 .material-fab__label {
