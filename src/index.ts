@@ -10,6 +10,7 @@ export * from './components/MaterialCheckbox'
 export * from './components/MaterialCheckboxList'
 export * from './components/MaterialChip'
 export * from './components/MaterialFloatingActionButton'
+export * from './components/MaterialFloatingActionButtonMenu'
 export * from './components/MaterialListCount'
 export * from './components/MaterialList'
 export * from './components/MaterialListSwipeActions'
@@ -55,6 +56,14 @@ export {
   MaterialSmallExtendedFloatingActionButton as SmallExtendedFloatingActionButton,
   MaterialSmallFloatingActionButton as SmallFloatingActionButton,
 } from './components/MaterialFloatingActionButton'
+export {
+  MaterialFloatingActionButtonMenu as FabMenu,
+  MaterialFloatingActionButtonMenu as FloatingActionButtonMenu,
+  MaterialFloatingActionButtonMenuItem as FabMenuItem,
+  MaterialFloatingActionButtonMenuItem as FloatingActionButtonMenuItem,
+  MaterialToggleFloatingActionButton as ToggleFab,
+  MaterialToggleFloatingActionButton as ToggleFloatingActionButton,
+} from './components/MaterialFloatingActionButtonMenu'
 export { MaterialCheckbox as Checkbox } from './components/MaterialCheckbox'
 export {
   MaterialCheckboxList as CheckboxList,

@@ -22,6 +22,7 @@ Included now:
 - Checkbox, including indeterminate and error states, checkbox groups, and list items
 - Chips, including assist, filter, input, suggestion, elevated, removable, and expressive-shape variants
 - Floating action buttons, including every current size and color mapping, extended and collapsible variants, lowered elevation, and baseline compatibility
+- FAB menus with controlled launchers, two to six actions, all three color sets, and regular, medium, and large launcher geometry
 - Lists, including standard, segmented, selectable, expandable, swipe-reveal, media, dividers, counts, and trailing actions
 - Loading indicator
 - Quantity stepper
@@ -39,7 +40,7 @@ Included now:
 Until the first npm release, install the package directly from GitHub:
 
 ```sh
-npm install github:KoleHoenicke/material-react-components#v0.9.0
+npm install github:KoleHoenicke/material-react-components#v0.10.0
 ```
 
 React and React DOM are peer dependencies. React 18 and 19 are supported.
@@ -145,6 +146,45 @@ The current color mappings are `primary-container`, `secondary-container`, `tert
 `ExtendedFloatingActionButton` defaults to the current Expressive small extended FAB. It supports icon-and-label and label-only content. With an icon, `expanded={false}` animates to the matching square FAB while the label stays available to assistive technology. The named exports cover `SmallExtendedFloatingActionButton`, `MediumExtendedFloatingActionButton`, `LargeExtendedFloatingActionButton`, and the deprecated `BaselineExtendedFloatingActionButton`.
 
 Set `visible={false}` to apply the Android show/hide scale and opacity treatment while removing the button from the keyboard and accessibility order. `visibilityAlignment` controls the transform origin. Every color, dimension, shape, elevation, state layer, focus indicator, typography value, expansion gap, and visibility scale is typed on `MaterialFabStyle` through `--md-fab-*` properties.
+
+### FAB menu
+
+`FloatingActionButtonMenu` ports the current AndroidX FAB menu layout and adapts its semantics to the web menu pattern. It accepts two to six `FloatingActionButtonMenuItem` children. The controlled launcher can start at 56px, 80px, or 96px, then animates to the shared 56px circular close button while preserving the original footprint. Items reveal from the launcher outward and collapse in reverse.
+
+```tsx
+import { useState } from 'react'
+import {
+  FloatingActionButtonMenu,
+  FloatingActionButtonMenuItem,
+} from '@kolehoenicke/material-react-components'
+
+const AddIcon = () => <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+const CloseIcon = () => <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg>
+
+export function CreateMenu() {
+  const [expanded, setExpanded] = useState(false)
+
+  return (
+    <FloatingActionButtonMenu
+      closeIcon={<CloseIcon />}
+      color="primary"
+      expanded={expanded}
+      icon={<AddIcon />}
+      menuLabel="Create actions"
+      onExpandedChange={setExpanded}
+      size="medium"
+      toggleLabel="Toggle create actions"
+    >
+      <FloatingActionButtonMenuItem icon={<AddIcon />}>New note</FloatingActionButtonMenuItem>
+      <FloatingActionButtonMenuItem icon={<AddIcon />}>New list</FloatingActionButtonMenuItem>
+    </FloatingActionButtonMenu>
+  )
+}
+```
+
+The `primary`, `secondary`, and `tertiary` color sets pair a solid close button with container-colored menu items. The menu uses 56px pill items, 24px icons, title-medium labels, 24px side padding, an 8px icon-label gap, and 4px between items. `alignment` supports logical start, center, and end placement, including RTL. Long menus scroll behind the unobstructed close button.
+
+The launcher keeps focus when it opens. Tab moves from the close button to the top item, arrow keys move through the visible actions, Escape closes the menu, and collapsed items are inert and removed from the accessibility tree. Outside pointer interactions and item selection close the menu by default. `closeOnOutsideClick` and `closeOnItemClick` can disable those behaviors. Use `ToggleFloatingActionButton` separately when you need the controlled launcher without the menu layout. All component tokens are typed through `MaterialFabMenuStyle` and `MaterialToggleFabStyle`.
 
 ### Checkboxes
 

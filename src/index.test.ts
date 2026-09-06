@@ -11,6 +11,14 @@ describe('public package surface', () => {
     expect(library.ExtendedFloatingActionButton).toBe(
       library.MaterialExtendedFloatingActionButton,
     )
+    expect(library.FabMenu).toBe(library.MaterialFloatingActionButtonMenu)
+    expect(library.FloatingActionButtonMenu).toBe(
+      library.MaterialFloatingActionButtonMenu,
+    )
+    expect(library.FabMenuItem).toBe(library.MaterialFloatingActionButtonMenuItem)
+    expect(library.ToggleFloatingActionButton).toBe(
+      library.MaterialToggleFloatingActionButton,
+    )
     expect(library.Checkbox).toBe(library.MaterialCheckbox)
     expect(library.CheckboxList).toBe(library.MaterialCheckboxList)
     expect(library.CheckboxListItem).toBe(library.MaterialCheckboxListItem)

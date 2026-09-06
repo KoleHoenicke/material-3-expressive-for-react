@@ -78,6 +78,11 @@
   --m3-motion-card-selection-enter: var(--md-sys-motion-duration-short2) linear;
   --m3-motion-card-selection-exit: var(--md-sys-motion-duration-short1) linear;
 
+  /* AndroidX FAB menu reveals items from the launcher outward and hides them in reverse. */
+  --m3-motion-fab-menu-enter-stagger: 35ms;
+  --m3-motion-fab-menu-exit-stagger: 25ms;
+  --m3-motion-fab-menu-total-exit-delay: var(--md-sys-motion-duration-medium2);
+
   /* AndroidX Checkbox uses DefaultSpatial for the mark and Effects for color. */
   --m3-motion-checkbox-mark-in-duration: var(--m3-motion-default-spatial-duration);
   --m3-motion-checkbox-mark-in-easing: var(--m3-motion-default-spatial-easing);

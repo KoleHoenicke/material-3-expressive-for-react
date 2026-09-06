@@ -10,6 +10,7 @@ describe('interactive gallery', () => {
       'Button',
       'ButtonGroup',
       'FloatingActionButton · ExtendedFloatingActionButton',
+      'FloatingActionButtonMenu · FloatingActionButtonMenuItem · ToggleFloatingActionButton',
       'Card',
       'Checkbox · CheckboxList · CheckboxListItem',
       'AssistChip · FilterChip · InputChip · SuggestionChip',
@@ -44,6 +45,12 @@ describe('interactive gallery', () => {
     fireEvent.click(screen.getByRole('switch', { name: 'Expand extended FAB' }))
     expect(screen.getByRole('button', { name: 'Compose' })).toHaveAttribute(
       'data-expanded',
+      'false',
+    )
+
+    fireEvent.click(screen.getByRole('switch', { name: 'Expand FAB menu' }))
+    expect(screen.getByRole('button', { name: 'Toggle create actions' })).toHaveAttribute(
+      'aria-expanded',
       'false',
     )
   })

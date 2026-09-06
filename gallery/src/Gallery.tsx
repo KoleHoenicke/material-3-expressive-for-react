@@ -18,6 +18,8 @@ import {
   CircularWavyProgressIndicator,
   ExtendedFloatingActionButton,
   ExpandableList,
+  FloatingActionButtonMenu,
+  FloatingActionButtonMenuItem,
   FloatingActionButton,
   List,
   ListAvatar,
@@ -47,7 +49,10 @@ import {
   CenterAlignedTopAppBar,
   type MaterialButtonSize,
   type MaterialButtonVariant,
+  type MaterialExtendedFabSize,
   type MaterialFabColor,
+  type MaterialFabMenuColor,
+  type MaterialFabMenuTriggerSize,
   type MaterialFabSize,
 } from '../../src'
 
@@ -55,6 +60,7 @@ type IconName =
   | 'add'
   | 'back'
   | 'check'
+  | 'close'
   | 'code'
   | 'delete'
   | 'edit'
@@ -79,6 +85,9 @@ const fabColors: MaterialFabColor[] = [
   'surface',
 ]
 const fabSizes: MaterialFabSize[] = ['small', 'regular', 'medium', 'large']
+const extendedFabSizes: MaterialExtendedFabSize[] = ['baseline', 'small', 'medium', 'large']
+const fabMenuColors: MaterialFabMenuColor[] = ['primary', 'secondary', 'tertiary']
+const fabMenuSizes: MaterialFabMenuTriggerSize[] = ['regular', 'medium', 'large']
 const themePresets = [
   { color: '#6750a4', label: 'Violet' },
   { color: '#006a6a', label: 'Teal' },
@@ -92,6 +101,7 @@ function Icon({ name }: { name: IconName }) {
     add: <path d="M12 5v14M5 12h14" />,
     back: <path d="m15 18-6-6 6-6" />,
     check: <path d="m5 12 4.2 4.2L19 6.5" />,
+    close: <path d="m6 6 12 12M18 6 6 18" />,
     code: <path d="m8 9-3 3 3 3m8-6 3 3-3 3m-2-9-4 12" />,
     delete: <path d="M5 7h14M9 7V4h6v3m2 0-1 13H8L7 7m3 4v5m4-5v5" />,
     edit: <path d="m14.5 5.5 4 4M4 20l3.5-.8L19 7.7 16.3 5 4.8 16.5 4 20Z" />,
@@ -153,6 +163,9 @@ export function Gallery() {
   const [fabExpanded, setFabExpanded] = useState(true)
   const [fabSize, setFabSize] = useState<MaterialFabSize>('regular')
   const [fabVisible, setFabVisible] = useState(true)
+  const [fabMenuColor, setFabMenuColor] = useState<MaterialFabMenuColor>('primary')
+  const [fabMenuExpanded, setFabMenuExpanded] = useState(true)
+  const [fabMenuSize, setFabMenuSize] = useState<MaterialFabMenuTriggerSize>('regular')
   const [cardDragged, setCardDragged] = useState(false)
   const [cardSelected, setCardSelected] = useState(false)
   const [chipFilters, setChipFilters] = useState(() => new Set(['recent']))
@@ -286,8 +299,8 @@ export function Gallery() {
               <h1 id="gallery-title">Material controls that move like they should.</h1>
               <p>Every example is rendered by the package. Change the theme, press the controls, and inspect the current Material 3 Expressive behavior.</p>
               <div className="hero__meta">
-                <span>22 modules</span>
-                <span>143 tests</span>
+                <span>23 modules</span>
+                <span>163 tests</span>
                 <span>React 18 and 19</span>
               </div>
             </div>
@@ -574,6 +587,20 @@ export function Gallery() {
                     </div>
                   ))}
                 </div>
+                <StageLabel>All extended sizes</StageLabel>
+                <div className="fab-extended-size-showcase">
+                  {extendedFabSizes.map((size) => (
+                    <div key={size}>
+                      <ExtendedFloatingActionButton
+                        icon={<Icon name="edit" />}
+                        label={size === 'baseline' ? 'Baseline' : `Compose ${size}`}
+                        size={size}
+                        onClick={() => setMessage(`${size} extended FAB pressed`)}
+                      />
+                      <span>{size}</span>
+                    </div>
+                  ))}
+                </div>
                 <StageLabel>All color mappings</StageLabel>
                 <div className="fab-color-showcase">
                   {fabColors.map((color) => (
@@ -584,6 +611,54 @@ export function Gallery() {
                       <span>{color}</span>
                     </div>
                   ))}
+                </div>
+              </Specimen>
+
+              <Specimen
+                title="FAB menu"
+                api="FloatingActionButtonMenu · FloatingActionButtonMenuItem · ToggleFloatingActionButton"
+                description="Two to six actions, three color sets, every launcher size, staggered reveal, close-button morph, scroll containment, and web-native menu navigation."
+                wide
+              >
+                <div className="stage-toolbar fab-toolbar">
+                  <label>Launcher
+                    <select value={fabMenuSize} onChange={(event) => setFabMenuSize(event.currentTarget.value as MaterialFabMenuTriggerSize)}>
+                      {fabMenuSizes.map((size) => <option key={size} value={size}>{size}</option>)}
+                    </select>
+                  </label>
+                  <label>Color set
+                    <select value={fabMenuColor} onChange={(event) => setFabMenuColor(event.currentTarget.value as MaterialFabMenuColor)}>
+                      {fabMenuColors.map((color) => <option key={color} value={color}>{color}</option>)}
+                    </select>
+                  </label>
+                  <label>Expanded
+                    <Switch aria-label="Expand FAB menu" checked={fabMenuExpanded} onChange={(event) => setFabMenuExpanded(event.currentTarget.checked)} />
+                  </label>
+                </div>
+                <div className="fab-menu-showcase">
+                  <div className="fab-menu-stage">
+                    <FloatingActionButtonMenu
+                      closeIcon={<Icon name="close" />}
+                      closeOnOutsideClick={false}
+                      color={fabMenuColor}
+                      expanded={fabMenuExpanded}
+                      icon={<Icon name="add" />}
+                      menuLabel="Create actions"
+                      onExpandedChange={setFabMenuExpanded}
+                      size={fabMenuSize}
+                      toggleLabel="Toggle create actions"
+                    >
+                      <FloatingActionButtonMenuItem icon={<Icon name="edit" />} onClick={() => setMessage('New draft selected')}>New draft</FloatingActionButtonMenuItem>
+                      <FloatingActionButtonMenuItem icon={<Icon name="star" />} onClick={() => setMessage('New favorite selected')}>New favorite</FloatingActionButtonMenuItem>
+                      <FloatingActionButtonMenuItem icon={<Icon name="code" />} onClick={() => setMessage('New project selected')}>New project</FloatingActionButtonMenuItem>
+                    </FloatingActionButtonMenu>
+                  </div>
+                  <div className="fab-menu-notes">
+                    <StageLabel>{fabMenuColor} set</StageLabel>
+                    <strong>56px menu items</strong>
+                    <span>The close button stays anchored to the launcher's top trailing corner.</span>
+                    <span>Medium and large launchers preserve 40px and 56px bottom margins after opening.</span>
+                  </div>
                 </div>
               </Specimen>
 

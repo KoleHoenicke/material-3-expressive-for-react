@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.10.0
+
+- Added the complete Material 3 Expressive FAB menu with two-to-six-item composition, primary, secondary, and tertiary color sets, regular, medium, and large launchers, AndroidX-aligned geometry, launcher-to-close morphing, staggered item motion, scroll-behind-close behavior, RTL alignment, reduced motion, forced colors, and typed CSS token overrides.
+- Added native controlled menu behavior with launcher focus retention, inert collapsed items, Tab and arrow-key navigation, Home, End, Escape, outside-click dismissal, configurable item-selection dismissal, and standalone `ToggleFloatingActionButton` support.
+- Rechecked every extended FAB size and added all baseline, small, medium, and large variants to the interactive gallery.
+
 ## 0.9.0
 
 - Added the full Material 3 floating action button family with regular, medium, large, and baseline small sizes; all six current color mappings and the legacy surface mapping; exact AndroidX geometry, state layers, elevation, focus treatment, reduced-motion behavior, and 48px small-FAB target; lowered and zero elevation; controlled show and hide motion; and typed CSS token overrides.
