@@ -19,6 +19,7 @@ Included now:
 - Badge
 - Button and button group
 - Card, including filled, elevated, outlined, checked, and dragged states
+- Divider, including horizontal, vertical, full-width, inset, one-sided, heavy, and custom styles
 - Checkbox, including indeterminate and error states, checkbox groups, and list items
 - Chips, including assist, filter, input, suggestion, elevated, removable, and expressive-shape variants
 - Floating action buttons, including every current size and color mapping, extended and collapsible variants, lowered elevation, and baseline compatibility
@@ -40,7 +41,7 @@ Included now:
 Until the first npm release, install the package directly from GitHub:
 
 ```sh
-npm install github:KoleHoenicke/material-react-components#v0.11.0
+npm install github:KoleHoenicke/material-react-components#v0.12.0
 ```
 
 React and React DOM are peer dependencies. React 18 and 19 are supported.
@@ -263,6 +264,37 @@ export function ExportFormats() {
 ```
 
 The default visual container is 18px with a 2px corner and stroke. The state layer is 40px and the interaction target is 48px. `MaterialCheckboxStyle` types every `--md-checkbox-*` property, including separate checkmark, box, outline, interaction, disabled, indeterminate, error, and focus-indicator values. `CheckboxListItem` can place the control at the leading or trailing edge and keeps adjacent text on the `on-surface` role in every selection state.
+
+### Dividers
+
+`Divider` combines the current AndroidX horizontal and vertical API with Material Web's logical inset variants and MDC-Android's heavy divider. The regular line is 1px, the heavy line is 8px, and both use `outline-variant`. A boolean inset uses the 16px Material measurement. Numeric `thickness`, `inset`, `insetStart`, and `insetEnd` values are interpreted as CSS pixels; CSS lengths work directly.
+
+```tsx
+import {
+  Divider,
+  HorizontalDivider,
+  VerticalDivider,
+} from '@kolehoenicke/material-react-components'
+
+export function ArticleLayout() {
+  return (
+    <>
+      <HorizontalDivider />
+      <Divider inset />
+      <Divider insetStart={24} insetEnd={0} />
+      <Divider variant="heavy" />
+
+      <div style={{ display: 'flex', height: 240 }}>
+        <article>Copy</article>
+        <VerticalDivider inset role="separator" aria-label="Related media" />
+        <aside>Media</aside>
+      </div>
+    </>
+  )
+}
+```
+
+Dividers are decorative by default, matching Material's accessibility guidance. Add `role="separator"` only when the line communicates a meaningful boundary; the component then supplies the correct horizontal or vertical `aria-orientation`. `MaterialDividerStyle` types the color, regular and heavy thickness, and inset CSS properties. Dividers have no typography, state, or motion tokens.
 
 ### Lists
 

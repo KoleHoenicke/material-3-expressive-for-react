@@ -5,6 +5,9 @@ describe('public package surface', () => {
   it('exports short and explicit component names', () => {
     expect(library.Button).toBe(library.MaterialButton)
     expect(library.Card).toBe(library.MaterialCard)
+    expect(library.Divider).toBe(library.MaterialDivider)
+    expect(library.HorizontalDivider).toBe(library.MaterialHorizontalDivider)
+    expect(library.VerticalDivider).toBe(library.MaterialVerticalDivider)
     expect(library.Fab).toBe(library.MaterialFloatingActionButton)
     expect(library.FloatingActionButton).toBe(library.MaterialFloatingActionButton)
     expect(library.ExtendedFab).toBe(library.MaterialExtendedFloatingActionButton)

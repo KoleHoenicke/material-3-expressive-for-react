@@ -1,0 +1,49 @@
+.material-divider {
+  --md-divider-color: var(--md-sys-color-outline-variant);
+  --md-divider-thickness: 1px;
+  --md-divider-heavy-thickness: 8px;
+  --md-divider-inset-size: 16px;
+  --md-divider-inset-start: 0px;
+  --md-divider-inset-end: 0px;
+  box-sizing: border-box;
+  display: flex;
+  flex: none;
+  min-inline-size: 0;
+  min-block-size: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: var(--md-divider-color);
+  background: transparent;
+}
+
+.material-divider[data-variant='heavy'] {
+  --md-divider-thickness: var(--md-divider-heavy-thickness);
+}
+
+.material-divider[data-orientation='horizontal'] {
+  inline-size: 100%;
+  block-size: var(--md-divider-thickness);
+  padding-inline-start: var(--md-divider-inset-start);
+  padding-inline-end: var(--md-divider-inset-end);
+}
+
+.material-divider[data-orientation='vertical'] {
+  inline-size: var(--md-divider-thickness);
+  block-size: 100%;
+  padding-block-start: var(--md-divider-inset-start);
+  padding-block-end: var(--md-divider-inset-end);
+}
+
+.material-divider::before {
+  inline-size: 100%;
+  block-size: 100%;
+  background: currentColor;
+  content: '';
+}
+
+@media (forced-colors: active) {
+  .material-divider::before {
+    background: CanvasText;
+  }
+}

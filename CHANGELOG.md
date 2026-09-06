@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.12.0
+
+- Added the complete Material 3 divider family with horizontal and vertical orientations, 1px regular and 8px heavy variants, full-width and logical inset layouts, arbitrary thickness and color overrides, RTL-safe geometry, and forced-color support.
+- Kept dividers decorative by default, with opt-in separator semantics and automatic ARIA orientation. Added Android-style named exports, typed CSS properties, focused tests, documentation, and gallery coverage for every layout.
+
 ## 0.11.0
 
 - Rebuilt the motion foundation against the current Material 3 motion physics guidance and AndroidX v0.14 generated tokens. Expressive spring physics now uses the correct 0.6/800 fast, 0.8/380 default, and 0.8/200 slow spatial values instead of exposing Standard values under the Expressive default.

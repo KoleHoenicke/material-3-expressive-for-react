@@ -16,6 +16,7 @@ import {
   InputChip,
   CircularProgressIndicator,
   CircularWavyProgressIndicator,
+  HorizontalDivider,
   ExtendedFloatingActionButton,
   ExpandableList,
   FloatingActionButtonMenu,
@@ -46,6 +47,7 @@ import {
   SuggestionChip,
   Switch,
   TopAppBar,
+  VerticalDivider,
   CenterAlignedTopAppBar,
   type MaterialButtonSize,
   type MaterialButtonVariant,
@@ -282,6 +284,7 @@ export function Gallery() {
           <nav aria-label="Gallery navigation">
             <a href="#app-bars">App bars</a>
             <a href="#cards">Cards</a>
+            <a href="#dividers">Dividers</a>
             <a href="#chips">Chips</a>
             <a href="#actions">Actions</a>
             <a href="#selection">Selection</a>
@@ -301,8 +304,8 @@ export function Gallery() {
               <h1 id="gallery-title">Material controls that move like they should.</h1>
               <p>Every example is rendered by the package. Change the theme, press the controls, and inspect the current Material 3 Expressive behavior.</p>
               <div className="hero__meta">
-                <span>23 modules</span>
-                <span>168 tests</span>
+                <span>24 modules</span>
+                <span>174 tests</span>
                 <span>React 18 and 19</span>
               </div>
             </div>
@@ -477,6 +480,37 @@ export function Gallery() {
                       outline.
                     </span>
                   </Card>
+                </div>
+              </Specimen>
+            </div>
+          </section>
+
+          <section className="component-section" id="dividers" aria-labelledby="dividers-title">
+            <div className="section-heading">
+              <span className="eyebrow">Content grouping</span>
+              <h2 id="dividers-title">Dividers</h2>
+            </div>
+            <div className="specimen-grid">
+              <Specimen
+                title="Divider"
+                api="Divider · HorizontalDivider · VerticalDivider"
+                description="Current Android geometry and color, web inset variants, vertical orientation, and the 8px heavy section break."
+                wide
+              >
+                <div className="divider-showcase">
+                  <div className="divider-showcase__horizontal">
+                    <div><StageLabel>Full width</StageLabel><HorizontalDivider /></div>
+                    <div><StageLabel>Inset, 16px</StageLabel><HorizontalDivider inset /></div>
+                    <div><StageLabel>Start inset, 24px</StageLabel><HorizontalDivider insetStart={24} /></div>
+                    <div><StageLabel>Heavy, 8px</StageLabel><HorizontalDivider variant="heavy" /></div>
+                  </div>
+                  <div className="divider-showcase__vertical">
+                    <span>Copy</span>
+                    <VerticalDivider />
+                    <span>Media</span>
+                    <VerticalDivider inset variant="heavy" />
+                    <span>Actions</span>
+                  </div>
                 </div>
               </Specimen>
             </div>

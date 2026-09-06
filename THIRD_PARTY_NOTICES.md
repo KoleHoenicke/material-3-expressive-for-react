@@ -20,6 +20,8 @@ The floating-action-button geometry, tokens, elevation states, expansion, and vi
 
 The FAB-menu layout, token values, launcher transformation, item reveal order, focus order, and scrolling behavior in `MaterialFloatingActionButtonMenu.tsx` and `MaterialFloatingActionButtonMenu.css` are adapted from AndroidX Material 3 and the Material Design 3 web accessibility guidance. Copyright 2024-2026 The Android Open Source Project and copyright Google LLC. Licensed under the Apache License 2.0 where applicable.
 
+The divider geometry, tokens, inset variants, heavy style, and accessibility behavior in `MaterialDivider.tsx` and `MaterialDivider.css` are adapted from AndroidX Material 3, Material Components for Android, and Material Web. Copyright 2021-2026 The Android Open Source Project and copyright 2023-2026 Google LLC. Licensed under the Apache License 2.0.
+
 ## Material Color Utilities
 
 This package uses `@material/material-color-utilities`, copyright Google LLC. Licensed under the Apache License 2.0.

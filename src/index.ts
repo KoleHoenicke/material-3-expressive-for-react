@@ -9,6 +9,7 @@ export * from './components/MaterialCard'
 export * from './components/MaterialCheckbox'
 export * from './components/MaterialCheckboxList'
 export * from './components/MaterialChip'
+export * from './components/MaterialDivider'
 export * from './components/MaterialFloatingActionButton'
 export * from './components/MaterialFloatingActionButtonMenu'
 export * from './components/MaterialListCount'
@@ -43,6 +44,11 @@ export {
 export { MaterialButton as Button } from './components/MaterialButton'
 export { MaterialButtonGroup as ButtonGroup } from './components/MaterialButtonGroup'
 export { MaterialCard as Card } from './components/MaterialCard'
+export {
+  MaterialDivider as Divider,
+  MaterialHorizontalDivider as HorizontalDivider,
+  MaterialVerticalDivider as VerticalDivider,
+} from './components/MaterialDivider'
 export {
   MaterialBaselineExtendedFloatingActionButton as BaselineExtendedFloatingActionButton,
   MaterialExtendedFloatingActionButton as ExtendedFab,

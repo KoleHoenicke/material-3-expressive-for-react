@@ -781,6 +781,46 @@ svg {
   padding-top: 16px;
 }
 
+.divider-showcase {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(260px, 0.6fr);
+  gap: 28px;
+  width: 100%;
+}
+
+.divider-showcase__horizontal {
+  display: grid;
+  align-content: center;
+  gap: 30px;
+  min-width: 0;
+}
+
+.divider-showcase__horizontal > div {
+  display: grid;
+  gap: 12px;
+}
+
+.divider-showcase__vertical {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  min-height: 180px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: var(--md-sys-color-surface-container-low);
+}
+
+.divider-showcase__vertical > span {
+  display: grid;
+  flex: 1 1 0;
+  min-width: 0;
+  place-items: center;
+  padding: 12px;
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 0.75rem;
+  font-weight: 650;
+}
+
 .stage-label {
   display: block;
   margin-bottom: -9px;
@@ -1290,7 +1330,8 @@ svg {
   .app-bar-grid,
   .bottom-app-bar-grid,
   .slider-grid,
-  .card-showcase {
+  .card-showcase,
+  .divider-showcase {
     grid-template-columns: 1fr;
   }
 
