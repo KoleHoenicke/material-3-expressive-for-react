@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.0
+
+- Added the complete Material 3 chip family with assist, filter, input, and suggestion chips; flat and elevated treatments; controlled selection; avatars; selected, leading, and trailing icons; removable and remove-only actions; links; disabled and soft-disabled behavior; drag state; 48px targets; expressive filter/input shape morphing; and keyboard-aware chip sets.
+
 ## 0.4.0
 
 - Added the complete Material 3 app-bar family: small, center-aligned, medium, large, flexible top bars, standard and flexible bottom bars, app-bar icon buttons, secondary FAB support, safe-area handling, controlled collapse state, and Android-style scroll behaviors.

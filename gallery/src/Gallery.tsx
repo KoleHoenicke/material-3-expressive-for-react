@@ -7,6 +7,10 @@ import {
   Button,
   ButtonGroup,
   Card,
+  AssistChip,
+  ChipSet,
+  FilterChip,
+  InputChip,
   ListCount,
   ListSelectionIcon,
   ListTrailingAction,
@@ -21,6 +25,7 @@ import {
   RichOptionList,
   SegmentedActionList,
   Slider,
+  SuggestionChip,
   Switch,
   TopAppBar,
   CenterAlignedTopAppBar,
@@ -119,6 +124,8 @@ export function Gallery() {
   const [buttonSize, setButtonSize] = useState<MaterialButtonSize>('small')
   const [cardDragged, setCardDragged] = useState(false)
   const [cardSelected, setCardSelected] = useState(false)
+  const [chipFilters, setChipFilters] = useState(() => new Set(['recent']))
+  const [chipPeople, setChipPeople] = useState(['Avery', 'Sam'])
   const [favorite, setFavorite] = useState(false)
   const [interval, setInterval] = useState('week')
   const [notifications, setNotifications] = useState(true)
@@ -131,6 +138,15 @@ export function Gallery() {
   const [badgeCount, setBadgeCount] = useState(7)
   const [message, setMessage] = useState<string | null>(null)
   const [appBarProgress, setAppBarProgress] = useState(0)
+
+  const setChipFilter = (filter: string, selected: boolean) => {
+    setChipFilters((current) => {
+      const next = new Set(current)
+      if (selected) next.add(filter)
+      else next.delete(filter)
+      return next
+    })
+  }
 
   useEffect(() => {
     if (!message) return
@@ -203,6 +219,7 @@ export function Gallery() {
           <nav aria-label="Gallery navigation">
             <a href="#app-bars">App bars</a>
             <a href="#cards">Cards</a>
+            <a href="#chips">Chips</a>
             <a href="#actions">Actions</a>
             <a href="#selection">Selection</a>
             <a href="#lists">Lists</a>
@@ -221,8 +238,8 @@ export function Gallery() {
               <h1 id="gallery-title">Material controls that move like they should.</h1>
               <p>Every example is rendered by the package. Change the theme, press the controls, and inspect the current Material 3 Expressive behavior.</p>
               <div className="hero__meta">
-                <span>15 modules</span>
-                <span>77 tests</span>
+                <span>16 modules</span>
+                <span>92 tests</span>
                 <span>React 18 and 19</span>
               </div>
             </div>
@@ -389,6 +406,53 @@ export function Gallery() {
                       outline.
                     </span>
                   </Card>
+                </div>
+              </Specimen>
+            </div>
+          </section>
+
+          <section className="component-section" id="chips" aria-labelledby="chips-title">
+            <div className="section-heading">
+              <span className="eyebrow">Compact actions and choices</span>
+              <h2 id="chips-title">Chips</h2>
+            </div>
+            <div className="specimen-grid">
+              <Specimen
+                title="Chip family"
+                api="AssistChip · FilterChip · InputChip · SuggestionChip"
+                description="All four Material variants, flat and elevated surfaces, controlled selection, avatars, removal, and expressive shape morphing."
+                wide
+              >
+                <div className="chip-showcase">
+                  <StageLabel>Assist and suggestion</StageLabel>
+                  <ChipSet aria-label="Contextual actions">
+                    <AssistChip leadingIcon={<Icon name="add" />} onClick={() => setMessage('Event added')}>Add event</AssistChip>
+                    <AssistChip elevated leadingIcon={<Icon name="search" />}>Search nearby</AssistChip>
+                    <SuggestionChip>Sounds good</SuggestionChip>
+                    <SuggestionChip elevated leadingIcon={<Icon name="star" />}>Save for later</SuggestionChip>
+                  </ChipSet>
+                </div>
+                <div className="chip-showcase">
+                  <StageLabel>Filter</StageLabel>
+                  <ChipSet aria-label="Content filters">
+                    <FilterChip selected={chipFilters.has('recent')} onSelectedChange={(selected) => setChipFilter('recent', selected)}>Recent</FilterChip>
+                    <FilterChip selected={chipFilters.has('photos')} leadingIcon={<Icon name="grid" />} onSelectedChange={(selected) => setChipFilter('photos', selected)}>Photos</FilterChip>
+                    <FilterChip elevated selected={chipFilters.has('favorites')} onSelectedChange={(selected) => setChipFilter('favorites', selected)}>Favorites</FilterChip>
+                    <FilterChip shapeMode="expressive" selected={chipFilters.has('shared')} leadingIcon={<Icon name="check" />} trailingIcon={<Icon name="more" />} onSelectedChange={(selected) => setChipFilter('shared', selected)}>Shared</FilterChip>
+                  </ChipSet>
+                </div>
+                <div className="chip-showcase">
+                  <StageLabel>Input</StageLabel>
+                  <ChipSet aria-label="People">
+                    {chipPeople.includes('Avery') ? (
+                      <InputChip avatar={<span className="demo-avatar">A</span>} onRemove={() => setChipPeople((people) => people.filter((person) => person !== 'Avery'))}>Avery</InputChip>
+                    ) : null}
+                    {chipPeople.includes('Sam') ? (
+                      <InputChip selected shapeMode="expressive" leadingIcon={<Icon name="check" />} onRemove={() => setChipPeople((people) => people.filter((person) => person !== 'Sam'))}>Sam</InputChip>
+                    ) : null}
+                    <InputChip disabled trailingIcon={<Icon name="more" />}>Disabled</InputChip>
+                    <InputChip softDisabled onRemove={() => undefined}>Discoverable</InputChip>
+                  </ChipSet>
                 </div>
               </Specimen>
             </div>

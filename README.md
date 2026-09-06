@@ -19,6 +19,7 @@ Included now:
 - Badge
 - Button and button group
 - Card, including filled, elevated, outlined, checked, and dragged states
+- Chips, including assist, filter, input, suggestion, elevated, removable, and expressive-shape variants
 - List count and trailing actions
 - Loading indicator
 - Quantity stepper
@@ -36,7 +37,7 @@ Included now:
 Until the first npm release, install the package directly from GitHub:
 
 ```sh
-npm install github:KoleHoenicke/material-react-components#v0.4.0
+npm install github:KoleHoenicke/material-react-components#v0.5.0
 ```
 
 React and React DOM are peer dependencies. React 18 and 19 are supported.
@@ -100,6 +101,50 @@ export function Settings() {
 ```
 
 Every component is exported with a short name such as `Button` and its explicit name such as `MaterialButton`.
+
+### Chips
+
+The chip family follows current AndroidX dimensions, color roles, elevation, icon animation, and optional expressive shape morphing. `ChipSet` adds the toolbar semantics and wrapping arrow-key focus behavior used by Material Web.
+
+```tsx
+import { useState } from 'react'
+import {
+  AssistChip,
+  ChipSet,
+  FilterChip,
+  InputChip,
+} from '@kolehoenicke/material-react-components'
+
+export function SearchFilters() {
+  const [recent, setRecent] = useState(true)
+  const [people, setPeople] = useState(['Avery'])
+
+  return (
+    <>
+      <ChipSet aria-label="Search filters">
+        <FilterChip
+          selected={recent}
+          onSelectedChange={setRecent}
+          shapeMode="expressive"
+        >
+          Recent
+        </FilterChip>
+        {people.map((person) => (
+          <InputChip
+            key={person}
+            onRemove={() => setPeople((items) => items.filter((item) => item !== person))}
+          >
+            {person}
+          </InputChip>
+        ))}
+      </ChipSet>
+      <AssistChip elevated>Add to calendar</AssistChip>
+    </>
+  )
+}
+```
+
+All chips keep a 32px visual container and a 48px interaction target by default. Use `touchTarget="none"` only when a parent supplies the accessible target. Flat and elevated surfaces, controlled `selected` state, `selectedIcon`, `leadingIcon`, `trailingIcon`, input avatars, removable actions, links, drag state, disabled state, and focusable `softDisabled` state are configurable. Every visual token is available through `--md-chip-*` custom properties.
 
 ### App bars
 

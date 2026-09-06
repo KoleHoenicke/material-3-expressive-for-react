@@ -6,6 +6,8 @@ The geometry and timing in `MaterialLoadingIndicator.tsx` are adapted from Andro
 
 The app-bar geometry, tokens, title transitions, and scroll-state behavior in `MaterialAppBar.tsx` and `MaterialAppBar.css` are adapted from AndroidX Material 3. Copyright 2022-2025 The Android Open Source Project. Licensed under the Apache License 2.0.
 
+The chip geometry, tokens, interaction states, and expressive shapes in `MaterialChip.tsx` and `MaterialChip.css` are adapted from AndroidX Material 3 and Material Web. Copyright 2022-2026 The Android Open Source Project and copyright 2023 Google LLC. Licensed under the Apache License 2.0.
+
 ## Material Color Utilities
 
 This package uses `@material/material-color-utilities`, copyright Google LLC. Licensed under the Apache License 2.0.

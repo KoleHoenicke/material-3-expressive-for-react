@@ -6,6 +6,7 @@ export * from './components/MaterialAppBar'
 export * from './components/MaterialButton'
 export * from './components/MaterialButtonGroup'
 export * from './components/MaterialCard'
+export * from './components/MaterialChip'
 export * from './components/MaterialListCount'
 export * from './components/MaterialListTrailingAction'
 export * from './components/MaterialLoadingIndicator'
@@ -35,6 +36,14 @@ export {
 export { MaterialButton as Button } from './components/MaterialButton'
 export { MaterialButtonGroup as ButtonGroup } from './components/MaterialButtonGroup'
 export { MaterialCard as Card } from './components/MaterialCard'
+export {
+  MaterialAssistChip as AssistChip,
+  MaterialChip as Chip,
+  MaterialChipSet as ChipSet,
+  MaterialFilterChip as FilterChip,
+  MaterialInputChip as InputChip,
+  MaterialSuggestionChip as SuggestionChip,
+} from './components/MaterialChip'
 export { MaterialListCount as ListCount } from './components/MaterialListCount'
 export {
   MaterialListSelectionIcon as ListSelectionIcon,

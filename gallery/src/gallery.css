@@ -596,6 +596,27 @@ svg {
   gap: 10px;
 }
 
+.chip-showcase {
+  display: grid;
+  gap: 8px;
+  width: 100%;
+}
+
+.chip-showcase + .chip-showcase {
+  margin-top: 8px;
+}
+
+.demo-avatar {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  color: var(--md-sys-color-on-tertiary-container);
+  background: var(--md-sys-color-tertiary-container);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
 .card-showcase {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
