@@ -20,6 +20,10 @@ The floating-action-button geometry, tokens, elevation states, expansion, and vi
 
 The FAB-menu layout, token values, launcher transformation, item reveal order, focus order, and scrolling behavior in `MaterialFloatingActionButtonMenu.tsx` and `MaterialFloatingActionButtonMenu.css` are adapted from AndroidX Material 3 and the Material Design 3 web accessibility guidance. Copyright 2024-2026 The Android Open Source Project and copyright Google LLC. Licensed under the Apache License 2.0 where applicable.
 
+The dialog geometry, generated token mappings, slot layout, action ordering, and motion values in `MaterialDialog.tsx` and `MaterialDialog.css` are adapted from AndroidX Material 3, Material Components for Android, and the Material Design 3 dialog guidance. Copyright 2015-2026 The Android Open Source Project and copyright Google LLC. Licensed under the Apache License 2.0 where applicable.
+
+The menu geometry, generated token mappings, group and item shapes, popup placement, state transitions, and keyboard behavior in `MaterialMenu.tsx` and `MaterialMenu.css` are adapted from AndroidX Material 3, Material Web, and the Material Design 3 menu guidance. Copyright 2022-2026 The Android Open Source Project and copyright 2023-2026 Google LLC. Licensed under the Apache License 2.0 where applicable.
+
 The divider geometry, tokens, inset variants, heavy style, and accessibility behavior in `MaterialDivider.tsx` and `MaterialDivider.css` are adapted from AndroidX Material 3, Material Components for Android, and Material Web. Copyright 2021-2026 The Android Open Source Project and copyright 2023-2026 Google LLC. Licensed under the Apache License 2.0.
 
 The baseline and emphasized type scales, typeface roles, weights, line heights, and tracking values in `materialTypography.ts`, `tokens.css`, and `MaterialText.tsx` are adapted from AndroidX Material 3 generated v0.103 typography tokens and the Material Design 3 typography guidance. Copyright 2021-2026 The Android Open Source Project and copyright Google LLC. Licensed under the Apache License 2.0 where applicable.

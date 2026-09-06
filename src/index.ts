@@ -11,6 +11,7 @@ export * from './components/MaterialCheckbox'
 export * from './components/MaterialCheckboxList'
 export * from './components/MaterialChip'
 export * from './components/MaterialDivider'
+export * from './components/MaterialDialog'
 export * from './components/MaterialFloatingActionButton'
 export * from './components/MaterialFloatingActionButtonMenu'
 export * from './components/MaterialListCount'
@@ -18,6 +19,7 @@ export * from './components/MaterialList'
 export * from './components/MaterialListSwipeActions'
 export * from './components/MaterialListTrailingAction'
 export * from './components/MaterialLoadingIndicator'
+export * from './components/MaterialMenu'
 export * from './components/MaterialProgressIndicator'
 export * from './components/MaterialQuantityStepper'
 export * from './components/MaterialRichOptionList'
@@ -52,6 +54,11 @@ export {
   MaterialHorizontalDivider as HorizontalDivider,
   MaterialVerticalDivider as VerticalDivider,
 } from './components/MaterialDivider'
+export {
+  MaterialAlertDialog as AlertDialog,
+  MaterialBasicDialog as BasicAlertDialog,
+  MaterialFullScreenDialog as FullScreenDialog,
+} from './components/MaterialDialog'
 export {
   MaterialBaselineExtendedFloatingActionButton as BaselineExtendedFloatingActionButton,
   MaterialExtendedFloatingActionButton as ExtendedFab,
@@ -101,6 +108,23 @@ export {
   MaterialListTrailingAction as ListTrailingAction,
 } from './components/MaterialListTrailingAction'
 export { MaterialLoadingIndicator as LoadingIndicator } from './components/MaterialLoadingIndicator'
+export {
+  MaterialCheckableMenuItem as CheckableDropdownMenuItem,
+  MaterialCheckableMenuItem as CheckableMenuItem,
+  MaterialMenu as DropdownMenu,
+  MaterialMenu as DropdownMenuPopup,
+  MaterialMenu as Menu,
+  MaterialMenuDivider as MenuDivider,
+  MaterialMenuGroup as DropdownMenuGroup,
+  MaterialMenuGroup as MenuGroup,
+  MaterialMenuGroupLabel as DropdownMenuGroupLabel,
+  MaterialMenuGroupLabel as MenuGroupLabel,
+  MaterialMenuItem as DropdownMenuItem,
+  MaterialMenuItem as MenuItem,
+  MaterialMenuSubmenu as MenuSubmenu,
+  MaterialSelectableMenuItem as SelectableDropdownMenuItem,
+  MaterialSelectableMenuItem as SelectableMenuItem,
+} from './components/MaterialMenu'
 export {
   MaterialCircularProgressIndicator as CircularProgressIndicator,
   MaterialCircularWavyProgressIndicator as CircularWavyProgressIndicator,

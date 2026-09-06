@@ -11,7 +11,9 @@ describe('interactive gallery', () => {
       'ButtonGroup',
       'FloatingActionButton · ExtendedFloatingActionButton',
       'FloatingActionButtonMenu · FloatingActionButtonMenuItem · ToggleFloatingActionButton',
+      'Menu · MenuItem · MenuGroup · MenuSubmenu',
       'Card',
+      'AlertDialog · BasicAlertDialog · FullScreenDialog',
       'Text · MaterialText',
       'Divider · HorizontalDivider · VerticalDivider',
       'Checkbox · CheckboxList · CheckboxListItem',
@@ -36,6 +38,21 @@ describe('interactive gallery', () => {
     expect(container.querySelector('.footer-divider')).toHaveAttribute(
       'data-material-divider',
       '',
+    )
+
+    fireEvent.click(screen.getByRole('button', { name: 'Open alert dialog' }))
+    expect(screen.getByRole('alertdialog', { name: 'Delete file?' })).toBeInTheDocument()
+    fireEvent.click(screen.getByRole('button', { name: 'Cancel' }))
+
+    fireEvent.click(screen.getByRole('switch', { name: 'Open Material menu' }))
+    expect(screen.getByRole('menu', { name: 'View options' })).toHaveAttribute(
+      'data-open',
+      'true',
+    )
+    fireEvent.click(screen.getByRole('menuitemcheckbox', { name: /Grid view/ }))
+    expect(screen.getByRole('menuitemcheckbox', { name: /Grid view/ })).toHaveAttribute(
+      'aria-checked',
+      'false',
     )
   })
 

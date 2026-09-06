@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.15.0
+
+- Added baseline and expressive `Menu` components with standard and vibrant grouped treatments, checkable and selectable items, submenus, dividers, supporting and trailing content, links, context-point anchoring, viewport-aware placement, precision-pointer density, typeahead, complete keyboard behavior, and public CSS tokens.
+- Added controlled `AlertDialog` and `BasicAlertDialog` components using the native web dialog top layer, with AndroidX-aligned geometry, adaptive precision-pointer sizing, icon and text slots, wrapped action order, scroll containment, configurable dividers, and public CSS tokens.
+- Added the Material full-screen dialog variant with its close affordance, headline, action, optional divider, safe-area-aware header and body, plus focus restoration, Escape and backdrop policies, reduced motion, forced colors, gallery examples, and focused accessibility tests across the dialog family.
+
 ## 0.14.0
 
 - Replaced the list family's legacy `<hr>` implementation and gallery section rules with the shared Divider primitive wherever a line groups content. List dividers retain full-width and content-inset layouts, now share forced-color behavior, and expose explicit separator semantics.

@@ -650,9 +650,51 @@ svg {
   color: var(--md-sys-color-on-surface-variant);
 }
 
+.menu-showcase {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+  gap: 20px;
+  width: 100%;
+}
+
+.menu-anchor-stage {
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  gap: 16px;
+  min-height: 360px;
+  padding: 28px;
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 82% 18%, color-mix(in srgb, var(--md-sys-color-tertiary) 14%, transparent), transparent 38%),
+    var(--md-sys-color-surface-container-low);
+}
+
+.menu-notes {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding: 24px;
+  border-radius: 24px;
+  color: var(--md-sys-color-on-secondary-container);
+  background: var(--md-sys-color-secondary-container);
+}
+
+.menu-notes .stage-label {
+  justify-self: start;
+}
+
+.menu-notes > span:not(.stage-label) {
+  color: color-mix(in srgb, var(--md-sys-color-on-secondary-container) 78%, transparent);
+}
+
 @media (max-width: 680px) {
   .fab-extended-size-showcase,
   .fab-menu-showcase {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-showcase {
     grid-template-columns: 1fr;
   }
 
@@ -722,6 +764,66 @@ svg {
   justify-content: flex-end;
   margin: auto -8px -8px 0;
   padding-top: 16px;
+}
+
+.dialog-showcase {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+}
+
+.dialog-showcase > div {
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  gap: 12px;
+  min-height: 132px;
+  padding: 18px;
+  border-radius: 20px;
+  background: var(--md-sys-color-surface-container);
+}
+
+.demo-custom-dialog {
+  display: grid;
+  gap: 16px;
+  width: min(100%, 420px);
+  max-height: calc(100dvh - 48px);
+  padding: 24px;
+  overflow: auto;
+  border-radius: var(--md-sys-shape-corner-extra-large);
+  color: var(--md-sys-color-on-surface);
+  background: var(--md-sys-color-surface-container-high);
+  box-shadow: var(--md-sys-elevation-level3);
+}
+
+.demo-custom-dialog h3 {
+  margin: 0;
+}
+
+.demo-custom-dialog > .material-button {
+  justify-self: end;
+}
+
+.demo-full-screen-dialog {
+  display: grid;
+  gap: 24px;
+  width: min(100%, 720px);
+  margin-inline: auto;
+}
+
+.demo-full-screen-dialog label {
+  display: grid;
+  gap: 8px;
+}
+
+.demo-full-screen-dialog input {
+  min-height: 56px;
+  padding: 0 16px;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: 4px 4px 0 0;
+  color: var(--md-sys-color-on-surface);
+  background: var(--md-sys-color-surface-container-highest);
 }
 
 .divider-showcase {
@@ -1308,6 +1410,7 @@ svg {
   .bottom-app-bar-grid,
   .slider-grid,
   .card-showcase,
+  .dialog-showcase,
   .divider-showcase {
     grid-template-columns: 1fr;
   }

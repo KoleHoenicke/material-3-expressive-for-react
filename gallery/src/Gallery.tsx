@@ -2,7 +2,9 @@ import { useEffect, useState, type ReactNode } from 'react'
 import {
   AppBarFab,
   AppBarIconButton,
+  AlertDialog,
   Badge,
+  BasicAlertDialog,
   BottomAppBar,
   Button,
   ButtonGroup,
@@ -22,6 +24,7 @@ import {
   FloatingActionButtonMenu,
   FloatingActionButtonMenuItem,
   FloatingActionButton,
+  FullScreenDialog,
   List,
   ListAvatar,
   ListCount,
@@ -34,6 +37,13 @@ import {
   LoadingIndicator,
   LinearProgressIndicator,
   LinearWavyProgressIndicator,
+  MaterialCheckableMenuItem,
+  MaterialMenu,
+  MaterialMenuDivider,
+  MaterialMenuGroup,
+  MaterialMenuItem,
+  MaterialMenuSubmenu,
+  MaterialSelectableMenuItem,
   LargeFlexibleTopAppBar,
   LargeTopAppBar,
   MATERIAL_DEFAULT_TYPOGRAPHY,
@@ -60,6 +70,8 @@ import {
   type MaterialFabMenuTriggerSize,
   type MaterialFabSize,
   type MaterialMotionScheme,
+  type MaterialMenuColor,
+  type MaterialMenuVariant,
 } from '../../src'
 
 type IconName =
@@ -177,8 +189,16 @@ export function Gallery() {
   const [fabMenuColor, setFabMenuColor] = useState<MaterialFabMenuColor>('primary')
   const [fabMenuExpanded, setFabMenuExpanded] = useState(true)
   const [fabMenuSize, setFabMenuSize] = useState<MaterialFabMenuTriggerSize>('regular')
+  const [menuColor, setMenuColor] = useState<MaterialMenuColor>('standard')
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [menuVariant, setMenuVariant] = useState<MaterialMenuVariant>('expressive')
+  const [menuGrid, setMenuGrid] = useState(true)
+  const [menuSort, setMenuSort] = useState('date')
   const [cardDragged, setCardDragged] = useState(false)
   const [cardSelected, setCardSelected] = useState(false)
+  const [dialogKind, setDialogKind] = useState<
+    'alert' | 'custom' | 'full-screen' | 'icon' | null
+  >(null)
   const [chipFilters, setChipFilters] = useState(() => new Set(['recent']))
   const [chipPeople, setChipPeople] = useState(['Avery', 'Sam'])
   const [exportFormats, setExportFormats] = useState(() => new Set(['photos']))
@@ -292,9 +312,11 @@ export function Gallery() {
             <a href="#typography">Typography</a>
             <a href="#app-bars">App bars</a>
             <a href="#cards">Cards</a>
+            <a href="#dialogs">Dialogs</a>
             <a href="#dividers">Dividers</a>
             <a href="#chips">Chips</a>
             <a href="#actions">Actions</a>
+            <a href="#menus">Menus</a>
             <a href="#selection">Selection</a>
             <a href="#lists">Lists</a>
             <a href="#status">Status</a>
@@ -312,8 +334,8 @@ export function Gallery() {
               <h1 id="gallery-title" data-material-typography="displayLargeEmphasized">Material controls that move like they should.</h1>
               <p data-material-typography="bodyLarge">Every example is rendered by the package. Change the theme, press the controls, and inspect the current Material 3 Expressive behavior.</p>
               <div className="hero__meta" data-material-typography="labelMediumEmphasized">
-                <span>25 modules</span>
-                <span>193 tests</span>
+                <span>27 modules</span>
+                <span>218 tests</span>
                 <span>React 18 and 19</span>
               </div>
             </div>
@@ -535,6 +557,91 @@ export function Gallery() {
             </div>
           </section>
 
+          <section className="component-section" id="dialogs" aria-labelledby="dialogs-title">
+            <div className="section-heading">
+              <Eyebrow>Focused tasks and decisions</Eyebrow>
+              <h2 id="dialogs-title" data-material-typography="displayMediumEmphasized">Dialogs</h2>
+            </div>
+            <div className="specimen-grid">
+              <Specimen
+                title="Dialog family"
+                api="AlertDialog · BasicAlertDialog · FullScreenDialog"
+                description="Native modal focus behavior with the complete Material alert, custom-content, icon, and full-screen variants."
+                wide
+              >
+                <div className="dialog-showcase">
+                  <div>
+                    <StageLabel>Alert</StageLabel>
+                    <Button variant="tonal" onClick={() => setDialogKind('alert')}>Open alert dialog</Button>
+                  </div>
+                  <div>
+                    <StageLabel>Hero icon</StageLabel>
+                    <Button variant="tonal" onClick={() => setDialogKind('icon')}>Open icon dialog</Button>
+                  </div>
+                  <div>
+                    <StageLabel>Custom content</StageLabel>
+                    <Button variant="tonal" onClick={() => setDialogKind('custom')}>Open basic dialog</Button>
+                  </div>
+                  <div>
+                    <StageLabel>Full-screen</StageLabel>
+                    <Button variant="tonal" onClick={() => setDialogKind('full-screen')}>Open full-screen dialog</Button>
+                  </div>
+                </div>
+
+                <AlertDialog
+                  confirmButton={<Button variant="text" onClick={() => { setDialogKind(null); setMessage('File moved to trash') }}>Delete</Button>}
+                  dismissButton={<Button variant="text" onClick={() => setDialogKind(null)}>Cancel</Button>}
+                  onDismissRequest={() => setDialogKind(null)}
+                  open={dialogKind === 'alert'}
+                  supportingText="The file will stay in the trash for 30 days."
+                  title="Delete file?"
+                />
+
+                <AlertDialog
+                  confirmButton={<Button variant="text" onClick={() => setDialogKind(null)}>Turn on</Button>}
+                  dismissButton={<Button variant="text" onClick={() => setDialogKind(null)}>Not now</Button>}
+                  icon={<Icon name="star" />}
+                  onDismissRequest={() => setDialogKind(null)}
+                  open={dialogKind === 'icon'}
+                  supportingText="Get a notification when someone comments on this project."
+                  title="Stay up to date"
+                />
+
+                <BasicAlertDialog
+                  aria-label="Choose a workspace"
+                  onDismissRequest={() => setDialogKind(null)}
+                  open={dialogKind === 'custom'}
+                >
+                  <div className="demo-custom-dialog">
+                    <h3 data-material-typography="headlineSmall">Choose a workspace</h3>
+                    <List ariaLabel="Available workspaces" variant="segmented">
+                      <ListItem headline="Material components" onClick={() => setDialogKind(null)} />
+                      <ListItem headline="Motion studies" onClick={() => setDialogKind(null)} />
+                      <ListItem headline="Archive" onClick={() => setDialogKind(null)} />
+                    </List>
+                    <Button variant="text" onClick={() => setDialogKind(null)}>Cancel</Button>
+                  </div>
+                </BasicAlertDialog>
+
+                <FullScreenDialog
+                  action={<Button variant="text" onClick={() => { setDialogKind(null); setMessage('Event saved') }}>Save</Button>}
+                  closeIcon={<Icon name="close" />}
+                  closeLabel="Close event editor"
+                  divider
+                  headline="New event"
+                  onDismissRequest={() => setDialogKind(null)}
+                  open={dialogKind === 'full-screen'}
+                >
+                  <div className="demo-full-screen-dialog" data-material-typography="bodyLarge">
+                    <label><span data-material-typography="labelLargeEmphasized">Event title</span><input defaultValue="Design review" /></label>
+                    <label><span data-material-typography="labelLargeEmphasized">Date</span><input type="date" defaultValue="2026-09-10" /></label>
+                    <label><span data-material-typography="labelLargeEmphasized">Location</span><input defaultValue="Studio 4" /></label>
+                  </div>
+                </FullScreenDialog>
+              </Specimen>
+            </div>
+          </section>
+
           <section className="component-section" id="dividers" aria-labelledby="dividers-title">
             <div className="section-heading">
               <Eyebrow>Content grouping</Eyebrow>
@@ -752,6 +859,87 @@ export function Gallery() {
                     <strong data-material-typography="titleMediumEmphasized">56px menu items</strong>
                     <span>The close button stays anchored to the launcher's top trailing corner.</span>
                     <span>Medium and large launchers preserve 40px and 56px bottom margins after opening.</span>
+                  </div>
+                </div>
+              </Specimen>
+
+              <Specimen
+                id="menus"
+                title="Menu"
+                api="Menu · MenuItem · MenuGroup · MenuSubmenu"
+                description="Baseline and expressive vertical menus with standard or vibrant color, grouped sections, selection, supporting content, submenus, typeahead, and viewport-aware placement."
+                wide
+              >
+                <div className="stage-toolbar menu-toolbar">
+                  <label>Variant
+                    <select value={menuVariant} onChange={(event) => setMenuVariant(event.currentTarget.value as MaterialMenuVariant)}>
+                      <option value="expressive">expressive</option>
+                      <option value="baseline">baseline</option>
+                    </select>
+                  </label>
+                  <label>Color
+                    <select value={menuColor} onChange={(event) => setMenuColor(event.currentTarget.value as MaterialMenuColor)}>
+                      <option value="standard">standard</option>
+                      <option value="vibrant">vibrant</option>
+                    </select>
+                  </label>
+                  <label>Open
+                    <Switch aria-label="Open Material menu" checked={menuOpen} onChange={(event) => setMenuOpen(event.currentTarget.checked)} />
+                  </label>
+                </div>
+                <div className="menu-showcase">
+                  <div className="menu-anchor-stage">
+                    <MaterialMenu
+                      anchor={<Button trailingIcon={<Icon name="more" />} variant="tonal">View options</Button>}
+                      ariaLabel="View options"
+                      closeOnOutsideClick={false}
+                      color={menuColor}
+                      onOpenChange={setMenuOpen}
+                      open={menuOpen}
+                      variant={menuVariant}
+                    >
+                      <MaterialMenuGroup label="Layout">
+                        <MaterialCheckableMenuItem
+                          checked={menuGrid}
+                          leadingIcon={<Icon name="grid" />}
+                          onCheckedChange={setMenuGrid}
+                          selectedLeadingIcon={<Icon name="check" />}
+                          supportingText="Show files in a grid"
+                        >
+                          Grid view
+                        </MaterialCheckableMenuItem>
+                        <MaterialMenuItem disabled leadingIcon={<Icon name="star" />}>Pin selection</MaterialMenuItem>
+                      </MaterialMenuGroup>
+                      <MaterialMenuGroup label="Sort">
+                        <MaterialSelectableMenuItem
+                          onClick={() => setMenuSort('name')}
+                          selected={menuSort === 'name'}
+                          selectedLeadingIcon={<Icon name="check" />}
+                          trailingText="A–Z"
+                        >
+                          Name
+                        </MaterialSelectableMenuItem>
+                        <MaterialSelectableMenuItem
+                          onClick={() => setMenuSort('date')}
+                          selected={menuSort === 'date'}
+                          selectedLeadingIcon={<Icon name="check" />}
+                        >
+                          Date created
+                        </MaterialSelectableMenuItem>
+                        <MaterialMenuDivider />
+                        <MaterialMenuSubmenu itemChildren="More options" submenuLabel="More options">
+                          <MaterialMenuItem leadingIcon={<Icon name="edit" />} onClick={() => setMessage('Rename selected')}>Rename</MaterialMenuItem>
+                          <MaterialMenuItem leadingIcon={<Icon name="delete" />} onClick={() => setMessage('Move to trash selected')}>Move to trash</MaterialMenuItem>
+                        </MaterialMenuSubmenu>
+                      </MaterialMenuGroup>
+                    </MaterialMenu>
+                    <span data-material-typography="bodyMedium">Use the switch or trigger. Arrow keys and typing move focus.</span>
+                  </div>
+                  <div className="menu-notes">
+                    <StageLabel>{menuVariant}</StageLabel>
+                    <strong data-material-typography="titleMediumEmphasized">{menuColor} color</strong>
+                    <span>Selected items change color and shape. Multi-select items keep the menu open.</span>
+                    <span>Submenus flip at the viewport edge and use logical arrow-key direction in RTL.</span>
                   </div>
                 </div>
               </Specimen>

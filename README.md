@@ -20,12 +20,14 @@ Included now:
 - Button and button group
 - Card, including filled, elevated, outlined, checked, and dragged states
 - Divider, including horizontal, vertical, full-width, inset, one-sided, heavy, and custom styles
+- Dialogs, including alert, basic custom-content, and full-screen variants
 - Checkbox, including indeterminate and error states, checkbox groups, and list items
 - Chips, including assist, filter, input, suggestion, elevated, removable, and expressive-shape variants
 - Floating action buttons, including every current size and color mapping, extended and collapsible variants, lowered elevation, and baseline compatibility
 - FAB menus with controlled launchers, two to six actions, all three color sets, and regular, medium, and large launcher geometry
 - Lists, including standard, segmented, selectable, expandable, swipe-reveal, media, dividers, counts, and trailing actions
 - Loading indicator
+- Menus, including baseline and expressive vertical styles, standard and vibrant colors, groups, selection, and submenus
 - Quantity stepper
 - Rich option list
 - Ripple and state layers
@@ -42,7 +44,7 @@ Included now:
 Until the first npm release, install the package directly from GitHub:
 
 ```sh
-npm install github:KoleHoenicke/material-react-components#v0.14.0
+npm install github:KoleHoenicke/material-react-components#v0.15.0
 ```
 
 React and React DOM are peer dependencies. React 18 and 19 are supported.
@@ -128,6 +130,42 @@ CSS components use Material's official web curve conversions for those springs. 
 
 Sources: [Material motion physics system](https://m3.material.io/styles/motion/overview/how-it-works), [web conversion specs](https://m3.material.io/styles/motion/overview/specs), and [AndroidX `MotionScheme`](https://android.googlesource.com/platform/frameworks/support/+/refs/heads/androidx-main/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/MotionScheme.kt).
 
+### Dialogs
+
+`AlertDialog` ports the current AndroidX Material 3 dialog slots and adapts the platform behavior to the native web `<dialog>` top layer. It supports an optional icon, headline, supporting text, custom scrollable content, optional divider, confirm and dismiss buttons, centered or start-aligned layouts, and complete custom actions. The container is 280px to 560px wide, uses the 28px extra-large shape, `surfaceContainerHigh`, level-3 elevation, and a 32% scrim. Fine-pointer devices automatically use AndroidX's compact 20px padding and 20px/26px headline treatment. Touch layouts retain the 24px padding and `headlineSmall` metrics.
+
+```tsx
+import { AlertDialog, Button } from '@kolehoenicke/material-react-components'
+
+export function DeleteDialog({ open, setOpen }: {
+  open: boolean
+  setOpen: (open: boolean) => void
+}) {
+  return (
+    <AlertDialog
+      open={open}
+      onDismissRequest={() => setOpen(false)}
+      title="Delete file?"
+      supportingText="This file will be moved to the trash."
+      dismissButton={
+        <Button variant="text" onClick={() => setOpen(false)}>Cancel</Button>
+      }
+      confirmButton={
+        <Button variant="text" onClick={() => setOpen(false)}>Delete</Button>
+      }
+    />
+  )
+}
+```
+
+The dialog keeps confirm last visually in a horizontal action row, then places confirm before dismiss when the actions wrap vertically, matching AndroidX. `closeOnEscape` and `closeOnBackdropClick` control platform dismissal requests. The component traps focus through the native modal, restores focus when it closes, prevents scroll chaining inside long content, and keeps the surface mounted for the 400ms enter and 150ms exit motion. Reduced-motion and forced-color modes have dedicated treatments.
+
+`BasicAlertDialog` provides the same controlled modal behavior, width constraints, focus handling, and dismissal policy around arbitrary content. The caller owns the inner surface and semantics. `FullScreenDialog` implements Material's second dialog variant with a 64px safe-area-aware header, required close affordance, headline, optional trailing action and divider, and independently scrolling body content.
+
+Every component-level value can be overridden through `MaterialDialogStyle`, including container width, height, padding, shape, elevation, colors, icon size, action spacing, focus color, and scrim color or opacity.
+
+Sources: [Material 3 dialogs](https://m3.material.io/components/dialogs/overview), [AndroidX `AlertDialog`](https://android.googlesource.com/platform/frameworks/support/+/refs/heads/androidx-main/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/AlertDialog.kt), [AndroidX dialog tokens](https://android.googlesource.com/platform/frameworks/support/+/refs/heads/androidx-main/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/DialogTokens.kt), and [Material Components for Android dialogs](https://github.com/material-components/material-components-android/blob/master/docs/components/Dialog.md).
+
 ### Floating action buttons
 
 `FloatingActionButton` follows the current AndroidX Material 3 implementation. The default is the 56px regular FAB with a 24px icon, 16px corners, primary-container colors, level-3 elevation, and a level-4 hover elevation. Medium and large FABs use 80px and 96px containers. The 40px small FAB remains available for baseline compatibility and keeps a 48px interaction target.
@@ -208,6 +246,82 @@ export function CreateMenu() {
 The `primary`, `secondary`, and `tertiary` color sets pair a solid close button with container-colored menu items. The menu uses 56px pill items, 24px icons, title-medium labels, 24px side padding, an 8px icon-label gap, and 4px between items. `alignment` supports logical start, center, and end placement, including RTL. Long menus scroll behind the unobstructed close button.
 
 The launcher keeps focus when it opens. Tab moves from the close button to the top item, arrow keys move through the visible actions, Escape closes the menu, and collapsed items are inert and removed from the accessibility tree. Outside pointer interactions and item selection close the menu by default. `closeOnOutsideClick` and `closeOnItemClick` can disable those behaviors. Use `ToggleFloatingActionButton` separately when you need the controlled launcher without the menu layout. All component tokens are typed through `MaterialFabMenuStyle` and `MaterialToggleFabStyle`.
+
+### Menus
+
+`Menu` is the web counterpart to AndroidX `DropdownMenu` and `DropdownMenuPopup`. The default `expressive` variant implements the newer vertical menu. Set `variant="baseline"` for the original M3 menu. Standard menus use surface colors; vibrant menus use the tertiary palette and should be reserved for higher-emphasis choices.
+
+```tsx
+import { useState } from 'react'
+import {
+  Button,
+  CheckableDropdownMenuItem,
+  DropdownMenu,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  MenuDivider,
+  MenuSubmenu,
+  SelectableDropdownMenuItem,
+} from '@kolehoenicke/material-react-components'
+
+const CheckIcon = () => (
+  <svg aria-hidden="true" viewBox="0 0 24 24">
+    <path d="m5 12 4 4L19 6" />
+  </svg>
+)
+
+export function ViewMenu() {
+  const [open, setOpen] = useState(false)
+  const [grid, setGrid] = useState(true)
+  const [sort, setSort] = useState('date')
+
+  return (
+    <DropdownMenu
+      anchor={<Button variant="tonal">View options</Button>}
+      ariaLabel="View options"
+      color="standard"
+      onOpenChange={setOpen}
+      open={open}
+    >
+      <DropdownMenuGroup label="Layout">
+        <CheckableDropdownMenuItem
+          checked={grid}
+          onCheckedChange={setGrid}
+          selectedLeadingIcon={<CheckIcon />}
+          supportingText="Show files in a grid"
+        >
+          Grid view
+        </CheckableDropdownMenuItem>
+      </DropdownMenuGroup>
+
+      <DropdownMenuGroup label="Sort">
+        <SelectableDropdownMenuItem
+          onClick={() => setSort('date')}
+          selected={sort === 'date'}
+          selectedLeadingIcon={<CheckIcon />}
+        >
+          Date created
+        </SelectableDropdownMenuItem>
+        <MenuDivider />
+        <MenuSubmenu itemChildren="More options" submenuLabel="More options">
+          <DropdownMenuItem>Rename</DropdownMenuItem>
+          <DropdownMenuItem>Move to trash</DropdownMenuItem>
+        </MenuSubmenu>
+      </DropdownMenuGroup>
+    </DropdownMenu>
+  )
+}
+```
+
+The baseline surface is 112px to 280px wide with 4px corners, 8px vertical padding, level-2 elevation, 48px rows, 12px content padding, and 24px icons. Expressive menus use 16px group corners, 2px group gaps and vertical padding, 4px unselected item corners, 12px selected corners, 20px icons, and the current AndroidX standard or vibrant selection colors. Fine-pointer layouts use AndroidX's 44px item height, 12px element spacing, 16px leading padding, 10px trailing padding, and 24px trailing icon slot. Touch layouts retain a 48px target. `density` also exposes the web levels from `0` through `-3`.
+
+The popup uses a fixed top-layer-style portal, copies Material theme variables from its anchor, and repositions on resize or scroll. It tries the requested logical placement, flips above or to the opposite side when space runs out, and clamps to AndroidX's 8px horizontal and 48px vertical window margins. Use `anchorRef` for an externally owned trigger, `anchorPoint` for context menus, and `placement="start" | "end"` for cascading menus. `offset` follows text direction.
+
+Opening places focus on the first item. Arrow keys wrap, Home and End jump to the menu edges, letters use typeahead, and Escape closes the current menu. Logical left and right arrows open or close submenus. Disabled items remain focusable but cannot run an action, matching the current Material accessibility guidance. Checkable items stay open for multi-selection; selectable and action items close the complete menu tree by default. All decorative item icons are hidden from assistive technology. Forced colors, RTL, reduced motion, links, custom slots, persistent overflow scrollbars, focus restoration, and opt-out dismissal policies are included.
+
+`MaterialMenuStyle` types every component token used by the surface, groups, items, selection, typography, elevation, spacing, focus ring, scrollbar, and viewport margins. `MaterialMenuItem` accepts leading and selected-leading icons, supporting text, trailing icons, badges, keyboard labels, links, and per-item color, shape, or variant overrides. For a typical web menu, use dividers between sections. Use grouped surfaces when the product is intentionally matching Android's expressive treatment.
+
+Sources: [Material 3 menus](https://m3.material.io/components/menus/overview), [menu specs](https://m3.material.io/components/menus/specs), [menu accessibility](https://m3.material.io/components/menus/accessibility), [AndroidX `Menu`](https://android.googlesource.com/platform/frameworks/support/+/refs/heads/androidx-main/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Menu.kt), [AndroidX menu defaults](https://android.googlesource.com/platform/frameworks/support/+/refs/heads/androidx-main/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/MenuDefaults.kt), and [Material Web menus](https://github.com/material-components/material-web/blob/main/docs/components/menu.md).
 
 ### Checkboxes
 
