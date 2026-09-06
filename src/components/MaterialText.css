@@ -1,0 +1,40 @@
+.material-text {
+  box-sizing: border-box;
+  margin: 0;
+  color: inherit;
+  font-family: var(--md-text-font);
+  font-feature-settings: var(--md-text-features);
+  font-size: var(--md-text-size);
+  font-stretch: var(--md-text-stretch);
+  font-style: var(--md-text-style);
+  font-variation-settings: var(--md-text-variations);
+  font-weight: var(--md-text-weight);
+  font-synthesis: none;
+  line-height: var(--md-text-line-height);
+  letter-spacing: var(--md-text-tracking);
+  overflow-wrap: break-word;
+}
+
+.material-text[data-soft-wrap='false'] {
+  white-space: pre;
+}
+
+.material-text[data-min-lines] {
+  display: inline-block;
+}
+
+.material-text[data-max-lines] {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--md-text-max-lines);
+}
+
+.material-text[data-max-lines='1'] {
+  display: block;
+  white-space: nowrap;
+}
+
+.material-text[data-max-lines][data-overflow='ellipsis'] {
+  text-overflow: ellipsis;
+}

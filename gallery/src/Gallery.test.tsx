@@ -12,6 +12,7 @@ describe('interactive gallery', () => {
       'FloatingActionButton · ExtendedFloatingActionButton',
       'FloatingActionButtonMenu · FloatingActionButtonMenuItem · ToggleFloatingActionButton',
       'Card',
+      'Text · MaterialText',
       'Divider · HorizontalDivider · VerticalDivider',
       'Checkbox · CheckboxList · CheckboxListItem',
       'AssistChip · FilterChip · InputChip · SuggestionChip',

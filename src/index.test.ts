@@ -36,6 +36,7 @@ describe('public package surface', () => {
     expect(library.ChipSet).toBe(library.MaterialChipSet)
     expect(library.FilterChip).toBe(library.MaterialFilterChip)
     expect(library.Switch).toBe(library.MaterialSwitch)
+    expect(library.Text).toBe(library.MaterialText)
     expect(library.Slider).toBe(library.MaterialSlider)
     expect(library.LoadingIndicator).toBe(library.MaterialLoadingIndicator)
     expect(library.LinearProgressIndicator).toBe(library.MaterialLinearProgressIndicator)

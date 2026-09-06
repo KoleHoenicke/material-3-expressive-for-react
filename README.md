@@ -34,6 +34,7 @@ Included now:
 - Switch
 - Progress indicators, including standard and Expressive linear and circular variants
 - Dynamic Material color themes
+- Typography with all 15 baseline and 15 Expressive emphasized roles
 - Material 3 Expressive motion tokens
 
 ## Install from GitHub
@@ -41,7 +42,7 @@ Included now:
 Until the first npm release, install the package directly from GitHub:
 
 ```sh
-npm install github:KoleHoenicke/material-react-components#v0.12.0
+npm install github:KoleHoenicke/material-react-components#v0.13.0
 ```
 
 React and React DOM are peer dependencies. React 18 and 19 are supported.
@@ -472,6 +473,59 @@ The Android defaults are 240 by 4 pixels for standard linear, 240 by 10 pixels f
 Use `max` for a range other than 0 to 1. Set `animateProgress` when the component should apply the AndroidX recommended transition between determinate values. Wavy indicators also accept `amplitude`, `wavelength`, and `waveSpeed`. Stroke widths, track widths, cap shape, gap, stop size, colors, dimensions, native span attributes, `aria-valuetext`, and `aria-labelledby` are configurable. Motion stops under `prefers-reduced-motion: reduce`, and linear indicators follow RTL direction.
 
 The legacy `WavyProgress` name remains as a compatibility alias for determinate `LinearWavyProgressIndicator`.
+
+## Typography
+
+`Text` ports the current AndroidX Material 3 `Typography` model to semantic HTML. The type scale has all 15 baseline roles and all 15 Material 3 Expressive emphasized roles. Visual style and document structure stay independent, so a `displayLarge` style does not silently create an `h1`.
+
+```tsx
+import { MaterialThemeProvider, Text } from '@kolehoenicke/material-react-components'
+
+export function Article() {
+  return (
+    <MaterialThemeProvider
+      seed={{ primary: '#6750a4' }}
+      typography={{
+        brandFontFamily: "'Example Display', sans-serif",
+        plainFontFamily: "'Example Text', sans-serif",
+        weights: { medium: 550 },
+        styles: {
+          bodyLarge: { fontVariationSettings: "'opsz' 16" },
+        },
+      }}
+    >
+      <Text as="h1" variant="displayLarge">Field notes</Text>
+      <Text as="p" variant="bodyLarge">A semantic paragraph using the plain typeface role.</Text>
+      <Text as="p" variant="titleMedium" emphasized>Important supporting title</Text>
+      <Text maxLines={2} overflow="ellipsis">Two lines at most.</Text>
+    </MaterialThemeProvider>
+  )
+}
+```
+
+The default scale matches AndroidX generated type tokens v0.103:
+
+| Role | Size / line height | Baseline weight / tracking | Emphasized weight / tracking |
+| --- | ---: | ---: | ---: |
+| displayLarge | 57 / 64px | 400 / -0.2px | 500 / 0px |
+| displayMedium | 45 / 52px | 400 / 0px | 500 / 0px |
+| displaySmall | 36 / 44px | 400 / 0px | 500 / 0px |
+| headlineLarge | 32 / 40px | 400 / 0px | 500 / 0px |
+| headlineMedium | 28 / 36px | 400 / 0px | 500 / 0px |
+| headlineSmall | 24 / 32px | 400 / 0px | 500 / 0px |
+| titleLarge | 22 / 28px | 400 / 0px | 500 / 0px |
+| titleMedium | 16 / 24px | 500 / 0.2px | 700 / 0.15px |
+| titleSmall | 14 / 20px | 500 / 0.1px | 700 / 0.1px |
+| bodyLarge | 16 / 24px | 400 / 0.5px | 500 / 0.15px |
+| bodyMedium | 14 / 20px | 400 / 0.2px | 500 / 0.25px |
+| bodySmall | 12 / 16px | 400 / 0.4px | 500 / 0.4px |
+| labelLarge | 14 / 20px | 500 / 0.1px | 700 / 0.1px |
+| labelMedium | 12 / 16px | 500 / 0.5px | 700 / 0.5px |
+| labelSmall | 11 / 16px | 500 / 0.5px | 700 / 0.5px |
+
+Use an emphasized role directly, such as `bodyLargeEmphasized`, or set `emphasized` on a baseline role. `as` accepts intrinsic elements and React components while keeping their native props. Direct color, family, size, style, stretch, weight, feature, variation, line-height, tracking, alignment, and decoration props override the selected role. The standard `style` prop remains the final override.
+
+Every role exposes `--md-sys-typescale-<role>-font`, `-size`, `-weight`, `-line-height`, and `-tracking`. Brand and plain families use `--md-ref-typeface-brand` and `--md-ref-typeface-plain`; weight aliases use `--md-ref-typeface-weight-regular`, `-medium`, and `-bold`. CSS pixel values preserve the Android `sp` geometry while browser zoom still scales the complete page.
 
 ## Theming
 

@@ -36,6 +36,8 @@ import {
   LinearWavyProgressIndicator,
   LargeFlexibleTopAppBar,
   LargeTopAppBar,
+  MATERIAL_DEFAULT_TYPOGRAPHY,
+  MATERIAL_TYPOGRAPHY_BASE_ROLES,
   MaterialRipple,
   MaterialThemeProvider,
   MediumFlexibleTopAppBar,
@@ -46,6 +48,7 @@ import {
   Slider,
   SuggestionChip,
   Switch,
+  Text,
   TopAppBar,
   VerticalDivider,
   CenterAlignedTopAppBar,
@@ -282,6 +285,7 @@ export function Gallery() {
             <span>Material React Components</span>
           </a>
           <nav aria-label="Gallery navigation">
+            <a href="#typography">Typography</a>
             <a href="#app-bars">App bars</a>
             <a href="#cards">Cards</a>
             <a href="#dividers">Dividers</a>
@@ -304,8 +308,8 @@ export function Gallery() {
               <h1 id="gallery-title">Material controls that move like they should.</h1>
               <p>Every example is rendered by the package. Change the theme, press the controls, and inspect the current Material 3 Expressive behavior.</p>
               <div className="hero__meta">
-                <span>24 modules</span>
-                <span>174 tests</span>
+                <span>25 modules</span>
+                <span>186 tests</span>
                 <span>React 18 and 19</span>
               </div>
             </div>
@@ -356,6 +360,48 @@ export function Gallery() {
                   onChange={(event) => setMotionScheme(event.currentTarget.checked ? 'expressive' : 'standard')}
                 />
               </label>
+            </div>
+          </section>
+
+          <section className="component-section" id="typography" aria-labelledby="typography-title">
+            <div className="section-heading">
+              <span className="eyebrow">Type scale and text</span>
+              <h2 id="typography-title">Typography</h2>
+            </div>
+            <div className="specimen-grid">
+              <Specimen
+                title="Baseline and emphasized type scale"
+                api="Text · MaterialText"
+                description="All 15 baseline roles and their Material 3 Expressive emphasized counterparts, using the current AndroidX generated metrics."
+                wide
+              >
+                <div className="type-scale" role="table" aria-label="Material 3 type scale">
+                  <div className="type-scale__header" role="row">
+                    <span role="columnheader">Role and metrics</span>
+                    <span role="columnheader">Baseline</span>
+                    <span role="columnheader">Emphasized</span>
+                  </div>
+                  {MATERIAL_TYPOGRAPHY_BASE_ROLES.map((role) => {
+                    const metrics = MATERIAL_DEFAULT_TYPOGRAPHY[role]
+                    const sample = role.startsWith('display')
+                      ? 'Aa'
+                      : role
+                          .replace(/(Large|Medium|Small)$/, '')
+                          .replace(/^./, (character) => character.toUpperCase())
+
+                    return (
+                      <div className="type-scale__row" role="row" key={role}>
+                        <div className="type-scale__meta" role="rowheader">
+                          <code>{role}</code>
+                          <span>{metrics.fontSize} / {metrics.lineHeight} · {metrics.fontWeight} · {metrics.letterSpacing}</span>
+                        </div>
+                        <div role="cell"><Text as="div" variant={role}>{sample}</Text></div>
+                        <div role="cell"><Text as="div" variant={role} emphasized>{sample}</Text></div>
+                      </div>
+                    )
+                  })}
+                </div>
+              </Specimen>
             </div>
           </section>
 

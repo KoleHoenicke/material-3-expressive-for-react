@@ -1,6 +1,10 @@
 import type { CSSProperties, HTMLAttributes, ReactNode } from 'react'
 import type { MaterialMotionScheme } from './materialMotion'
 import {
+  createMaterialTypographyCssVariables,
+  type MaterialTypographyOptions,
+} from './materialTypography'
+import {
   createMaterialFidelityThemeCssVariables,
   createMaterialThemeCssVariables,
   type MaterialThemeMode,
@@ -13,6 +17,7 @@ export type MaterialThemeProviderProps = Omit<HTMLAttributes<HTMLDivElement>, 'c
   mode?: MaterialThemeMode
   motionScheme?: MaterialMotionScheme
   seed: MaterialThemeSeed
+  typography?: MaterialTypographyOptions
 }
 
 export function MaterialThemeProvider({
@@ -23,6 +28,7 @@ export function MaterialThemeProvider({
   motionScheme = 'expressive',
   seed,
   style,
+  typography,
   ...props
 }: MaterialThemeProviderProps) {
   const variables = fidelity
@@ -35,7 +41,14 @@ export function MaterialThemeProvider({
       className={['material-react-root', className].filter(Boolean).join(' ')}
       data-color-scheme={mode}
       data-motion-scheme={motionScheme}
-      style={{ ...variables, colorScheme: mode, ...style } as CSSProperties}
+      style={
+        {
+          ...variables,
+          ...(typography ? createMaterialTypographyCssVariables(typography) : {}),
+          colorScheme: mode,
+          ...style,
+        } as CSSProperties
+      }
     >
       {children}
     </div>

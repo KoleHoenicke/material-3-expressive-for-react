@@ -22,6 +22,8 @@ The FAB-menu layout, token values, launcher transformation, item reveal order, f
 
 The divider geometry, tokens, inset variants, heavy style, and accessibility behavior in `MaterialDivider.tsx` and `MaterialDivider.css` are adapted from AndroidX Material 3, Material Components for Android, and Material Web. Copyright 2021-2026 The Android Open Source Project and copyright 2023-2026 Google LLC. Licensed under the Apache License 2.0.
 
+The baseline and emphasized type scales, typeface roles, weights, line heights, and tracking values in `materialTypography.ts`, `tokens.css`, and `MaterialText.tsx` are adapted from AndroidX Material 3 generated v0.103 typography tokens and the Material Design 3 typography guidance. Copyright 2021-2026 The Android Open Source Project and copyright Google LLC. Licensed under the Apache License 2.0 where applicable.
+
 ## Material Color Utilities
 
 This package uses `@material/material-color-utilities`, copyright Google LLC. Licensed under the Apache License 2.0.

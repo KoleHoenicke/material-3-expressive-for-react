@@ -821,6 +821,63 @@ svg {
   font-weight: 650;
 }
 
+.type-scale {
+  display: grid;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: 20px;
+  background: var(--md-sys-color-surface-container-lowest);
+}
+
+.type-scale__header,
+.type-scale__row {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.7fr) repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: 20px;
+  min-width: 0;
+  padding: 12px 16px;
+}
+
+.type-scale__header {
+  background: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.type-scale__row + .type-scale__row {
+  border-top: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.type-scale__row > [role='cell'] {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.type-scale__meta {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+
+.type-scale__meta code {
+  overflow: hidden;
+  color: var(--md-sys-color-primary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+}
+
+.type-scale__meta span {
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 0.7rem;
+  font-variant-numeric: tabular-nums;
+}
+
 .stage-label {
   display: block;
   margin-bottom: -9px;
@@ -1333,6 +1390,36 @@ svg {
   .card-showcase,
   .divider-showcase {
     grid-template-columns: 1fr;
+  }
+
+  .type-scale__header {
+    display: none;
+  }
+
+  .type-scale__row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 14px;
+    padding: 16px;
+  }
+
+  .type-scale__meta {
+    grid-column: 1 / -1;
+  }
+
+  .type-scale__row > [role='cell']::before {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--md-sys-color-on-surface-variant);
+    content: 'Baseline';
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .type-scale__row > [role='cell']:last-child::before {
+    content: 'Emphasized';
   }
 
   .specimen--wide {

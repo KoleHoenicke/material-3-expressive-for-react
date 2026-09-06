@@ -33,4 +33,29 @@ describe('MaterialThemeProvider', () => {
       'standard',
     )
   })
+
+  it('applies configurable typography without changing the color theme', () => {
+    render(
+      <MaterialThemeProvider
+        seed={{ primary: '#6750a4' }}
+        typography={{
+          brandFontFamily: 'Example Display',
+          plainFontFamily: 'Example Text',
+          weights: { medium: 550 },
+          styles: { bodyLarge: { letterSpacing: '0.75px' } },
+        }}
+        data-testid="typography-theme"
+      >
+        <span>Content</span>
+      </MaterialThemeProvider>,
+    )
+
+    const theme = screen.getByTestId('typography-theme')
+    expect(theme.style.getPropertyValue('--md-ref-typeface-brand')).toBe('Example Display')
+    expect(theme.style.getPropertyValue('--md-ref-typeface-plain')).toBe('Example Text')
+    expect(theme.style.getPropertyValue('--md-ref-typeface-weight-medium')).toBe('550')
+    expect(theme.style.getPropertyValue('--md-sys-typescale-body-large-tracking')).toBe(
+      '0.75px',
+    )
+  })
 })

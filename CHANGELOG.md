@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.13.0
+
+- Added the complete current Material 3 type scale with all 15 baseline styles and all 15 Expressive emphasized styles from AndroidX v0.103. Every role includes its exact font role, size, weight, line height, and tracking as a public CSS token and typed JavaScript value.
+- Added `Text` and `MaterialText` with independent semantic elements, direct baseline or emphasized role selection, inherited content color, native attributes, font and variable-font overrides, soft wrapping, clipping or ellipsis, and minimum and maximum line controls.
+- Added theme-level typography configuration for default, brand, and plain families, regular, medium, and bold weights, and individual style overrides. Completed the previously partial type-token set used by existing components and added full gallery and test coverage.
+
 ## 0.12.0
 
 - Added the complete Material 3 divider family with horizontal and vertical orientations, 1px regular and 8px heavy variants, full-width and logical inset layouts, arbitrary thickness and color overrides, RTL-safe geometry, and forced-color support.
