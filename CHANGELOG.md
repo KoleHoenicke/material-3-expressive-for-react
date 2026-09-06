@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.0
+
+- Added the Material 3 Checkbox with checked, unchecked, indeterminate, disabled, and error states; native form and validation behavior; 18px containers; 40px state layers; 48px targets; current AndroidX color and motion behavior; typed CSS token overrides; and full-row checkbox list items with parent-child selection support.
+
 ## 0.5.0
 
 - Added the complete Material 3 chip family with assist, filter, input, and suggestion chips; flat and elevated treatments; controlled selection; avatars; selected, leading, and trailing icons; removable and remove-only actions; links; disabled and soft-disabled behavior; drag state; 48px targets; expressive filter/input shape morphing; and keyboard-aware chip sets.

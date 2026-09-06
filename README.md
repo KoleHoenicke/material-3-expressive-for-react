@@ -19,6 +19,7 @@ Included now:
 - Badge
 - Button and button group
 - Card, including filled, elevated, outlined, checked, and dragged states
+- Checkbox, including indeterminate and error states, checkbox groups, and list items
 - Chips, including assist, filter, input, suggestion, elevated, removable, and expressive-shape variants
 - List count and trailing actions
 - Loading indicator
@@ -37,7 +38,7 @@ Included now:
 Until the first npm release, install the package directly from GitHub:
 
 ```sh
-npm install github:KoleHoenicke/material-react-components#v0.5.0
+npm install github:KoleHoenicke/material-react-components#v0.6.0
 ```
 
 React and React DOM are peer dependencies. React 18 and 19 are supported.
@@ -101,6 +102,63 @@ export function Settings() {
 ```
 
 Every component is exported with a short name such as `Button` and its explicit name such as `MaterialButton`.
+
+### Checkboxes
+
+`Checkbox` follows the current Material 3 measurements and AndroidX behavior. It renders a native checkbox input, so names, values, required validation, form submission, keyboard activation, labels, and refs work like ordinary web controls. `indeterminate` sets the native mixed state. `error` applies the Material error treatment and `aria-invalid` semantics.
+
+```tsx
+import { useState } from 'react'
+import {
+  CheckboxList,
+  CheckboxListItem,
+} from '@kolehoenicke/material-react-components'
+
+const formats = ['Photos', 'Videos'] as const
+
+export function ExportFormats() {
+  const [selected, setSelected] = useState(() => new Set(['Photos']))
+  const allSelected = selected.size === formats.length
+  const someSelected = selected.size > 0 && !allSelected
+
+  return (
+    <CheckboxList ariaLabel="Export formats">
+      <CheckboxListItem
+        label="Select all formats"
+        checkboxProps={{
+          checked: allSelected,
+          indeterminate: someSelected,
+          onChange: (event) => {
+            setSelected(event.currentTarget.checked ? new Set(formats) : new Set())
+          },
+        }}
+      />
+      {formats.map((format) => (
+        <CheckboxListItem
+          key={format}
+          label={format}
+          checkboxProps={{
+            checked: selected.has(format),
+            name: 'format',
+            value: format,
+            onChange: (event) => {
+              const checked = event.currentTarget.checked
+              setSelected((current) => {
+                const next = new Set(current)
+                if (checked) next.add(format)
+                else next.delete(format)
+                return next
+              })
+            },
+          }}
+        />
+      ))}
+    </CheckboxList>
+  )
+}
+```
+
+The default visual container is 18px with a 2px corner and stroke. The state layer is 40px and the interaction target is 48px. `MaterialCheckboxStyle` types every `--md-checkbox-*` property, including separate checkmark, box, outline, interaction, disabled, indeterminate, error, and focus-indicator values. `CheckboxListItem` can place the control at the leading or trailing edge and keeps adjacent text on the `on-surface` role in every selection state.
 
 ### Chips
 

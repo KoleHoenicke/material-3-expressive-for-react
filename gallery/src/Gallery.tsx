@@ -7,6 +7,9 @@ import {
   Button,
   ButtonGroup,
   Card,
+  Checkbox,
+  CheckboxList,
+  CheckboxListItem,
   AssistChip,
   ChipSet,
   FilterChip,
@@ -126,6 +129,7 @@ export function Gallery() {
   const [cardSelected, setCardSelected] = useState(false)
   const [chipFilters, setChipFilters] = useState(() => new Set(['recent']))
   const [chipPeople, setChipPeople] = useState(['Avery', 'Sam'])
+  const [exportFormats, setExportFormats] = useState(() => new Set(['photos']))
   const [favorite, setFavorite] = useState(false)
   const [interval, setInterval] = useState('week')
   const [notifications, setNotifications] = useState(true)
@@ -144,6 +148,19 @@ export function Gallery() {
       const next = new Set(current)
       if (selected) next.add(filter)
       else next.delete(filter)
+      return next
+    })
+  }
+
+  const availableExportFormats = ['photos', 'videos', 'metadata']
+  const allExportFormatsSelected = exportFormats.size === availableExportFormats.length
+  const someExportFormatsSelected = exportFormats.size > 0 && !allExportFormatsSelected
+
+  const setExportFormat = (format: string, selected: boolean) => {
+    setExportFormats((current) => {
+      const next = new Set(current)
+      if (selected) next.add(format)
+      else next.delete(format)
       return next
     })
   }
@@ -238,8 +255,8 @@ export function Gallery() {
               <h1 id="gallery-title">Material controls that move like they should.</h1>
               <p>Every example is rendered by the package. Change the theme, press the controls, and inspect the current Material 3 Expressive behavior.</p>
               <div className="hero__meta">
-                <span>16 modules</span>
-                <span>92 tests</span>
+                <span>18 modules</span>
+                <span>100 tests</span>
                 <span>React 18 and 19</span>
               </div>
             </div>
@@ -505,9 +522,66 @@ export function Gallery() {
           <section className="component-section" id="selection" aria-labelledby="selection-title">
             <div className="section-heading">
               <span className="eyebrow">Selection</span>
-              <h2 id="selection-title">Switches and sliders</h2>
+              <h2 id="selection-title">Checkboxes, switches, and sliders</h2>
             </div>
             <div className="specimen-grid">
+              <Specimen
+                title="Checkbox"
+                api="Checkbox · CheckboxList · CheckboxListItem"
+                description="Native form semantics with checked, mixed, disabled, error, and full-row list behavior."
+                wide
+              >
+                <div className="checkbox-state-showcase" aria-label="Checkbox states">
+                  <label><Checkbox /><span>Unchecked</span></label>
+                  <label><Checkbox defaultChecked /><span>Checked</span></label>
+                  <label><Checkbox indeterminate /><span>Indeterminate</span></label>
+                  <label><Checkbox disabled /><span>Disabled</span></label>
+                  <label><Checkbox defaultChecked disabled /><span>Disabled checked</span></label>
+                  <label><Checkbox error /><span>Error</span></label>
+                </div>
+                <CheckboxList ariaLabel="Export formats" className="checkbox-list-demo">
+                  <CheckboxListItem
+                    label="Select all formats"
+                    supportingText="Parent checkbox with automatic mixed state"
+                    checkboxProps={{
+                      checked: allExportFormatsSelected,
+                      indeterminate: someExportFormatsSelected,
+                      onChange: (event) => {
+                        setExportFormats(
+                          event.currentTarget.checked
+                            ? new Set(availableExportFormats)
+                            : new Set(),
+                        )
+                      },
+                    }}
+                  />
+                  <CheckboxListItem
+                    label="Photos"
+                    supportingText="Original resolution"
+                    checkboxProps={{
+                      checked: exportFormats.has('photos'),
+                      onChange: (event) => setExportFormat('photos', event.currentTarget.checked),
+                    }}
+                  />
+                  <CheckboxListItem
+                    label="Videos"
+                    supportingText="Include motion and audio"
+                    checkboxProps={{
+                      checked: exportFormats.has('videos'),
+                      onChange: (event) => setExportFormat('videos', event.currentTarget.checked),
+                    }}
+                  />
+                  <CheckboxListItem
+                    label="Metadata"
+                    supportingText="Capture dates and locations"
+                    checkboxProps={{
+                      checked: exportFormats.has('metadata'),
+                      onChange: (event) => setExportFormat('metadata', event.currentTarget.checked),
+                    }}
+                  />
+                </CheckboxList>
+              </Specimen>
+
               <Specimen title="Switch" description="Selected, unselected, icon, and disabled states.">
                 <div className="switch-list">
                   <label><span><strong>Notifications</strong><small>Selected icon</small></span><Switch aria-label="Notifications" checked={notifications} onChange={(event) => setNotifications(event.currentTarget.checked)} /></label>

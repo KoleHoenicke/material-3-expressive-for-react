@@ -739,6 +739,31 @@ svg {
   gap: 2px;
 }
 
+.checkbox-state-showcase {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 18px;
+}
+
+.checkbox-state-showcase label {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--md-sys-color-on-surface);
+  font-size: 0.82rem;
+  font-weight: 560;
+  cursor: pointer;
+}
+
+.checkbox-state-showcase label:has(input:disabled) {
+  cursor: default;
+}
+
+.checkbox-list-demo {
+  align-self: stretch;
+}
+
 .switch-list label,
 .quantity-demo,
 .demo-list-row {
@@ -805,7 +830,8 @@ svg {
 }
 
 .specimen-grid--lists .material-rich-option-list,
-.specimen-grid--lists .material-segmented-action-list {
+.specimen-grid--lists .material-segmented-action-list,
+.specimen-grid--lists .material-checkbox-list {
   align-self: stretch;
 }
 

@@ -71,6 +71,17 @@
   --m3-motion-card-selection-enter: var(--md-sys-motion-duration-short2) linear;
   --m3-motion-card-selection-exit: var(--md-sys-motion-duration-short1) linear;
 
+  /* AndroidX Checkbox uses DefaultSpatial for the mark and Effects for color. */
+  --m3-motion-checkbox-mark-in-duration: var(--m3-motion-default-spatial-duration);
+  --m3-motion-checkbox-mark-in-easing: var(--m3-motion-default-spatial-easing);
+  --m3-motion-checkbox-mark-out-duration: 1ms;
+  --m3-motion-checkbox-mark-out-delay: var(--md-sys-motion-duration-short2);
+  --m3-motion-checkbox-mark-out-easing: var(--md-sys-motion-easing-linear);
+  --m3-motion-checkbox-box-in-duration: var(--m3-motion-default-effects-duration);
+  --m3-motion-checkbox-box-in-easing: var(--m3-motion-default-effects-easing);
+  --m3-motion-checkbox-box-out-duration: var(--m3-motion-fast-effects-duration);
+  --m3-motion-checkbox-box-out-easing: var(--m3-motion-fast-effects-easing);
+
   --md-sys-motion-expressive-fast-spatial-duration: 350ms;
   --md-sys-motion-expressive-fast-spatial-easing: cubic-bezier(0.42, 1.67, 0.21, 0.90);
   --md-sys-motion-expressive-default-spatial-duration: 500ms;

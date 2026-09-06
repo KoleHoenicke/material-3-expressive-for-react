@@ -10,6 +10,7 @@ describe('interactive gallery', () => {
       'Button',
       'ButtonGroup',
       'Card',
+      'Checkbox · CheckboxList · CheckboxListItem',
       'AssistChip · FilterChip · InputChip · SuggestionChip',
       'Ripple',
       'Switch',

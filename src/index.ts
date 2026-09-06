@@ -6,6 +6,8 @@ export * from './components/MaterialAppBar'
 export * from './components/MaterialButton'
 export * from './components/MaterialButtonGroup'
 export * from './components/MaterialCard'
+export * from './components/MaterialCheckbox'
+export * from './components/MaterialCheckboxList'
 export * from './components/MaterialChip'
 export * from './components/MaterialListCount'
 export * from './components/MaterialListTrailingAction'
@@ -36,6 +38,11 @@ export {
 export { MaterialButton as Button } from './components/MaterialButton'
 export { MaterialButtonGroup as ButtonGroup } from './components/MaterialButtonGroup'
 export { MaterialCard as Card } from './components/MaterialCard'
+export { MaterialCheckbox as Checkbox } from './components/MaterialCheckbox'
+export {
+  MaterialCheckboxList as CheckboxList,
+  MaterialCheckboxListItem as CheckboxListItem,
+} from './components/MaterialCheckboxList'
 export {
   MaterialAssistChip as AssistChip,
   MaterialChip as Chip,

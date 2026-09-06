@@ -5,6 +5,9 @@ describe('public package surface', () => {
   it('exports short and explicit component names', () => {
     expect(library.Button).toBe(library.MaterialButton)
     expect(library.Card).toBe(library.MaterialCard)
+    expect(library.Checkbox).toBe(library.MaterialCheckbox)
+    expect(library.CheckboxList).toBe(library.MaterialCheckboxList)
+    expect(library.CheckboxListItem).toBe(library.MaterialCheckboxListItem)
     expect(library.Chip).toBe(library.MaterialChip)
     expect(library.ChipSet).toBe(library.MaterialChipSet)
     expect(library.FilterChip).toBe(library.MaterialFilterChip)
