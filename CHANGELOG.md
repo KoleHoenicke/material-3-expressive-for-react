@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.7.0
+
+- Replaced the legacy determinate wavy line with the full Material 3 progress family: standard and Expressive linear and circular indicators, determinate and indeterminate modes, current AndroidX geometry and motion, stop markers, RTL rendering, reduced-motion handling, accessible ranges, compatibility aliases, and configurable strokes, gaps, colors, dimensions, amplitude, wavelength, and wave speed.
+
 ## 0.6.0
 
 - Added the Material 3 Checkbox with checked, unchecked, indeterminate, disabled, and error states; native form and validation behavior; 18px containers; 40px state layers; 48px targets; current AndroidX color and motion behavior; typed CSS token overrides; and full-row checkbox list items with parent-child selection support.

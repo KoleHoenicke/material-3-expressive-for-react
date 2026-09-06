@@ -10,6 +10,8 @@ The chip geometry, tokens, interaction states, and expressive shapes in `Materia
 
 The checkbox geometry, mark path, tokens, state colors, and transition behavior in `MaterialCheckbox.tsx` and `MaterialCheckbox.css` are adapted from AndroidX Material 3 and Material Web. Copyright 2021-2026 The Android Open Source Project and copyright 2019-2023 Google LLC. Licensed under the Apache License 2.0.
 
+The progress-indicator geometry, paths, and timing in `MaterialProgressIndicator.tsx` and `MaterialProgressIndicator.css` are adapted from AndroidX Material 3. Copyright 2022-2025 The Android Open Source Project. Licensed under the Apache License 2.0.
+
 ## Material Color Utilities
 
 This package uses `@material/material-color-utilities`, copyright Google LLC. Licensed under the Apache License 2.0.

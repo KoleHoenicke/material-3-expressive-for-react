@@ -14,6 +14,14 @@ describe('public package surface', () => {
     expect(library.Switch).toBe(library.MaterialSwitch)
     expect(library.Slider).toBe(library.MaterialSlider)
     expect(library.LoadingIndicator).toBe(library.MaterialLoadingIndicator)
+    expect(library.LinearProgressIndicator).toBe(library.MaterialLinearProgressIndicator)
+    expect(library.CircularProgressIndicator).toBe(library.MaterialCircularProgressIndicator)
+    expect(library.LinearWavyProgressIndicator).toBe(
+      library.MaterialLinearWavyProgressIndicator,
+    )
+    expect(library.CircularWavyProgressIndicator).toBe(
+      library.MaterialCircularWavyProgressIndicator,
+    )
     expect(library.TopAppBar).toBe(library.MaterialTopAppBar)
     expect(library.BottomAppBar).toBe(library.MaterialBottomAppBar)
     expect(library.AppBarIconButton).toBe(library.MaterialAppBarIconButton)

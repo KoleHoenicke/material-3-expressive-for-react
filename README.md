@@ -29,7 +29,7 @@ Included now:
 - Segmented action list
 - Slider, including centered ranges and stops
 - Switch
-- Wavy progress indicator
+- Progress indicators, including standard and Expressive linear and circular variants
 - Dynamic Material color themes
 - Material 3 Expressive motion tokens
 
@@ -38,7 +38,7 @@ Included now:
 Until the first npm release, install the package directly from GitHub:
 
 ```sh
-npm install github:KoleHoenicke/material-react-components#v0.6.0
+npm install github:KoleHoenicke/material-react-components#v0.7.0
 ```
 
 React and React DOM are peer dependencies. React 18 and 19 are supported.
@@ -236,6 +236,43 @@ export function Feed({ content }: { content: ReactNode }) {
 
 All app-bar colors, dimensions, safe-area insets, and slot colors have public `--md-top-app-bar-*` and `--md-bottom-app-bar-*` CSS properties. Pass `safeAreaInsets={false}` when the surrounding layout already handles browser safe areas.
 
+### Progress indicators
+
+The progress family ports the current AndroidX Material 3 standard and Expressive APIs. Each shape supports determinate and indeterminate operation. Omit `value` for indeterminate progress.
+
+```tsx
+import {
+  CircularProgressIndicator,
+  CircularWavyProgressIndicator,
+  LinearProgressIndicator,
+  LinearWavyProgressIndicator,
+} from '@kolehoenicke/material-react-components'
+
+export function SyncProgress({ value }: { value: number }) {
+  return (
+    <>
+      <LinearProgressIndicator label="Uploading files" value={value} />
+      <LinearProgressIndicator label="Preparing upload" />
+      <CircularWavyProgressIndicator label="Indexing files" value={value} />
+      <LinearWavyProgressIndicator
+        amplitude={0.7}
+        label="Processing images"
+        strokeWidth={8}
+        trackStrokeWidth={8}
+        value={value}
+        wavelength={56}
+      />
+    </>
+  )
+}
+```
+
+The Android defaults are 240 by 4 pixels for standard linear, 240 by 10 pixels for linear wavy, 40 pixels for standard circular, and 48 pixels for circular wavy. Active and track strokes default to 4 pixels. Both linear forms include the 4 pixel stop marker used by current Material 3. For Android's thick Expressive examples, use a 14 pixel linear height with 8 pixel strokes or a 52 pixel circular size with 8 pixel strokes.
+
+Use `max` for a range other than 0 to 1. Set `animateProgress` when the component should apply the AndroidX recommended transition between determinate values. Wavy indicators also accept `amplitude`, `wavelength`, and `waveSpeed`. Stroke widths, track widths, cap shape, gap, stop size, colors, dimensions, native span attributes, `aria-valuetext`, and `aria-labelledby` are configurable. Motion stops under `prefers-reduced-motion: reduce`, and linear indicators follow RTL direction.
+
+The legacy `WavyProgress` name remains as a compatibility alias for determinate `LinearWavyProgressIndicator`.
+
 ## Theming
 
 `MaterialThemeProvider` generates Material color roles from a source color with Google's open-source Material Color Utilities. Fidelity palettes are enabled by default.
@@ -257,6 +294,8 @@ Components use public CSS custom properties. Override Material tokens at any anc
   --md-card-container-shape: 20px;
   --md-card-dragged-elevation: var(--md-sys-elevation-level5);
   --md-slider-active-track-color: #006a6a;
+  --md-progress-active-color: #006a6a;
+  --md-progress-track-color: #b9ccc9;
   --material-loading-indicator-size: 40px;
 }
 ```

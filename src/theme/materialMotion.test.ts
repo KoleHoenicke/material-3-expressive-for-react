@@ -7,6 +7,7 @@ import {
   MATERIAL_MOTION_DEFAULT_SCHEME,
   MATERIAL_MOTION_PRESETS,
   MATERIAL_MOTION_SPRING_ATTRIBUTES,
+  MATERIAL_PROGRESS_TIMING,
   MATERIAL_TRANSITION_PAIRS,
   getMaterialMotionPreset,
   getMaterialTransitionPair,
@@ -123,6 +124,25 @@ describe('Material motion tokens', () => {
       scrollEndMs: 140,
       settleDurationMs: MATERIAL_MOTION_PRESETS.expressive.spatial.fast.durationMs,
     })
+  })
+
+  it('keeps progress cycles and value transitions aligned with AndroidX', () => {
+    const css = readFileSync(resolve(process.cwd(), 'src/theme/motion.css'), 'utf8')
+
+    expect(MATERIAL_PROGRESS_TIMING).toMatchObject({
+      linearIndeterminateCycleMs: 1750,
+      circularIndeterminateCycleMs: 6000,
+      circularAdditionalRotationStepMs: 1500,
+      circularAdditionalRotationDurationMs: 300,
+      wavyDeterminateDurationMs: 500,
+      standardDeterminateSpring: {
+        dampingRatio: 1,
+        stiffness: 50,
+        visibilityThreshold: 0.001,
+      },
+    })
+    expect(css).toContain('--m3-motion-progress-linear-indeterminate-cycle: 1750ms')
+    expect(css).toContain('--m3-motion-progress-circular-indeterminate-cycle: 6000ms')
   })
 
   it('matches the Material suggested easing and duration pairs', () => {

@@ -136,6 +136,27 @@ export const MATERIAL_APP_BAR_TIMING = {
   settleDurationMs: MATERIAL_MOTION_PRESETS.expressive.spatial.fast.durationMs,
 } as const
 
+export const MATERIAL_PROGRESS_TIMING = {
+  linearIndeterminateCycleMs: 1750,
+  linearFirstHeadDurationMs: 1000,
+  linearFirstHeadDelayMs: 0,
+  linearFirstTailDurationMs: 1000,
+  linearFirstTailDelayMs: 250,
+  linearSecondHeadDurationMs: 850,
+  linearSecondHeadDelayMs: 650,
+  linearSecondTailDurationMs: 850,
+  linearSecondTailDelayMs: 900,
+  circularIndeterminateCycleMs: 6000,
+  circularAdditionalRotationStepMs: 1500,
+  circularAdditionalRotationDurationMs: 300,
+  wavyDeterminateDurationMs: 500,
+  standardDeterminateSpring: {
+    dampingRatio: 1,
+    stiffness: 50,
+    visibilityThreshold: 0.001,
+  },
+} as const
+
 export function getMaterialMotionPreset(
   kind: MaterialMotionKind,
   speed: MaterialMotionSpeed,

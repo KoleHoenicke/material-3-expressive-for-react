@@ -65,6 +65,13 @@
   --m3-motion-feedback-loop-extra-slow: var(--md-sys-motion-duration-extra-long3);
   --m3-motion-stagger-fast-step: 33ms;
 
+  /* AndroidX Material 3 progress-indicator cycles and value transitions. */
+  --m3-motion-progress-linear-indeterminate-cycle: 1750ms;
+  --m3-motion-progress-circular-indeterminate-cycle: 6000ms;
+  --m3-motion-progress-circular-rotation-step: 1500ms;
+  --m3-motion-progress-circular-rotation-duration: 300ms;
+  --m3-motion-progress-wavy-determinate-duration: var(--md-sys-motion-duration-long2);
+
   /* AndroidX Material 3 card elevation and MaterialCardView selection transitions. */
   --m3-motion-card-elevation-incoming: 120ms cubic-bezier(0.4, 0, 0.2, 1);
   --m3-motion-card-elevation-outgoing: 120ms cubic-bezier(0.4, 0, 0.6, 1);

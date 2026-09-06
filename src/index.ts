@@ -12,6 +12,7 @@ export * from './components/MaterialChip'
 export * from './components/MaterialListCount'
 export * from './components/MaterialListTrailingAction'
 export * from './components/MaterialLoadingIndicator'
+export * from './components/MaterialProgressIndicator'
 export * from './components/MaterialQuantityStepper'
 export * from './components/MaterialRichOptionList'
 export * from './components/MaterialRipple'
@@ -57,6 +58,12 @@ export {
   MaterialListTrailingAction as ListTrailingAction,
 } from './components/MaterialListTrailingAction'
 export { MaterialLoadingIndicator as LoadingIndicator } from './components/MaterialLoadingIndicator'
+export {
+  MaterialCircularProgressIndicator as CircularProgressIndicator,
+  MaterialCircularWavyProgressIndicator as CircularWavyProgressIndicator,
+  MaterialLinearProgressIndicator as LinearProgressIndicator,
+  MaterialLinearWavyProgressIndicator as LinearWavyProgressIndicator,
+} from './components/MaterialProgressIndicator'
 export { MaterialQuantityStepper as QuantityStepper } from './components/MaterialQuantityStepper'
 export { MaterialRichOptionList as RichOptionList } from './components/MaterialRichOptionList'
 export { MaterialRipple as Ripple } from './components/MaterialRipple'

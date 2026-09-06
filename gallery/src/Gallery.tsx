@@ -14,10 +14,14 @@ import {
   ChipSet,
   FilterChip,
   InputChip,
+  CircularProgressIndicator,
+  CircularWavyProgressIndicator,
   ListCount,
   ListSelectionIcon,
   ListTrailingAction,
   LoadingIndicator,
+  LinearProgressIndicator,
+  LinearWavyProgressIndicator,
   LargeFlexibleTopAppBar,
   LargeTopAppBar,
   MaterialRipple,
@@ -32,7 +36,6 @@ import {
   Switch,
   TopAppBar,
   CenterAlignedTopAppBar,
-  WavyProgress,
   type MaterialButtonSize,
   type MaterialButtonVariant,
 } from '../../src'
@@ -255,8 +258,8 @@ export function Gallery() {
               <h1 id="gallery-title">Material controls that move like they should.</h1>
               <p>Every example is rendered by the package. Change the theme, press the controls, and inspect the current Material 3 Expressive behavior.</p>
               <div className="hero__meta">
-                <span>18 modules</span>
-                <span>100 tests</span>
+                <span>19 modules</span>
+                <span>108 tests</span>
                 <span>React 18 and 19</span>
               </div>
             </div>
@@ -642,10 +645,23 @@ export function Gallery() {
                 </div>
               </Specimen>
 
-              <Specimen title="Wavy progress" api="WavyProgress" description="A determinate indicator with reduced-motion support." wide>
+              <Specimen title="Progress indicators" api="LinearProgressIndicator · CircularProgressIndicator" description="Standard and Expressive shapes, each with determinate and indeterminate modes." wide>
                 <div className="progress-demo">
                   <div className="progress-demo__label"><span>Gallery progress</span><output>{sliderValue}%</output></div>
-                  <WavyProgress label="Gallery progress" value={sliderValue / 100} />
+                  <div className="progress-demo__linear-grid">
+                    <div><StageLabel>Linear</StageLabel><LinearProgressIndicator label="Linear gallery progress" value={sliderValue / 100} /></div>
+                    <div><StageLabel>Linear, indeterminate</StageLabel><LinearProgressIndicator label="Loading linear content" /></div>
+                    <div><StageLabel>Linear wavy</StageLabel><LinearWavyProgressIndicator label="Wavy gallery progress" value={sliderValue / 100} /></div>
+                    <div><StageLabel>Linear wavy, indeterminate</StageLabel><LinearWavyProgressIndicator label="Loading wavy content" /></div>
+                    <div><StageLabel>Linear wavy, thick</StageLabel><LinearWavyProgressIndicator height={14} label="Thick wavy gallery progress" strokeWidth={8} trackStrokeWidth={8} value={sliderValue / 100} /></div>
+                  </div>
+                  <div className="progress-demo__circular-grid">
+                    <div><CircularProgressIndicator label="Circular gallery progress" value={sliderValue / 100} /><StageLabel>Circular</StageLabel></div>
+                    <div><CircularProgressIndicator label="Loading circular content" /><StageLabel>Indeterminate</StageLabel></div>
+                    <div><CircularWavyProgressIndicator label="Circular wavy gallery progress" value={sliderValue / 100} /><StageLabel>Circular wavy</StageLabel></div>
+                    <div><CircularWavyProgressIndicator label="Loading circular wavy content" /><StageLabel>Wavy, indeterminate</StageLabel></div>
+                    <div><CircularWavyProgressIndicator amplitude={0.72} label="Thick circular wavy progress" size={52} strokeWidth={8} trackStrokeWidth={8} value={sliderValue / 100} /><StageLabel>Thick, custom</StageLabel></div>
+                  </div>
                   <Slider aria-label="Change gallery progress" min={0} max={100} value={sliderValue} onChange={(event) => setSliderValue(event.currentTarget.valueAsNumber)} />
                 </div>
               </Specimen>

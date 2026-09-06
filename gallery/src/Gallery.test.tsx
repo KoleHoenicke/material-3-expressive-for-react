@@ -19,7 +19,7 @@ describe('interactive gallery', () => {
       'SegmentedActionList',
       'Badge · ListCount',
       'QuantityStepper',
-      'WavyProgress',
+      'LinearProgressIndicator · CircularProgressIndicator',
       'LoadingIndicator',
       'ListTrailingAction',
     ]

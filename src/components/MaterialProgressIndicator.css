@@ -1,0 +1,82 @@
+.material-progress {
+  --md-progress-active-color: var(--md-sys-color-primary);
+  --md-progress-track-color: var(--md-sys-color-secondary-container);
+  --md-progress-stop-color: var(--md-progress-active-color);
+
+  position: relative;
+  display: inline-block;
+  flex: none;
+  color: var(--md-progress-active-color);
+  line-height: 0;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+.material-linear-progress,
+.material-linear-wavy-progress {
+  inline-size: var(--md-linear-progress-width, 240px);
+  max-inline-size: 100%;
+}
+
+.material-linear-progress {
+  block-size: var(--md-linear-progress-height, 4px);
+}
+
+.material-linear-wavy-progress {
+  block-size: var(--md-linear-wavy-progress-height, 10px);
+}
+
+.material-circular-progress {
+  inline-size: var(--md-circular-progress-size, 40px);
+  block-size: var(--md-circular-progress-size, 40px);
+}
+
+.material-circular-wavy-progress {
+  inline-size: var(--md-circular-wavy-progress-size, 48px);
+  block-size: var(--md-circular-wavy-progress-size, 48px);
+}
+
+.material-circular-progress[data-indeterminate] {
+  --md-progress-track-color: transparent;
+}
+
+.material-progress__svg {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  overflow: visible;
+}
+
+.material-progress__svg--linear {
+  transform-origin: center;
+}
+
+.material-progress:dir(rtl) .material-progress__svg--linear,
+[dir='rtl'] .material-progress .material-progress__svg--linear {
+  transform: scaleX(-1);
+}
+
+.material-progress__active,
+.material-progress__track {
+  fill: none;
+}
+
+.material-progress__active {
+  stroke: var(--md-progress-active-color);
+}
+
+.material-progress__track {
+  stroke: var(--md-progress-track-color);
+}
+
+.material-progress__stop {
+  fill: var(--md-progress-stop-color);
+}
+
+@media (forced-colors: active) {
+  .material-progress {
+    --md-progress-active-color: CanvasText;
+    --md-progress-track-color: GrayText;
+    --md-progress-stop-color: CanvasText;
+  }
+}

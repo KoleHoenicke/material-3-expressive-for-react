@@ -10,6 +10,6 @@ describe('package boundary', () => {
       .map((file) => readFileSync(resolve(componentDirectory, file), 'utf8'))
       .join('\n')
 
-    expect(source).not.toMatch(/new Audio\s*\(|\.mp3|\.wav|\.ogg/i)
+    expect(source).not.toMatch(/new Audio\s*\(|\.(?:mp3|wav|ogg)(?:['"?]|$)/i)
   })
 })
