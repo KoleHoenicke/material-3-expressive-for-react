@@ -5,6 +5,12 @@ describe('public package surface', () => {
   it('exports short and explicit component names', () => {
     expect(library.Button).toBe(library.MaterialButton)
     expect(library.Card).toBe(library.MaterialCard)
+    expect(library.Fab).toBe(library.MaterialFloatingActionButton)
+    expect(library.FloatingActionButton).toBe(library.MaterialFloatingActionButton)
+    expect(library.ExtendedFab).toBe(library.MaterialExtendedFloatingActionButton)
+    expect(library.ExtendedFloatingActionButton).toBe(
+      library.MaterialExtendedFloatingActionButton,
+    )
     expect(library.Checkbox).toBe(library.MaterialCheckbox)
     expect(library.CheckboxList).toBe(library.MaterialCheckboxList)
     expect(library.CheckboxListItem).toBe(library.MaterialCheckboxListItem)

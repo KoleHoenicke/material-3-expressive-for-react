@@ -16,7 +16,9 @@ import {
   InputChip,
   CircularProgressIndicator,
   CircularWavyProgressIndicator,
+  ExtendedFloatingActionButton,
   ExpandableList,
+  FloatingActionButton,
   List,
   ListAvatar,
   ListCount,
@@ -45,6 +47,8 @@ import {
   CenterAlignedTopAppBar,
   type MaterialButtonSize,
   type MaterialButtonVariant,
+  type MaterialFabColor,
+  type MaterialFabSize,
 } from '../../src'
 
 type IconName =
@@ -65,6 +69,16 @@ type IconName =
 
 const buttonVariants: MaterialButtonVariant[] = ['filled', 'tonal', 'outlined', 'elevated', 'text']
 const buttonSizes: MaterialButtonSize[] = ['extra-small', 'small', 'medium', 'large', 'extra-large']
+const fabColors: MaterialFabColor[] = [
+  'primary-container',
+  'secondary-container',
+  'tertiary-container',
+  'primary',
+  'secondary',
+  'tertiary',
+  'surface',
+]
+const fabSizes: MaterialFabSize[] = ['small', 'regular', 'medium', 'large']
 const themePresets = [
   { color: '#6750a4', label: 'Violet' },
   { color: '#006a6a', label: 'Teal' },
@@ -135,6 +149,10 @@ export function Gallery() {
   const [mode, setMode] = useState<'light' | 'dark'>('light')
   const [seed, setSeed] = useState('#6750a4')
   const [buttonSize, setButtonSize] = useState<MaterialButtonSize>('small')
+  const [fabColor, setFabColor] = useState<MaterialFabColor>('primary-container')
+  const [fabExpanded, setFabExpanded] = useState(true)
+  const [fabSize, setFabSize] = useState<MaterialFabSize>('regular')
+  const [fabVisible, setFabVisible] = useState(true)
   const [cardDragged, setCardDragged] = useState(false)
   const [cardSelected, setCardSelected] = useState(false)
   const [chipFilters, setChipFilters] = useState(() => new Set(['recent']))
@@ -268,8 +286,8 @@ export function Gallery() {
               <h1 id="gallery-title">Material controls that move like they should.</h1>
               <p>Every example is rendered by the package. Change the theme, press the controls, and inspect the current Material 3 Expressive behavior.</p>
               <div className="hero__meta">
-                <span>21 modules</span>
-                <span>122 tests</span>
+                <span>22 modules</span>
+                <span>143 tests</span>
                 <span>React 18 and 19</span>
               </div>
             </div>
@@ -491,9 +509,84 @@ export function Gallery() {
           <section className="component-section" id="actions" aria-labelledby="actions-title">
             <div className="section-heading">
               <span className="eyebrow">Actions</span>
-              <h2 id="actions-title">Buttons and groups</h2>
+              <h2 id="actions-title">FABs, buttons, and groups</h2>
             </div>
             <div className="specimen-grid">
+              <Specimen
+                title="Floating action buttons"
+                api="FloatingActionButton · ExtendedFloatingActionButton"
+                description="Current Expressive sizes and colors, plus AndroidX expansion, visibility, elevation, and baseline compatibility."
+                wide
+              >
+                <div className="stage-toolbar fab-toolbar">
+                  <label>Size
+                    <select value={fabSize} onChange={(event) => setFabSize(event.currentTarget.value as MaterialFabSize)}>
+                      {fabSizes.map((size) => <option key={size} value={size}>{size}</option>)}
+                    </select>
+                  </label>
+                  <label>Color
+                    <select value={fabColor} onChange={(event) => setFabColor(event.currentTarget.value as MaterialFabColor)}>
+                      {fabColors.map((color) => <option key={color} value={color}>{color}</option>)}
+                    </select>
+                  </label>
+                  <label>Extended
+                    <Switch aria-label="Expand extended FAB" checked={fabExpanded} onChange={(event) => setFabExpanded(event.currentTarget.checked)} />
+                  </label>
+                  <label>Visible
+                    <Switch aria-label="Show FAB preview" checked={fabVisible} onChange={(event) => setFabVisible(event.currentTarget.checked)} />
+                  </label>
+                </div>
+                <div className="fab-primary-showcase">
+                  <div>
+                    <StageLabel>Selected FAB</StageLabel>
+                    <FloatingActionButton
+                      aria-label="Create"
+                      color={fabColor}
+                      size={fabSize}
+                      visible={fabVisible}
+                      visibilityAlignment="bottom-end"
+                      onClick={() => setMessage('FAB pressed')}
+                    >
+                      <Icon name="add" />
+                    </FloatingActionButton>
+                  </div>
+                  <div>
+                    <StageLabel>Small extended</StageLabel>
+                    <ExtendedFloatingActionButton
+                      color={fabColor}
+                      expanded={fabExpanded}
+                      icon={<Icon name="edit" />}
+                      label="Compose"
+                      visible={fabVisible}
+                      visibilityAlignment="bottom-end"
+                      onClick={() => setMessage('Extended FAB pressed')}
+                    />
+                  </div>
+                </div>
+                <StageLabel>All sizes</StageLabel>
+                <div className="fab-size-showcase">
+                  {fabSizes.map((size) => (
+                    <div key={size}>
+                      <FloatingActionButton aria-label={`${size} FAB`} size={size}>
+                        <Icon name="add" />
+                      </FloatingActionButton>
+                      <span>{size}</span>
+                    </div>
+                  ))}
+                </div>
+                <StageLabel>All color mappings</StageLabel>
+                <div className="fab-color-showcase">
+                  {fabColors.map((color) => (
+                    <div key={color}>
+                      <FloatingActionButton aria-label={`${color} FAB`} color={color}>
+                        <Icon name="palette" />
+                      </FloatingActionButton>
+                      <span>{color}</span>
+                    </div>
+                  ))}
+                </div>
+              </Specimen>
+
               <Specimen title="Button" description="Five variants share one component and one motion model." wide>
                 <div className="stage-toolbar">
                   <label>Size

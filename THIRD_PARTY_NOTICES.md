@@ -14,6 +14,8 @@ The progress-indicator geometry, paths, and timing in `MaterialProgressIndicator
 
 The list geometry, tokens, selection and drag states, expansion behavior, and swipe interaction model in `MaterialList.tsx`, `MaterialList.css`, `MaterialListSwipeActions.tsx`, and `MaterialListSwipeActions.css` are adapted from AndroidX Material 3 and Material Components for Android. Copyright 2018-2026 The Android Open Source Project. Licensed under the Apache License 2.0.
 
+The floating-action-button geometry, tokens, elevation states, expansion, and visibility motion in `MaterialFloatingActionButton.tsx` and `MaterialFloatingActionButton.css` are adapted from AndroidX Material 3 and Material Web. Copyright 2021-2026 The Android Open Source Project and copyright 2023 Google LLC. Licensed under the Apache License 2.0.
+
 ## Material Color Utilities
 
 This package uses `@material/material-color-utilities`, copyright Google LLC. Licensed under the Apache License 2.0.

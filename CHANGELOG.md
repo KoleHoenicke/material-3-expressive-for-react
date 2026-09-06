@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.9.0
+
+- Added the full Material 3 floating action button family with regular, medium, large, and baseline small sizes; all six current color mappings and the legacy surface mapping; exact AndroidX geometry, state layers, elevation, focus treatment, reduced-motion behavior, and 48px small-FAB target; lowered and zero elevation; controlled show and hide motion; and typed CSS token overrides.
+- Added current small, medium, and large extended FABs, controlled icon-and-label collapse motion, label-only support, the baseline extended variant, Android-style named exports, native button semantics, and an interactive gallery covering every size and color.
+
 ## 0.8.0
 
 - Rebuilt lists around the current Material 3 Expressive and AndroidX model, with standard, segmented, and baseline containers; exact one-, two-, and three-line geometry; overline, leading, trailing, avatar, image, video, and divider slots; selected, disabled, focused, pressed, hovered, and dragged treatments; controlled single and multiple selection; roving keyboard navigation; links, long press, and drag callbacks; controlled expandable groups; RTL-aware swipe actions with accessible non-gesture controls; reduced-motion and forced-color support; and typed CSS token overrides.

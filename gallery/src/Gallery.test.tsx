@@ -9,6 +9,7 @@ describe('interactive gallery', () => {
     const apiLabels = [
       'Button',
       'ButtonGroup',
+      'FloatingActionButton · ExtendedFloatingActionButton',
       'Card',
       'Checkbox · CheckboxList · CheckboxListItem',
       'AssistChip · FilterChip · InputChip · SuggestionChip',
@@ -39,5 +40,11 @@ describe('interactive gallery', () => {
 
     fireEvent.click(screen.getByRole('button', { name: 'Increase Guests' }))
     expect(screen.getByRole('textbox', { name: 'Guests value' })).toHaveValue('4')
+
+    fireEvent.click(screen.getByRole('switch', { name: 'Expand extended FAB' }))
+    expect(screen.getByRole('button', { name: 'Compose' })).toHaveAttribute(
+      'data-expanded',
+      'false',
+    )
   })
 })

@@ -596,6 +596,52 @@ svg {
   gap: 10px;
 }
 
+.fab-toolbar {
+  flex-wrap: wrap;
+  gap: 12px 20px;
+}
+
+.fab-primary-showcase,
+.fab-size-showcase,
+.fab-color-showcase {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 24px;
+  width: 100%;
+}
+
+.fab-primary-showcase {
+  min-height: 112px;
+}
+
+.fab-primary-showcase > div,
+.fab-size-showcase > div,
+.fab-color-showcase > div {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+}
+
+.fab-primary-showcase .stage-label {
+  margin-bottom: 0;
+}
+
+.fab-size-showcase > div > span,
+.fab-color-showcase > div > span {
+  max-width: 112px;
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 0.7rem;
+  font-weight: 650;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.fab-color-showcase {
+  align-items: start;
+  gap: 20px;
+}
+
 .chip-showcase {
   display: grid;
   gap: 8px;

@@ -21,6 +21,7 @@ Included now:
 - Card, including filled, elevated, outlined, checked, and dragged states
 - Checkbox, including indeterminate and error states, checkbox groups, and list items
 - Chips, including assist, filter, input, suggestion, elevated, removable, and expressive-shape variants
+- Floating action buttons, including every current size and color mapping, extended and collapsible variants, lowered elevation, and baseline compatibility
 - Lists, including standard, segmented, selectable, expandable, swipe-reveal, media, dividers, counts, and trailing actions
 - Loading indicator
 - Quantity stepper
@@ -38,7 +39,7 @@ Included now:
 Until the first npm release, install the package directly from GitHub:
 
 ```sh
-npm install github:KoleHoenicke/material-react-components#v0.8.0
+npm install github:KoleHoenicke/material-react-components#v0.9.0
 ```
 
 React and React DOM are peer dependencies. React 18 and 19 are supported.
@@ -102,6 +103,48 @@ export function Settings() {
 ```
 
 Every component is exported with a short name such as `Button` and its explicit name such as `MaterialButton`.
+
+### Floating action buttons
+
+`FloatingActionButton` follows the current AndroidX Material 3 implementation. The default is the 56px regular FAB with a 24px icon, 16px corners, primary-container colors, level-3 elevation, and a level-4 hover elevation. Medium and large FABs use 80px and 96px containers. The 40px small FAB remains available for baseline compatibility and keeps a 48px interaction target.
+
+```tsx
+import {
+  ExtendedFloatingActionButton,
+  FloatingActionButton,
+  LargeFloatingActionButton,
+} from '@kolehoenicke/material-react-components'
+
+export function CreateActions({ expanded }: { expanded: boolean }) {
+  return (
+    <>
+      <FloatingActionButton aria-label="Create note" color="primary-container">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 5v14M5 12h14" />
+        </svg>
+      </FloatingActionButton>
+
+      <ExtendedFloatingActionButton
+        expanded={expanded}
+        icon={<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>}
+        label="Create note"
+      />
+
+      <LargeFloatingActionButton aria-label="Create note" color="tertiary">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 5v14M5 12h14" />
+        </svg>
+      </LargeFloatingActionButton>
+    </>
+  )
+}
+```
+
+The current color mappings are `primary-container`, `secondary-container`, `tertiary-container`, `primary`, `secondary`, and `tertiary`. The baseline `surface` mapping also remains available. Set `elevation="lowered"` for AndroidX's lower-emphasis elevation or `elevation="none"` when another container owns the shadow.
+
+`ExtendedFloatingActionButton` defaults to the current Expressive small extended FAB. It supports icon-and-label and label-only content. With an icon, `expanded={false}` animates to the matching square FAB while the label stays available to assistive technology. The named exports cover `SmallExtendedFloatingActionButton`, `MediumExtendedFloatingActionButton`, `LargeExtendedFloatingActionButton`, and the deprecated `BaselineExtendedFloatingActionButton`.
+
+Set `visible={false}` to apply the Android show/hide scale and opacity treatment while removing the button from the keyboard and accessibility order. `visibilityAlignment` controls the transform origin. Every color, dimension, shape, elevation, state layer, focus indicator, typography value, expansion gap, and visibility scale is typed on `MaterialFabStyle` through `--md-fab-*` properties.
 
 ### Checkboxes
 
