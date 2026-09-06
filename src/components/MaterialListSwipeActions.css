@@ -1,0 +1,119 @@
+.material-list-swipe {
+  position: relative;
+  isolation: isolate;
+  min-inline-size: 0;
+  overflow: hidden;
+  border-radius: var(--md-list-item-container-shape, 4px);
+  background: var(--md-sys-color-surface-container-low);
+  touch-action: pan-y;
+}
+
+.material-list-swipe__foreground {
+  position: relative;
+  z-index: 2;
+  min-inline-size: 0;
+  border-radius: inherit;
+  will-change: transform;
+  transition: transform var(--m3-motion-transition-fast-spatial);
+}
+
+.material-list-swipe[data-dragging='true'] .material-list-swipe__foreground {
+  transition: none;
+}
+
+.material-list-swipe__foreground > .material-list-item {
+  border-radius: inherit;
+}
+
+.material-list-swipe__actions {
+  position: absolute;
+  inset-block: 0;
+  z-index: 1;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-end;
+  inline-size: var(--md-list-swipe-distance);
+  padding-inline: 2px;
+  gap: 2px;
+}
+
+.material-list-swipe[data-direction='end'] .material-list-swipe__actions {
+  inset-inline-end: 0;
+}
+
+.material-list-swipe[data-direction='start'] .material-list-swipe__actions {
+  inset-inline-start: 0;
+  justify-content: flex-start;
+}
+
+.material-list-swipe__actions > :is(button, a) {
+  min-inline-size: 48px;
+  min-block-size: 48px;
+}
+
+.material-list-swipe__trailing {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  pointer-events: none;
+}
+
+.material-list-swipe__trailing > * {
+  pointer-events: auto;
+}
+
+.material-list-swipe__toggle {
+  --material-ripple-state-layer-size: 40px;
+  position: relative;
+  display: inline-grid;
+  inline-size: 48px;
+  block-size: 48px;
+  min-inline-size: 48px;
+  min-block-size: 48px;
+  margin: -4px -8px -4px 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--md-sys-shape-corner-full);
+  appearance: none;
+  background: transparent;
+  color: currentColor;
+  cursor: pointer;
+  place-items: center;
+}
+
+.material-list-swipe__toggle > span:last-child {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  inline-size: 20px;
+  block-size: 20px;
+  place-items: center;
+  pointer-events: none;
+}
+
+.material-list-swipe__toggle svg {
+  inline-size: 20px;
+  block-size: 20px;
+  fill: currentColor;
+}
+
+.material-list-swipe__toggle:focus-visible {
+  outline: 3px solid var(--md-list-focus-indicator-color, var(--md-sys-color-secondary));
+  outline-offset: -3px;
+}
+
+.material-list[data-variant='segmented'] > .material-list-swipe:first-child {
+  border-start-start-radius: var(--md-sys-shape-corner-large, 16px);
+  border-start-end-radius: var(--md-sys-shape-corner-large, 16px);
+}
+
+.material-list[data-variant='segmented'] > .material-list-swipe:last-child {
+  border-end-start-radius: var(--md-sys-shape-corner-large, 16px);
+  border-end-end-radius: var(--md-sys-shape-corner-large, 16px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .material-list-swipe__foreground {
+    transition-duration: var(--m3-motion-reduced-spatial-duration);
+  }
+}

@@ -12,6 +12,8 @@ The checkbox geometry, mark path, tokens, state colors, and transition behavior 
 
 The progress-indicator geometry, paths, and timing in `MaterialProgressIndicator.tsx` and `MaterialProgressIndicator.css` are adapted from AndroidX Material 3. Copyright 2022-2025 The Android Open Source Project. Licensed under the Apache License 2.0.
 
+The list geometry, tokens, selection and drag states, expansion behavior, and swipe interaction model in `MaterialList.tsx`, `MaterialList.css`, `MaterialListSwipeActions.tsx`, and `MaterialListSwipeActions.css` are adapted from AndroidX Material 3 and Material Components for Android. Copyright 2018-2026 The Android Open Source Project. Licensed under the Apache License 2.0.
+
 ## Material Color Utilities
 
 This package uses `@material/material-color-utilities`, copyright Google LLC. Licensed under the Apache License 2.0.

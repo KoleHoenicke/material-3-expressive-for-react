@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.8.0
+
+- Rebuilt lists around the current Material 3 Expressive and AndroidX model, with standard, segmented, and baseline containers; exact one-, two-, and three-line geometry; overline, leading, trailing, avatar, image, video, and divider slots; selected, disabled, focused, pressed, hovered, and dragged treatments; controlled single and multiple selection; roving keyboard navigation; links, long press, and drag callbacks; controlled expandable groups; RTL-aware swipe actions with accessible non-gesture controls; reduced-motion and forced-color support; and typed CSS token overrides.
+- Updated checkbox list rows to use the new list geometry, shape, state, typography, and variant foundation while preserving native controlled checkbox behavior.
+
 ## 0.7.0
 
 - Replaced the legacy determinate wavy line with the full Material 3 progress family: standard and Expressive linear and circular indicators, determinate and indeterminate modes, current AndroidX geometry and motion, stop markers, RTL rendering, reduced-motion handling, accessible ranges, compatibility aliases, and configurable strokes, gaps, colors, dimensions, amplitude, wavelength, and wave speed.

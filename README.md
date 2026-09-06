@@ -21,7 +21,7 @@ Included now:
 - Card, including filled, elevated, outlined, checked, and dragged states
 - Checkbox, including indeterminate and error states, checkbox groups, and list items
 - Chips, including assist, filter, input, suggestion, elevated, removable, and expressive-shape variants
-- List count and trailing actions
+- Lists, including standard, segmented, selectable, expandable, swipe-reveal, media, dividers, counts, and trailing actions
 - Loading indicator
 - Quantity stepper
 - Rich option list
@@ -38,7 +38,7 @@ Included now:
 Until the first npm release, install the package directly from GitHub:
 
 ```sh
-npm install github:KoleHoenicke/material-react-components#v0.7.0
+npm install github:KoleHoenicke/material-react-components#v0.8.0
 ```
 
 React and React DOM are peer dependencies. React 18 and 19 are supported.
@@ -159,6 +159,70 @@ export function ExportFormats() {
 ```
 
 The default visual container is 18px with a 2px corner and stroke. The state layer is 40px and the interaction target is 48px. `MaterialCheckboxStyle` types every `--md-checkbox-*` property, including separate checkmark, box, outline, interaction, disabled, indeterminate, error, and focus-indicator values. `CheckboxListItem` can place the control at the leading or trailing edge and keeps adjacent text on the `on-surface` role in every selection state.
+
+### Lists
+
+`List` and `ListItem` port the current AndroidX Material 3 list model to accessible web controls. Standard, segmented, and legacy baseline containers are available. Items support one-, two-, and three-line layouts; overline, leading, and trailing slots; icons, avatars, controls, images, and both Material video sizes; links; disabled, selected, dragged, and long-press states; custom padding, shape, color, elevation, and state tokens; and automatic top alignment for three-line content.
+
+```tsx
+import { useState } from 'react'
+import {
+  ExpandableList,
+  List,
+  ListAvatar,
+  ListItem,
+  ListSwipeActions,
+} from '@kolehoenicke/material-react-components'
+
+export function FileLists() {
+  const [selected, setSelected] = useState('documents')
+  const [expanded, setExpanded] = useState(false)
+  const [revealed, setRevealed] = useState(false)
+
+  return (
+    <>
+      <List ariaLabel="Choose a folder" selectionMode="single" variant="segmented">
+        {['documents', 'photos'].map((folder) => (
+          <ListItem
+            key={folder}
+            headline={folder[0].toUpperCase() + folder.slice(1)}
+            leading={<ListAvatar>{folder[0].toUpperCase()}</ListAvatar>}
+            leadingType="avatar"
+            selected={selected === folder}
+            supportingText="Available offline"
+            onSelectedChange={() => setSelected(folder)}
+          />
+        ))}
+      </List>
+
+      <ExpandableList
+        ariaLabel="Project folders"
+        expanded={expanded}
+        onExpandedChange={setExpanded}
+        summary={{ headline: 'Design files', supportingText: '3 folders' }}
+      >
+        <ListItem headline="Components" onClick={() => {}} />
+        <ListItem headline="Motion studies" onClick={() => {}} />
+      </ExpandableList>
+
+      <List ariaLabel="Messages">
+        <ListSwipeActions
+          actions={<button type="button">Archive</button>}
+          actionsLabel="Message actions"
+          revealed={revealed}
+          onRevealedChange={setRevealed}
+        >
+          <ListItem headline="Avery Chen" supportingText="Updated just now" />
+        </ListSwipeActions>
+      </List>
+    </>
+  )
+}
+```
+
+Selectable lists render `listbox` and `option` semantics, expose single- or multi-selection state, and use a roving tab stop with wrapping arrow-key, Home, and End navigation. Independent controls in either slot join the same keyboard order without creating invalid nested buttons. `ExpandableList` is controlled and removes collapsed content from the focus order. `ListSwipeActions` supports start or end reveal, RTL, pointer snap and overshoot, and a visible button alternative for keyboard and screen-reader users. Set `keyboardNavigation={false}` only when a surrounding composite owns focus.
+
+Every dimension and color is configurable through typed `--md-list-*` properties on `MaterialListStyle`. Short names such as `List`, `ListItem`, `ListDivider`, `ListAvatar`, `ListMedia`, `ExpandableList`, and `ListSwipeActions` have matching explicit `Material*` exports.
 
 ### Chips
 

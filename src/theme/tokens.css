@@ -60,6 +60,27 @@
   --md-sys-elevation-level4: 0 6px 14px rgb(0 0 0 / 14%);
   --md-sys-elevation-level5: 0 8px 18px rgb(0 0 0 / 14%);
 
+  --md-sys-typescale-body-large-font: var(--material-ui-font);
+  --md-sys-typescale-body-large-size: 1rem;
+  --md-sys-typescale-body-large-weight: 400;
+  --md-sys-typescale-body-large-line-height: 1.5rem;
+  --md-sys-typescale-body-large-tracking: 0.03125rem;
+  --md-sys-typescale-body-medium-font: var(--material-ui-font);
+  --md-sys-typescale-body-medium-size: 0.875rem;
+  --md-sys-typescale-body-medium-weight: 400;
+  --md-sys-typescale-body-medium-line-height: 1.25rem;
+  --md-sys-typescale-body-medium-tracking: 0.015625rem;
+  --md-sys-typescale-label-small-font: var(--material-ui-font);
+  --md-sys-typescale-label-small-size: 0.6875rem;
+  --md-sys-typescale-label-small-weight: 500;
+  --md-sys-typescale-label-small-line-height: 1rem;
+  --md-sys-typescale-label-small-tracking: 0.03125rem;
+  --md-sys-typescale-title-medium-font: var(--material-ui-font);
+  --md-sys-typescale-title-medium-size: 1rem;
+  --md-sys-typescale-title-medium-weight: 500;
+  --md-sys-typescale-title-medium-line-height: 1.5rem;
+  --md-sys-typescale-title-medium-tracking: 0.009375rem;
+
   --m3-list-corner-large: var(--md-sys-shape-corner-large);
   --m3-list-corner-medium: var(--md-sys-shape-corner-medium);
   --m3-list-corner-connected: var(--md-sys-shape-corner-extra-small);
@@ -68,8 +89,12 @@
   --m3-list-three-line-container-height: 88px;
   --m3-list-leading-image-size: 56px;
   --m3-list-leading-avatar-size: 40px;
-  --m3-list-leading-icon-size: 24px;
-  --m3-list-trailing-icon-size: 24px;
+  --m3-list-leading-video-small-width: 100px;
+  --m3-list-leading-video-small-height: 56px;
+  --m3-list-leading-video-large-width: 114px;
+  --m3-list-leading-video-large-height: 64px;
+  --m3-list-leading-icon-size: 20px;
+  --m3-list-trailing-icon-size: 20px;
   --m3-list-leading-space: 16px;
   --m3-list-trailing-space: 16px;
   --m3-list-between-space: 12px;
@@ -81,6 +106,9 @@
   --m3-list-state-hover-opacity: var(--md-sys-state-hover-state-layer-opacity);
   --m3-list-state-focus-opacity: var(--md-sys-state-focus-state-layer-opacity);
   --m3-list-state-pressed-opacity: var(--md-sys-state-pressed-state-layer-opacity);
+  --m3-list-state-dragged-opacity: var(--md-sys-state-dragged-state-layer-opacity);
+  --m3-list-dragged-container-color: var(--md-sys-color-tertiary-container);
+  --m3-list-dragged-content-color: var(--md-sys-color-on-tertiary-container);
 
   --md-switch-track-width: 52px;
   --md-switch-track-height: 32px;

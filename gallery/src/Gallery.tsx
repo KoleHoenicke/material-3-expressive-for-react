@@ -16,8 +16,15 @@ import {
   InputChip,
   CircularProgressIndicator,
   CircularWavyProgressIndicator,
+  ExpandableList,
+  List,
+  ListAvatar,
   ListCount,
+  ListDivider,
+  ListItem,
+  ListMedia,
   ListSelectionIcon,
+  ListSwipeActions,
   ListTrailingAction,
   LoadingIndicator,
   LinearProgressIndicator,
@@ -139,6 +146,9 @@ export function Gallery() {
   const [compact, setCompact] = useState(false)
   const [quantity, setQuantity] = useState(3)
   const [density, setDensity] = useState('comfortable')
+  const [expandedList, setExpandedList] = useState(false)
+  const [selectedListItem, setSelectedListItem] = useState('documents')
+  const [swipeRevealed, setSwipeRevealed] = useState(false)
   const [activeAction, setActiveAction] = useState('inbox')
   const [sliderValue, setSliderValue] = useState(64)
   const [centeredValue, setCenteredValue] = useState(20)
@@ -258,8 +268,8 @@ export function Gallery() {
               <h1 id="gallery-title">Material controls that move like they should.</h1>
               <p>Every example is rendered by the package. Change the theme, press the controls, and inspect the current Material 3 Expressive behavior.</p>
               <div className="hero__meta">
-                <span>19 modules</span>
-                <span>108 tests</span>
+                <span>21 modules</span>
+                <span>122 tests</span>
                 <span>React 18 and 19</span>
               </div>
             </div>
@@ -605,9 +615,132 @@ export function Gallery() {
           <section className="component-section" id="lists" aria-labelledby="lists-title">
             <div className="section-heading">
               <span className="eyebrow">Lists</span>
-              <h2 id="lists-title">Structured choices</h2>
+              <h2 id="lists-title">Material 3 Expressive lists</h2>
             </div>
             <div className="specimen-grid specimen-grid--lists">
+              <Specimen
+                title="Standard and segmented lists"
+                api="List · ListItem · ListDivider · ListAvatar · ListMedia"
+                description="One-, two-, and three-line layouts with exact slots, media sizing, dividers, selection colors, and expressive shape morphing."
+                wide
+              >
+                <div className="material-list-showcase">
+                  <div>
+                    <StageLabel>Standard</StageLabel>
+                    <List ariaLabel="Standard file list">
+                      <ListItem
+                        headline="Flight details"
+                        leading={<Icon name="star" />}
+                        leadingType="icon"
+                        trailing="9:41 AM"
+                        trailingType="text"
+                        onClick={() => setMessage('Flight details opened')}
+                      />
+                      <ListDivider />
+                      <ListItem
+                        headline="Maui itinerary"
+                        supportingText="Shared with Abby"
+                        leading={<ListAvatar>AB</ListAvatar>}
+                        leadingType="avatar"
+                        trailing={<ListTrailingAction aria-label="More itinerary actions"><Icon name="more" /></ListTrailingAction>}
+                        trailingType="control"
+                        onClick={() => setMessage('Maui itinerary opened')}
+                      />
+                      <ListDivider />
+                      <ListItem
+                        headline="Wedding photos"
+                        overline="Album"
+                        supportingText="184 items · Updated yesterday"
+                        leading={<ListMedia><span className="demo-list-media"><Icon name="palette" /></span></ListMedia>}
+                        leadingType="image"
+                        trailing={<Icon name="star" />}
+                        trailingType="icon"
+                        onClick={() => setMessage('Wedding photos opened')}
+                      />
+                    </List>
+                  </div>
+                  <div>
+                    <StageLabel>Segmented, single select</StageLabel>
+                    <List
+                      ariaLabel="Choose storage location"
+                      selectionMode="single"
+                      variant="segmented"
+                    >
+                      {[
+                        ['documents', 'Documents', '12 files'],
+                        ['photos', 'Photos', '184 items'],
+                        ['favorites', 'Favorites', '8 saved items'],
+                      ].map(([id, label, supportingText]) => {
+                        const selected = selectedListItem === id
+                        return (
+                          <ListItem
+                            key={id}
+                            headline={label}
+                            supportingText={supportingText}
+                            selected={selected}
+                            leading={selected ? <Icon name="check" /> : <Icon name="grid" />}
+                            leadingType="icon"
+                            trailing={<Icon name="star" />}
+                            trailingType="icon"
+                            onSelectedChange={() => setSelectedListItem(id)}
+                          />
+                        )
+                      })}
+                    </List>
+                  </div>
+                </div>
+              </Specimen>
+
+              <Specimen
+                title="Expandable list"
+                api="ExpandableList"
+                description="A controlled segmented disclosure with Android fast-spatial expansion, connected shape updates, and collapsed-content focus isolation."
+              >
+                <ExpandableList
+                  ariaLabel="Project folders"
+                  expanded={expandedList}
+                  onExpandedChange={setExpandedList}
+                  summary={{
+                    headline: 'Design files',
+                    supportingText: expandedList ? '3 folders shown' : '3 folders',
+                    leading: <Icon name="palette" />,
+                    leadingType: 'icon',
+                  }}
+                >
+                  <ListItem headline="Components" leading={<Icon name="grid" />} leadingType="icon" onClick={() => setMessage('Components opened')} />
+                  <ListItem headline="Motion studies" leading={<Icon name="star" />} leadingType="icon" onClick={() => setMessage('Motion studies opened')} />
+                  <ListItem headline="Archive" leading={<Icon name="code" />} leadingType="icon" onClick={() => setMessage('Archive opened')} />
+                </ExpandableList>
+              </Specimen>
+
+              <Specimen
+                title="Swipe to reveal"
+                api="ListSwipeActions"
+                description="Pointer swipe with Android overshoot and snap behavior, plus a visible keyboard and screen-reader action trigger."
+              >
+                <List ariaLabel="Messages" variant="segmented">
+                  <ListSwipeActions
+                    actions={
+                      <>
+                        <button className="demo-swipe-action demo-swipe-action--archive" type="button" onClick={() => setMessage('Archived')}>Archive</button>
+                        <button className="demo-swipe-action demo-swipe-action--delete" type="button" onClick={() => setMessage('Deleted')}>Delete</button>
+                      </>
+                    }
+                    actionsLabel="Message actions"
+                    revealed={swipeRevealed}
+                    onRevealedChange={setSwipeRevealed}
+                  >
+                    <ListItem
+                      headline="Avery Chen"
+                      supportingText="The updated prototype looks right."
+                      leading={<ListAvatar>AC</ListAvatar>}
+                      leadingType="avatar"
+                      onClick={() => setMessage('Message opened')}
+                    />
+                  </ListSwipeActions>
+                </List>
+              </Specimen>
+
               <Specimen title="Rich option list" api="RichOptionList" description="Radio semantics with leading artwork and supporting text.">
                 <RichOptionList ariaLabel="Layout density" options={densityOptions} value={density} onChange={setDensity} selectedIcon={<Icon name="check" />} />
               </Specimen>

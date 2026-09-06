@@ -10,6 +10,8 @@ export * from './components/MaterialCheckbox'
 export * from './components/MaterialCheckboxList'
 export * from './components/MaterialChip'
 export * from './components/MaterialListCount'
+export * from './components/MaterialList'
+export * from './components/MaterialListSwipeActions'
 export * from './components/MaterialListTrailingAction'
 export * from './components/MaterialLoadingIndicator'
 export * from './components/MaterialProgressIndicator'
@@ -53,6 +55,15 @@ export {
   MaterialSuggestionChip as SuggestionChip,
 } from './components/MaterialChip'
 export { MaterialListCount as ListCount } from './components/MaterialListCount'
+export {
+  MaterialExpandableList as ExpandableList,
+  MaterialList as List,
+  MaterialListAvatar as ListAvatar,
+  MaterialListDivider as ListDivider,
+  MaterialListItem as ListItem,
+  MaterialListMedia as ListMedia,
+} from './components/MaterialList'
+export { MaterialListSwipeActions as ListSwipeActions } from './components/MaterialListSwipeActions'
 export {
   MaterialListSelectionIcon as ListSelectionIcon,
   MaterialListTrailingAction as ListTrailingAction,

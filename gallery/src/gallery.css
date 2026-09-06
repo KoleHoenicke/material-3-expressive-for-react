@@ -831,8 +831,56 @@ svg {
 
 .specimen-grid--lists .material-rich-option-list,
 .specimen-grid--lists .material-segmented-action-list,
-.specimen-grid--lists .material-checkbox-list {
+.specimen-grid--lists .material-checkbox-list,
+.specimen-grid--lists .material-list {
   align-self: stretch;
+}
+
+.material-list-showcase {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-self: stretch;
+  gap: 24px;
+}
+
+.material-list-showcase > div {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  min-inline-size: 0;
+}
+
+.demo-list-media {
+  display: grid;
+  inline-size: 100%;
+  block-size: 100%;
+  background: var(--md-sys-color-tertiary-container);
+  color: var(--md-sys-color-on-tertiary-container);
+  font-size: 24px;
+  place-items: center;
+}
+
+.demo-swipe-action {
+  flex: 1 1 0;
+  min-inline-size: 64px;
+  padding: 8px;
+  border: 0;
+  border-radius: var(--md-sys-shape-corner-large);
+  color: var(--md-sys-color-on-tertiary-container);
+  background: var(--md-sys-color-tertiary-container);
+  font-size: 0.68rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.demo-swipe-action--delete {
+  color: var(--md-sys-color-on-error-container);
+  background: var(--md-sys-color-error-container);
+}
+
+.demo-swipe-action:focus-visible {
+  outline: 3px solid var(--md-sys-color-secondary);
+  outline-offset: -3px;
 }
 
 .option-swatch {
@@ -935,6 +983,10 @@ svg {
 }
 
 @media (max-width: 640px) {
+  .material-list-showcase {
+    grid-template-columns: 1fr;
+  }
+
   .progress-demo__linear-grid {
     grid-template-columns: 1fr;
   }
