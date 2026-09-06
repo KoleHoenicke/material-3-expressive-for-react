@@ -36,8 +36,11 @@ describe('interactive gallery', () => {
     const root = container.querySelector('.material-react-root')
 
     expect(root).toHaveAttribute('data-color-scheme', 'light')
+    expect(root).toHaveAttribute('data-motion-scheme', 'expressive')
     fireEvent.click(screen.getByRole('switch', { name: 'Use dark theme' }))
     expect(root).toHaveAttribute('data-color-scheme', 'dark')
+    fireEvent.click(screen.getByRole('switch', { name: 'Use expressive motion' }))
+    expect(root).toHaveAttribute('data-motion-scheme', 'standard')
 
     fireEvent.click(screen.getByRole('button', { name: 'Increase Guests' }))
     expect(screen.getByRole('textbox', { name: 'Guests value' })).toHaveValue('4')

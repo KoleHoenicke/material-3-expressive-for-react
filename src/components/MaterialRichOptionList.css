@@ -32,9 +32,9 @@
   isolation: isolate;
   overflow: hidden;
   transition:
-    background var(--m3-motion-transition-fast-effects),
+    background var(--m3-motion-transition-default-effects),
     border-radius var(--m3-motion-transition-fast-spatial),
-    color var(--m3-motion-transition-fast-effects);
+    color var(--m3-motion-transition-default-effects);
 }
 
 .material-rich-option:first-child {

@@ -20,6 +20,11 @@ export interface MaterialSpringAttributes {
   stiffness: number
 }
 
+export type MaterialMotionSpringAttributeGroup = Record<
+  MaterialMotionKind,
+  Record<MaterialMotionSpeed, MaterialSpringAttributes>
+>
+
 export interface MaterialTransitionPair extends MaterialMotionCurve {
   transitionType: 'begin-and-end-on-screen' | 'enter-screen' | 'exit-screen'
 }
@@ -102,21 +107,41 @@ export const MATERIAL_TRANSITION_PAIRS: Record<
   },
 }
 
-export const MATERIAL_MOTION_SPRING_ATTRIBUTES: Record<
-  MaterialMotionKind,
-  Record<MaterialMotionSpeed, MaterialSpringAttributes>
+export const MATERIAL_MOTION_SPRING_ATTRIBUTES_BY_SCHEME: Record<
+  MaterialMotionScheme,
+  MaterialMotionSpringAttributeGroup
 > = {
-  spatial: {
-    fast: { dampingRatio: 0.9, stiffness: 1400 },
-    default: { dampingRatio: 0.9, stiffness: 700 },
-    slow: { dampingRatio: 0.9, stiffness: 300 },
+  expressive: {
+    spatial: {
+      fast: { dampingRatio: 0.6, stiffness: 800 },
+      default: { dampingRatio: 0.8, stiffness: 380 },
+      slow: { dampingRatio: 0.8, stiffness: 200 },
+    },
+    effects: {
+      fast: { dampingRatio: 1, stiffness: 3800 },
+      default: { dampingRatio: 1, stiffness: 1600 },
+      slow: { dampingRatio: 1, stiffness: 800 },
+    },
   },
-  effects: {
-    fast: { dampingRatio: 1, stiffness: 3800 },
-    default: { dampingRatio: 1, stiffness: 1600 },
-    slow: { dampingRatio: 1, stiffness: 800 },
+  standard: {
+    spatial: {
+      fast: { dampingRatio: 0.9, stiffness: 1400 },
+      default: { dampingRatio: 0.9, stiffness: 700 },
+      slow: { dampingRatio: 0.9, stiffness: 300 },
+    },
+    effects: {
+      fast: { dampingRatio: 1, stiffness: 3800 },
+      default: { dampingRatio: 1, stiffness: 1600 },
+      slow: { dampingRatio: 1, stiffness: 800 },
+    },
   },
 }
+
+export const DEFAULT_MATERIAL_MOTION_SPRING_ATTRIBUTES =
+  MATERIAL_MOTION_SPRING_ATTRIBUTES_BY_SCHEME[MATERIAL_MOTION_DEFAULT_SCHEME]
+
+/** @deprecated Use DEFAULT_MATERIAL_MOTION_SPRING_ATTRIBUTES or getMaterialSpringAttributes. */
+export const MATERIAL_MOTION_SPRING_ATTRIBUTES = DEFAULT_MATERIAL_MOTION_SPRING_ATTRIBUTES
 
 export const MATERIAL_RIPPLE_TIMING = {
   hoverFadeMs: 15,
@@ -133,7 +158,8 @@ export const MATERIAL_RIPPLE_TIMING = {
 
 export const MATERIAL_APP_BAR_TIMING = {
   scrollEndMs: 140,
-  settleDurationMs: MATERIAL_MOTION_PRESETS.expressive.spatial.fast.durationMs,
+  topSettleDurationMs: MATERIAL_MOTION_PRESETS.expressive.effects.default.durationMs,
+  bottomSettleDurationMs: MATERIAL_MOTION_PRESETS.expressive.spatial.fast.durationMs,
 } as const
 
 export const MATERIAL_PROGRESS_TIMING = {
@@ -163,6 +189,14 @@ export function getMaterialMotionPreset(
   scheme: MaterialMotionScheme = MATERIAL_MOTION_DEFAULT_SCHEME,
 ) {
   return MATERIAL_MOTION_PRESETS[scheme][kind][speed]
+}
+
+export function getMaterialSpringAttributes(
+  kind: MaterialMotionKind,
+  speed: MaterialMotionSpeed,
+  scheme: MaterialMotionScheme = MATERIAL_MOTION_DEFAULT_SCHEME,
+) {
+  return MATERIAL_MOTION_SPRING_ATTRIBUTES_BY_SCHEME[scheme][kind][speed]
 }
 
 export function getMaterialTransitionPair(

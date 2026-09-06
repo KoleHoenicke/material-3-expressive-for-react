@@ -418,7 +418,7 @@
     inline-size var(--m3-motion-transition-fast-spatial),
     margin-inline-start var(--m3-motion-transition-fast-spatial),
     max-inline-size var(--m3-motion-transition-fast-spatial),
-    opacity var(--m3-motion-transition-fast-effects);
+    opacity var(--m3-motion-transition-default-effects);
 }
 
 .material-fab--extended:not(:has(.material-fab__icon)) .material-fab__label {
@@ -430,6 +430,11 @@
   padding-inline: calc(
     (var(--md-fab-container-height) - var(--md-fab-icon-size)) / 2
   );
+  transition:
+    opacity var(--m3-motion-transition-fast-effects),
+    padding-inline var(--m3-motion-transition-default-spatial),
+    transform var(--m3-motion-transition-fast-spatial),
+    visibility 0s;
 }
 
 .material-fab--extended[data-expanded='false'] .material-fab__label {
@@ -437,6 +442,11 @@
   max-inline-size: 0;
   margin-inline-start: 0;
   opacity: 0;
+  transition:
+    inline-size var(--m3-motion-transition-default-spatial),
+    margin-inline-start var(--m3-motion-transition-default-spatial),
+    max-inline-size var(--m3-motion-transition-default-spatial),
+    opacity var(--m3-motion-transition-fast-effects);
 }
 
 .material-fab--extended[data-visible='false'] {

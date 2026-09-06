@@ -31,6 +31,9 @@
   --md-sys-motion-easing-emphasized: cubic-bezier(0.2, 0, 0, 1);
   --md-sys-motion-easing-emphasized-accelerate: cubic-bezier(0.3, 0, 0.8, 0.15);
   --md-sys-motion-easing-emphasized-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
+  --md-sys-motion-easing-legacy: cubic-bezier(0.4, 0, 0.2, 1);
+  --md-sys-motion-easing-legacy-accelerate: cubic-bezier(0.4, 0, 1, 1);
+  --md-sys-motion-easing-legacy-decelerate: cubic-bezier(0, 0, 0.2, 1);
 
   --m3-motion-emphasized-duration: var(--md-sys-motion-duration-long2);
   --m3-motion-emphasized-easing: var(--md-sys-motion-easing-emphasized);
@@ -73,7 +76,7 @@
   --m3-motion-progress-wavy-determinate-duration: var(--md-sys-motion-duration-long2);
 
   /* AndroidX Material 3 card elevation and MaterialCardView selection transitions. */
-  --m3-motion-card-elevation-incoming: 120ms cubic-bezier(0.4, 0, 0.2, 1);
+  --m3-motion-card-elevation-incoming: 120ms var(--md-sys-motion-easing-legacy);
   --m3-motion-card-elevation-outgoing: 120ms cubic-bezier(0.4, 0, 0.6, 1);
   --m3-motion-card-selection-enter: var(--md-sys-motion-duration-short2) linear;
   --m3-motion-card-selection-exit: var(--md-sys-motion-duration-short1) linear;
@@ -82,17 +85,6 @@
   --m3-motion-fab-menu-enter-stagger: 35ms;
   --m3-motion-fab-menu-exit-stagger: 25ms;
   --m3-motion-fab-menu-total-exit-delay: var(--md-sys-motion-duration-medium2);
-
-  /* AndroidX Checkbox uses DefaultSpatial for the mark and Effects for color. */
-  --m3-motion-checkbox-mark-in-duration: var(--m3-motion-default-spatial-duration);
-  --m3-motion-checkbox-mark-in-easing: var(--m3-motion-default-spatial-easing);
-  --m3-motion-checkbox-mark-out-duration: 1ms;
-  --m3-motion-checkbox-mark-out-delay: var(--md-sys-motion-duration-short2);
-  --m3-motion-checkbox-mark-out-easing: var(--md-sys-motion-easing-linear);
-  --m3-motion-checkbox-box-in-duration: var(--m3-motion-default-effects-duration);
-  --m3-motion-checkbox-box-in-easing: var(--m3-motion-default-effects-easing);
-  --m3-motion-checkbox-box-out-duration: var(--m3-motion-fast-effects-duration);
-  --m3-motion-checkbox-box-out-easing: var(--m3-motion-fast-effects-easing);
 
   --md-sys-motion-expressive-fast-spatial-duration: 350ms;
   --md-sys-motion-expressive-fast-spatial-easing: cubic-bezier(0.42, 1.67, 0.21, 0.90);
@@ -120,18 +112,69 @@
   --md-sys-motion-standard-slow-effects-duration: 300ms;
   --md-sys-motion-standard-slow-effects-easing: cubic-bezier(0.34, 0.88, 0.34, 1.00);
 
-  --md-sys-motion-spring-fast-spatial-damping: 0.9;
-  --md-sys-motion-spring-fast-spatial-stiffness: 1400;
-  --md-sys-motion-spring-default-spatial-damping: 0.9;
-  --md-sys-motion-spring-default-spatial-stiffness: 700;
-  --md-sys-motion-spring-slow-spatial-damping: 0.9;
-  --md-sys-motion-spring-slow-spatial-stiffness: 300;
-  --md-sys-motion-spring-fast-effects-damping: 1;
-  --md-sys-motion-spring-fast-effects-stiffness: 3800;
-  --md-sys-motion-spring-default-effects-damping: 1;
-  --md-sys-motion-spring-default-effects-stiffness: 1600;
-  --md-sys-motion-spring-slow-effects-damping: 1;
-  --md-sys-motion-spring-slow-effects-stiffness: 800;
+  /* AndroidX Material 3 v0.14 motion-scheme spring physics. */
+  --md-sys-motion-expressive-spring-fast-spatial-damping: 0.6;
+  --md-sys-motion-expressive-spring-fast-spatial-stiffness: 800;
+  --md-sys-motion-expressive-spring-default-spatial-damping: 0.8;
+  --md-sys-motion-expressive-spring-default-spatial-stiffness: 380;
+  --md-sys-motion-expressive-spring-slow-spatial-damping: 0.8;
+  --md-sys-motion-expressive-spring-slow-spatial-stiffness: 200;
+  --md-sys-motion-expressive-spring-fast-effects-damping: 1;
+  --md-sys-motion-expressive-spring-fast-effects-stiffness: 3800;
+  --md-sys-motion-expressive-spring-default-effects-damping: 1;
+  --md-sys-motion-expressive-spring-default-effects-stiffness: 1600;
+  --md-sys-motion-expressive-spring-slow-effects-damping: 1;
+  --md-sys-motion-expressive-spring-slow-effects-stiffness: 800;
+
+  --md-sys-motion-standard-spring-fast-spatial-damping: 0.9;
+  --md-sys-motion-standard-spring-fast-spatial-stiffness: 1400;
+  --md-sys-motion-standard-spring-default-spatial-damping: 0.9;
+  --md-sys-motion-standard-spring-default-spatial-stiffness: 700;
+  --md-sys-motion-standard-spring-slow-spatial-damping: 0.9;
+  --md-sys-motion-standard-spring-slow-spatial-stiffness: 300;
+  --md-sys-motion-standard-spring-fast-effects-damping: 1;
+  --md-sys-motion-standard-spring-fast-effects-stiffness: 3800;
+  --md-sys-motion-standard-spring-default-effects-damping: 1;
+  --md-sys-motion-standard-spring-default-effects-stiffness: 1600;
+  --md-sys-motion-standard-spring-slow-effects-damping: 1;
+  --md-sys-motion-standard-spring-slow-effects-stiffness: 800;
+
+  --md-sys-motion-spring-fast-spatial-damping: var(
+    --md-sys-motion-expressive-spring-fast-spatial-damping
+  );
+  --md-sys-motion-spring-fast-spatial-stiffness: var(
+    --md-sys-motion-expressive-spring-fast-spatial-stiffness
+  );
+  --md-sys-motion-spring-default-spatial-damping: var(
+    --md-sys-motion-expressive-spring-default-spatial-damping
+  );
+  --md-sys-motion-spring-default-spatial-stiffness: var(
+    --md-sys-motion-expressive-spring-default-spatial-stiffness
+  );
+  --md-sys-motion-spring-slow-spatial-damping: var(
+    --md-sys-motion-expressive-spring-slow-spatial-damping
+  );
+  --md-sys-motion-spring-slow-spatial-stiffness: var(
+    --md-sys-motion-expressive-spring-slow-spatial-stiffness
+  );
+  --md-sys-motion-spring-fast-effects-damping: var(
+    --md-sys-motion-expressive-spring-fast-effects-damping
+  );
+  --md-sys-motion-spring-fast-effects-stiffness: var(
+    --md-sys-motion-expressive-spring-fast-effects-stiffness
+  );
+  --md-sys-motion-spring-default-effects-damping: var(
+    --md-sys-motion-expressive-spring-default-effects-damping
+  );
+  --md-sys-motion-spring-default-effects-stiffness: var(
+    --md-sys-motion-expressive-spring-default-effects-stiffness
+  );
+  --md-sys-motion-spring-slow-effects-damping: var(
+    --md-sys-motion-expressive-spring-slow-effects-damping
+  );
+  --md-sys-motion-spring-slow-effects-stiffness: var(
+    --md-sys-motion-expressive-spring-slow-effects-stiffness
+  );
 
   --md-sys-motion-spring-fast-spatial-duration: var(
     --md-sys-motion-expressive-fast-spatial-duration
@@ -170,42 +213,6 @@
     --md-sys-motion-expressive-slow-effects-easing
   );
 
-  --m3-motion-fast-spatial-duration: var(--md-sys-motion-spring-fast-spatial-duration);
-  --m3-motion-fast-spatial-easing: var(--md-sys-motion-spring-fast-spatial-easing);
-  --m3-motion-default-spatial-duration: var(--md-sys-motion-spring-default-spatial-duration);
-  --m3-motion-default-spatial-easing: var(--md-sys-motion-spring-default-spatial-easing);
-  --m3-motion-slow-spatial-duration: var(--md-sys-motion-spring-slow-spatial-duration);
-  --m3-motion-slow-spatial-easing: var(--md-sys-motion-spring-slow-spatial-easing);
-  --m3-motion-fast-effects-duration: var(--md-sys-motion-spring-fast-effects-duration);
-  --m3-motion-fast-effects-easing: var(--md-sys-motion-spring-fast-effects-easing);
-  --m3-motion-default-effects-duration: var(--md-sys-motion-spring-default-effects-duration);
-  --m3-motion-default-effects-easing: var(--md-sys-motion-spring-default-effects-easing);
-  --m3-motion-slow-effects-duration: var(--md-sys-motion-spring-slow-effects-duration);
-  --m3-motion-slow-effects-easing: var(--md-sys-motion-spring-slow-effects-easing);
-
-  --m3-motion-switch-effects-duration: 67ms;
-  --m3-motion-switch-icon-fade-duration: 33ms;
-  --m3-motion-switch-icon-transform-duration: 167ms;
-  --m3-motion-switch-handle-size-duration: var(--md-sys-motion-duration-medium1);
-  --m3-motion-switch-handle-slide-duration: var(--md-sys-motion-duration-medium2);
-  --m3-motion-switch-pressed-duration: var(--md-sys-motion-duration-short2);
-  --m3-motion-switch-handle-slide-easing: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-
-  --m3-motion-transition-fast-spatial: var(--m3-motion-fast-spatial-duration)
-    var(--m3-motion-fast-spatial-easing);
-  --m3-motion-transition-default-spatial: var(--m3-motion-default-spatial-duration)
-    var(--m3-motion-default-spatial-easing);
-  --m3-motion-transition-slow-spatial: var(--m3-motion-slow-spatial-duration)
-    var(--m3-motion-slow-spatial-easing);
-  --m3-motion-transition-fast-effects: var(--m3-motion-fast-effects-duration)
-    var(--m3-motion-fast-effects-easing);
-  --m3-motion-transition-default-effects: var(--m3-motion-default-effects-duration)
-    var(--m3-motion-default-effects-easing);
-  --m3-motion-transition-slow-effects: var(--m3-motion-slow-effects-duration)
-    var(--m3-motion-slow-effects-easing);
-  --m3-motion-transition-fast-shape: var(--md-sys-motion-duration-short4)
-    var(--md-sys-motion-easing-emphasized);
-
   --m3-expressive-fast-spatial-duration: var(--md-sys-motion-expressive-fast-spatial-duration);
   --m3-expressive-fast-spatial-easing: var(--md-sys-motion-expressive-fast-spatial-easing);
   --m3-expressive-default-spatial-duration: var(
@@ -222,7 +229,6 @@
   --m3-expressive-default-effects-easing: var(--md-sys-motion-expressive-default-effects-easing);
   --m3-expressive-slow-effects-duration: var(--md-sys-motion-expressive-slow-effects-duration);
   --m3-expressive-slow-effects-easing: var(--md-sys-motion-expressive-slow-effects-easing);
-  --material-ui-motion-emphasized: var(--m3-motion-fast-effects-easing);
 }
 
 .m3-motion-spatial-fast {
@@ -250,6 +256,11 @@
   transition-timing-function: var(--m3-motion-default-effects-easing);
 }
 
+.m3-motion-effects-slow {
+  transition-duration: var(--m3-motion-slow-effects-duration);
+  transition-timing-function: var(--m3-motion-slow-effects-easing);
+}
+
 .m3-motion-enter {
   animation-duration: var(--m3-motion-emphasized-decelerate-duration);
   animation-timing-function: var(--m3-motion-emphasized-decelerate-easing);
@@ -270,10 +281,46 @@
   transition:
     opacity var(--m3-motion-transition-fast-effects),
     background-color var(--m3-motion-transition-fast-effects),
-    transform var(--m3-motion-transition-fast-effects);
+    transform var(--m3-motion-transition-fast-spatial);
 }
 
 [data-motion-scheme='expressive'] {
+  --md-sys-motion-spring-fast-spatial-damping: var(
+    --md-sys-motion-expressive-spring-fast-spatial-damping
+  );
+  --md-sys-motion-spring-fast-spatial-stiffness: var(
+    --md-sys-motion-expressive-spring-fast-spatial-stiffness
+  );
+  --md-sys-motion-spring-default-spatial-damping: var(
+    --md-sys-motion-expressive-spring-default-spatial-damping
+  );
+  --md-sys-motion-spring-default-spatial-stiffness: var(
+    --md-sys-motion-expressive-spring-default-spatial-stiffness
+  );
+  --md-sys-motion-spring-slow-spatial-damping: var(
+    --md-sys-motion-expressive-spring-slow-spatial-damping
+  );
+  --md-sys-motion-spring-slow-spatial-stiffness: var(
+    --md-sys-motion-expressive-spring-slow-spatial-stiffness
+  );
+  --md-sys-motion-spring-fast-effects-damping: var(
+    --md-sys-motion-expressive-spring-fast-effects-damping
+  );
+  --md-sys-motion-spring-fast-effects-stiffness: var(
+    --md-sys-motion-expressive-spring-fast-effects-stiffness
+  );
+  --md-sys-motion-spring-default-effects-damping: var(
+    --md-sys-motion-expressive-spring-default-effects-damping
+  );
+  --md-sys-motion-spring-default-effects-stiffness: var(
+    --md-sys-motion-expressive-spring-default-effects-stiffness
+  );
+  --md-sys-motion-spring-slow-effects-damping: var(
+    --md-sys-motion-expressive-spring-slow-effects-damping
+  );
+  --md-sys-motion-spring-slow-effects-stiffness: var(
+    --md-sys-motion-expressive-spring-slow-effects-stiffness
+  );
   --md-sys-motion-spring-fast-spatial-duration: var(
     --md-sys-motion-expressive-fast-spatial-duration
   );
@@ -313,6 +360,42 @@
 }
 
 [data-motion-scheme='standard'] {
+  --md-sys-motion-spring-fast-spatial-damping: var(
+    --md-sys-motion-standard-spring-fast-spatial-damping
+  );
+  --md-sys-motion-spring-fast-spatial-stiffness: var(
+    --md-sys-motion-standard-spring-fast-spatial-stiffness
+  );
+  --md-sys-motion-spring-default-spatial-damping: var(
+    --md-sys-motion-standard-spring-default-spatial-damping
+  );
+  --md-sys-motion-spring-default-spatial-stiffness: var(
+    --md-sys-motion-standard-spring-default-spatial-stiffness
+  );
+  --md-sys-motion-spring-slow-spatial-damping: var(
+    --md-sys-motion-standard-spring-slow-spatial-damping
+  );
+  --md-sys-motion-spring-slow-spatial-stiffness: var(
+    --md-sys-motion-standard-spring-slow-spatial-stiffness
+  );
+  --md-sys-motion-spring-fast-effects-damping: var(
+    --md-sys-motion-standard-spring-fast-effects-damping
+  );
+  --md-sys-motion-spring-fast-effects-stiffness: var(
+    --md-sys-motion-standard-spring-fast-effects-stiffness
+  );
+  --md-sys-motion-spring-default-effects-damping: var(
+    --md-sys-motion-standard-spring-default-effects-damping
+  );
+  --md-sys-motion-spring-default-effects-stiffness: var(
+    --md-sys-motion-standard-spring-default-effects-stiffness
+  );
+  --md-sys-motion-spring-slow-effects-damping: var(
+    --md-sys-motion-standard-spring-slow-effects-damping
+  );
+  --md-sys-motion-spring-slow-effects-stiffness: var(
+    --md-sys-motion-standard-spring-slow-effects-stiffness
+  );
   --md-sys-motion-spring-fast-spatial-duration: var(
     --md-sys-motion-standard-fast-spatial-duration
   );
@@ -343,8 +426,62 @@
   --md-sys-motion-spring-slow-effects-easing: var(--md-sys-motion-standard-slow-effects-easing);
 }
 
+/* Resolve aliases at every scheme boundary so nested providers switch the full system. */
+:root,
+[data-motion-scheme] {
+  --m3-motion-fast-spatial-duration: var(--md-sys-motion-spring-fast-spatial-duration);
+  --m3-motion-fast-spatial-easing: var(--md-sys-motion-spring-fast-spatial-easing);
+  --m3-motion-default-spatial-duration: var(--md-sys-motion-spring-default-spatial-duration);
+  --m3-motion-default-spatial-easing: var(--md-sys-motion-spring-default-spatial-easing);
+  --m3-motion-slow-spatial-duration: var(--md-sys-motion-spring-slow-spatial-duration);
+  --m3-motion-slow-spatial-easing: var(--md-sys-motion-spring-slow-spatial-easing);
+  --m3-motion-fast-effects-duration: var(--md-sys-motion-spring-fast-effects-duration);
+  --m3-motion-fast-effects-easing: var(--md-sys-motion-spring-fast-effects-easing);
+  --m3-motion-default-effects-duration: var(--md-sys-motion-spring-default-effects-duration);
+  --m3-motion-default-effects-easing: var(--md-sys-motion-spring-default-effects-easing);
+  --m3-motion-slow-effects-duration: var(--md-sys-motion-spring-slow-effects-duration);
+  --m3-motion-slow-effects-easing: var(--md-sys-motion-spring-slow-effects-easing);
+
+  /* Current AndroidX Switch uses FastSpatial for thumb motion and snaps into press. */
+  --m3-motion-switch-effects-duration: var(--m3-motion-fast-effects-duration);
+  --m3-motion-switch-effects-easing: var(--m3-motion-fast-effects-easing);
+  --m3-motion-switch-icon-fade-duration: var(--m3-motion-fast-effects-duration);
+  --m3-motion-switch-icon-transform-duration: var(--m3-motion-fast-spatial-duration);
+  --m3-motion-switch-handle-size-duration: var(--m3-motion-fast-spatial-duration);
+  --m3-motion-switch-handle-slide-duration: var(--m3-motion-fast-spatial-duration);
+  --m3-motion-switch-pressed-duration: var(--m3-motion-reduced-spatial-duration);
+  --m3-motion-switch-handle-slide-easing: var(--m3-motion-fast-spatial-easing);
+
+  /* AndroidX Checkbox uses DefaultSpatial for the mark and Effects for color. */
+  --m3-motion-checkbox-mark-in-duration: var(--m3-motion-default-spatial-duration);
+  --m3-motion-checkbox-mark-in-easing: var(--m3-motion-default-spatial-easing);
+  --m3-motion-checkbox-mark-out-duration: 1ms;
+  --m3-motion-checkbox-mark-out-delay: var(--md-sys-motion-duration-short2);
+  --m3-motion-checkbox-mark-out-easing: var(--md-sys-motion-easing-linear);
+  --m3-motion-checkbox-box-in-duration: var(--m3-motion-default-effects-duration);
+  --m3-motion-checkbox-box-in-easing: var(--m3-motion-default-effects-easing);
+  --m3-motion-checkbox-box-out-duration: var(--m3-motion-fast-effects-duration);
+  --m3-motion-checkbox-box-out-easing: var(--m3-motion-fast-effects-easing);
+
+  --m3-motion-transition-fast-spatial: var(--m3-motion-fast-spatial-duration)
+    var(--m3-motion-fast-spatial-easing);
+  --m3-motion-transition-default-spatial: var(--m3-motion-default-spatial-duration)
+    var(--m3-motion-default-spatial-easing);
+  --m3-motion-transition-slow-spatial: var(--m3-motion-slow-spatial-duration)
+    var(--m3-motion-slow-spatial-easing);
+  --m3-motion-transition-fast-effects: var(--m3-motion-fast-effects-duration)
+    var(--m3-motion-fast-effects-easing);
+  --m3-motion-transition-default-effects: var(--m3-motion-default-effects-duration)
+    var(--m3-motion-default-effects-easing);
+  --m3-motion-transition-slow-effects: var(--m3-motion-slow-effects-duration)
+    var(--m3-motion-slow-effects-easing);
+  --m3-motion-transition-fast-shape: var(--m3-motion-transition-fast-spatial);
+  --material-ui-motion-emphasized: var(--m3-motion-fast-effects-easing);
+}
+
 @media (prefers-reduced-motion: reduce) {
-  :root {
+  :root,
+  [data-motion-scheme] {
     --md-sys-motion-spring-fast-spatial-duration: var(--m3-motion-reduced-spatial-duration);
     --md-sys-motion-spring-fast-spatial-easing: linear;
     --md-sys-motion-spring-default-spatial-duration: var(--m3-motion-reduced-spatial-duration);

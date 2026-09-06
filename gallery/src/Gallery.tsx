@@ -54,6 +54,7 @@ import {
   type MaterialFabMenuColor,
   type MaterialFabMenuTriggerSize,
   type MaterialFabSize,
+  type MaterialMotionScheme,
 } from '../../src'
 
 type IconName =
@@ -157,6 +158,7 @@ function StageLabel({ children }: { children: ReactNode }) {
 
 export function Gallery() {
   const [mode, setMode] = useState<'light' | 'dark'>('light')
+  const [motionScheme, setMotionScheme] = useState<MaterialMotionScheme>('expressive')
   const [seed, setSeed] = useState('#6750a4')
   const [buttonSize, setButtonSize] = useState<MaterialButtonSize>('small')
   const [fabColor, setFabColor] = useState<MaterialFabColor>('primary-container')
@@ -270,7 +272,7 @@ export function Gallery() {
   ]
 
   return (
-    <MaterialThemeProvider mode={mode} seed={{ primary: seed }}>
+    <MaterialThemeProvider mode={mode} motionScheme={motionScheme} seed={{ primary: seed }}>
       <div className="gallery-shell">
         <header className="topbar">
           <a className="wordmark" href="#top" aria-label="Material React Components home">
@@ -300,7 +302,7 @@ export function Gallery() {
               <p>Every example is rendered by the package. Change the theme, press the controls, and inspect the current Material 3 Expressive behavior.</p>
               <div className="hero__meta">
                 <span>23 modules</span>
-                <span>163 tests</span>
+                <span>168 tests</span>
                 <span>React 18 and 19</span>
               </div>
             </div>
@@ -317,7 +319,7 @@ export function Gallery() {
               <span className="theme-panel__icon"><Icon name="palette" /></span>
               <div>
                 <h2 id="theme-title">Theme playground</h2>
-                <p>These controls regenerate the color roles for every specimen below.</p>
+                <p>These controls change the color roles and motion scheme for every specimen below.</p>
               </div>
             </div>
             <div className="theme-panel__controls">
@@ -342,6 +344,14 @@ export function Gallery() {
               <label className="mode-control">
                 <span className="mode-control__label"><Icon name="moon" /> Dark theme</span>
                 <Switch aria-label="Use dark theme" checked={mode === 'dark'} onChange={(event) => setMode(event.currentTarget.checked ? 'dark' : 'light')} />
+              </label>
+              <label className="mode-control">
+                <span className="mode-control__label">Expressive motion</span>
+                <Switch
+                  aria-label="Use expressive motion"
+                  checked={motionScheme === 'expressive'}
+                  onChange={(event) => setMotionScheme(event.currentTarget.checked ? 'expressive' : 'standard')}
+                />
               </label>
             </div>
           </section>

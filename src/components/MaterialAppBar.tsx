@@ -184,12 +184,14 @@ function useAppBarScroll({
   collapseRange,
   onCollapseProgressChange,
   scrollTarget,
+  settleDurationMs,
 }: {
   behavior: MaterialTopAppBarScrollBehavior | 'exit-always'
   collapseProgress?: number
   collapseRange: number
   onCollapseProgressChange?: (progress: number) => void
   scrollTarget?: MaterialAppBarScrollTarget
+  settleDurationMs: number
 }) {
   const [automaticProgress, setAutomaticProgress] = useState(0)
   const [automaticScrolled, setAutomaticScrolled] = useState(false)
@@ -242,7 +244,7 @@ function useAppBarScroll({
             commit(current < 0.5 ? 0 : 1)
             settleEndTimer = window.setTimeout(
               () => setSettling(false),
-              MATERIAL_APP_BAR_TIMING.settleDurationMs,
+              settleDurationMs,
             )
           }
         }, MATERIAL_APP_BAR_TIMING.scrollEndMs)
@@ -265,7 +267,14 @@ function useAppBarScroll({
       window.clearTimeout(settleTimer)
       window.clearTimeout(settleEndTimer)
     }
-  }, [behavior, collapseProgress, collapseRange, onCollapseProgressChange, scrollTarget])
+  }, [
+    behavior,
+    collapseProgress,
+    collapseRange,
+    onCollapseProgressChange,
+    scrollTarget,
+    settleDurationMs,
+  ])
 
   return {
     progress: clamp(collapseProgress ?? automaticProgress),
@@ -343,6 +352,7 @@ export const MaterialTopAppBar = forwardRef<HTMLElement, MaterialTopAppBarProps>
       collapseRange: resolvedExpandedHeight - resolvedCollapsedHeight,
       onCollapseProgressChange,
       scrollTarget,
+      settleDurationMs: MATERIAL_APP_BAR_TIMING.topSettleDurationMs,
     })
     const currentHeight =
       resolvedExpandedHeight -
@@ -460,6 +470,7 @@ export const MaterialBottomAppBar = forwardRef<HTMLElement, MaterialBottomAppBar
       collapseRange: resolvedHeight,
       onCollapseProgressChange,
       scrollTarget,
+      settleDurationMs: MATERIAL_APP_BAR_TIMING.bottomSettleDurationMs,
     })
     const appBarStyle = {
       ...style,

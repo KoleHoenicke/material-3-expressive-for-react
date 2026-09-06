@@ -97,10 +97,10 @@
   box-shadow: var(--md-sys-elevation-level0, none);
   color: var(--md-list-label-color);
   transition:
-    background-color var(--m3-motion-transition-fast-effects),
+    background-color var(--m3-motion-transition-default-effects),
     border-radius var(--m3-motion-transition-fast-spatial),
     box-shadow var(--m3-motion-transition-fast-spatial),
-    color var(--m3-motion-transition-fast-effects);
+    color var(--m3-motion-transition-default-effects);
 }
 
 .material-list[data-variant='baseline'] > .material-list-item,

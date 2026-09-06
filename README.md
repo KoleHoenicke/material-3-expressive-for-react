@@ -40,7 +40,7 @@ Included now:
 Until the first npm release, install the package directly from GitHub:
 
 ```sh
-npm install github:KoleHoenicke/material-react-components#v0.10.0
+npm install github:KoleHoenicke/material-react-components#v0.11.0
 ```
 
 React and React DOM are peer dependencies. React 18 and 19 are supported.
@@ -104,6 +104,27 @@ export function Settings() {
 ```
 
 Every component is exported with a short name such as `Button` and its explicit name such as `MaterialButton`.
+
+### Motion
+
+The default is the Material 3 Expressive motion scheme. Set `motionScheme="standard"` on `MaterialThemeProvider` for a utilitarian motion scheme. A nested element can also set `data-motion-scheme="expressive"` or `data-motion-scheme="standard"` to change the scheme for one subtree.
+
+```tsx
+<MaterialThemeProvider
+  motionScheme="standard"
+  seed={{ primary: '#6750a4' }}
+>
+  <Settings />
+</MaterialThemeProvider>
+```
+
+The package exposes all six Material motion roles through `MATERIAL_MOTION_PRESETS`, `MATERIAL_MOTION_SPRING_ATTRIBUTES_BY_SCHEME`, `getMaterialMotionPreset`, and `getMaterialSpringAttributes`. Spatial roles animate position, size, rotation, and shape. Effects roles animate color and opacity. Use fast for small components, default for partial-screen motion, and slow for full-screen motion.
+
+The spring attributes match the current AndroidX Material 3 v0.14 generated tokens. Expressive spatial springs are `0.6 / 800` for fast, `0.8 / 380` for default, and `0.8 / 200` for slow, written as damping ratio and stiffness. Standard spatial springs are `0.9 / 1400`, `0.9 / 700`, and `0.9 / 300`. Both schemes use critically damped effects springs with stiffness values of `3800`, `1600`, and `800`.
+
+CSS components use Material's official web curve conversions for those springs. Native spring engines should use the exported damping and stiffness values directly. The older easing and duration tokens remain available only for transition patterns and component algorithms that still require them. `prefers-reduced-motion: reduce` shortens spatial motion to 1ms and effects motion to 50ms, including components inside a theme provider.
+
+Sources: [Material motion physics system](https://m3.material.io/styles/motion/overview/how-it-works), [web conversion specs](https://m3.material.io/styles/motion/overview/specs), and [AndroidX `MotionScheme`](https://android.googlesource.com/platform/frameworks/support/+/refs/heads/androidx-main/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/MotionScheme.kt).
 
 ### Floating action buttons
 

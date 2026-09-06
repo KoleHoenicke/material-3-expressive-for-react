@@ -65,7 +65,7 @@
   vertical-align: middle;
   transition:
     border-radius var(--m3-motion-transition-fast-spatial),
-    box-shadow 120ms cubic-bezier(0.4, 0, 0.6, 1),
+    box-shadow var(--m3-motion-card-elevation-outgoing),
     color var(--m3-motion-transition-fast-effects);
 }
 
@@ -88,7 +88,7 @@
   border: var(--md-chip-outline-width) solid var(--md-chip-outline-color);
   transition:
     border-color var(--m3-motion-transition-fast-effects),
-    border-width var(--m3-motion-transition-fast-effects);
+    border-width var(--m3-motion-transition-fast-spatial);
 }
 
 .material-chip[data-touch-target='wrapper'] {
@@ -356,7 +356,7 @@
 
 .material-chip:hover {
   box-shadow: var(--md-chip-hover-elevation);
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--md-sys-motion-easing-legacy);
 }
 
 .material-chip:hover .material-chip__leading-icon {
@@ -399,7 +399,7 @@
   z-index: 1;
   box-shadow: var(--md-chip-dragged-elevation);
   cursor: grabbing;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--md-sys-motion-easing-legacy);
 }
 
 .material-chip[data-selected='true'] {

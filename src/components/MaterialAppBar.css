@@ -57,7 +57,7 @@
 
 .material-top-app-bar[data-settling='true'] {
   transition:
-    block-size var(--m3-motion-transition-fast-spatial),
+    block-size var(--m3-motion-transition-default-effects),
     background-color var(--m3-motion-transition-default-effects);
 }
 
@@ -259,11 +259,11 @@
 
 .material-top-app-bar[data-settling='true'] .material-top-app-bar__collapsed-title,
 .material-top-app-bar[data-settling='true'] .material-top-app-bar__row--expanded {
-  transition: opacity var(--m3-motion-transition-fast-spatial);
+  transition: opacity var(--m3-motion-transition-default-effects);
 }
 
 .material-top-app-bar[data-two-rows='true'][data-settling='true']::before {
-  transition: opacity var(--m3-motion-transition-fast-spatial);
+  transition: opacity var(--m3-motion-transition-default-effects);
 }
 
 .material-app-bar-icon-button {

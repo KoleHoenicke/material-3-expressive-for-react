@@ -65,10 +65,11 @@
   opacity: 1;
   transform: none;
   transition:
-    opacity var(--m3-motion-switch-effects-duration) var(--md-sys-motion-easing-linear),
-    background-color var(--m3-motion-switch-effects-duration) var(--md-sys-motion-easing-linear),
-    border-color var(--m3-motion-switch-effects-duration) var(--md-sys-motion-easing-linear),
-    border-width var(--m3-motion-switch-effects-duration) var(--md-sys-motion-easing-linear);
+    opacity var(--m3-motion-switch-effects-duration) var(--m3-motion-switch-effects-easing),
+    background-color var(--m3-motion-switch-effects-duration)
+      var(--m3-motion-switch-effects-easing),
+    border-color var(--m3-motion-switch-effects-duration) var(--m3-motion-switch-effects-easing),
+    border-width var(--m3-motion-switch-effects-duration) var(--m3-motion-switch-effects-easing);
 }
 
 .material-switch .material-switch__handle-container {
@@ -97,8 +98,9 @@
   opacity: 0;
   transform: translate(-50%, -50%);
   transition:
-    background-color var(--m3-motion-switch-effects-duration) var(--md-sys-motion-easing-linear),
-    opacity var(--m3-motion-switch-effects-duration) var(--md-sys-motion-easing-linear);
+    background-color var(--m3-motion-switch-effects-duration)
+      var(--m3-motion-switch-effects-easing),
+    opacity var(--m3-motion-switch-effects-duration) var(--m3-motion-switch-effects-easing);
 }
 
 .material-switch .material-switch__handle {
@@ -115,8 +117,8 @@
   transform: none;
   transform-origin: center;
   transition:
-    width var(--m3-motion-switch-handle-size-duration) var(--md-sys-motion-easing-standard),
-    height var(--m3-motion-switch-handle-size-duration) var(--md-sys-motion-easing-standard);
+    width var(--m3-motion-switch-handle-size-duration) var(--m3-motion-switch-handle-slide-easing),
+    height var(--m3-motion-switch-handle-size-duration) var(--m3-motion-switch-handle-slide-easing);
 }
 
 .material-switch .material-switch__handle::before {
@@ -132,8 +134,9 @@
   opacity: 1;
   transform: none;
   transition:
-    background-color var(--m3-motion-switch-effects-duration) var(--md-sys-motion-easing-linear),
-    opacity var(--m3-motion-switch-effects-duration) var(--md-sys-motion-easing-linear);
+    background-color var(--m3-motion-switch-effects-duration)
+      var(--m3-motion-switch-effects-easing),
+    opacity var(--m3-motion-switch-effects-duration) var(--m3-motion-switch-effects-easing);
 }
 
 .material-switch .material-switch__handle::after {
@@ -324,9 +327,10 @@
   opacity: 0;
   transform: none;
   transition:
-    color var(--m3-motion-switch-effects-duration) var(--md-sys-motion-easing-linear),
-    opacity var(--m3-motion-switch-icon-fade-duration) var(--md-sys-motion-easing-linear),
-    transform var(--m3-motion-switch-icon-transform-duration) var(--md-sys-motion-easing-standard);
+    color var(--m3-motion-switch-effects-duration) var(--m3-motion-switch-effects-easing),
+    opacity var(--m3-motion-switch-icon-fade-duration) var(--m3-motion-switch-effects-easing),
+    transform var(--m3-motion-switch-icon-transform-duration)
+      var(--m3-motion-switch-handle-slide-easing);
 }
 
 .material-switch__icon-glyph {

@@ -2,6 +2,8 @@
 
 ## AndroidX Material 3
 
+The motion schemes, generated spring values, web curve conversions, and component motion roles in `materialMotion.ts`, `motion.css`, and component styles are adapted from AndroidX Material 3 and the Material Design 3 motion guidance. Copyright 2021-2026 The Android Open Source Project and copyright Google LLC. Licensed under the Apache License 2.0 where applicable.
+
 The geometry and timing in `MaterialLoadingIndicator.tsx` are adapted from AndroidX Material 3, Material Shapes, and graphics-shapes. Copyright 2022-2024 The Android Open Source Project. Licensed under the Apache License 2.0.
 
 The app-bar geometry, tokens, title transitions, and scroll-state behavior in `MaterialAppBar.tsx` and `MaterialAppBar.css` are adapted from AndroidX Material 3. Copyright 2022-2025 The Android Open Source Project. Licensed under the Apache License 2.0.

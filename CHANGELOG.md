@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.11.0
+
+- Rebuilt the motion foundation against the current Material 3 motion physics guidance and AndroidX v0.14 generated tokens. Expressive spring physics now uses the correct 0.6/800 fast, 0.8/380 default, and 0.8/200 slow spatial values instead of exposing Standard values under the Expressive default.
+- Added complete Expressive and Standard spring-attribute maps, active CSS physics aliases, a typed `getMaterialSpringAttributes` lookup, and a `motionScheme` theme-provider option. Scheme-dependent aliases now resolve at every provider boundary so nested Standard and Expressive schemes switch the actual component curves as well as their metadata.
+- Replaced the Switch's legacy Material Web tweens with the current fast spatial and fast effects roles, corrected top and bottom app-bar snapping, list-family effects, and extended-FAB directional roles, added the missing slow-effects utility, centralized remaining component curves, and made reduced-motion overrides work inside motion-scheme providers.
+
 ## 0.10.0
 
 - Added the complete Material 3 Expressive FAB menu with two-to-six-item composition, primary, secondary, and tertiary color sets, regular, medium, and large launchers, AndroidX-aligned geometry, launcher-to-close morphing, staggered item motion, scroll-behind-close behavior, RTL alignment, reduced motion, forced colors, and typed CSS token overrides.
